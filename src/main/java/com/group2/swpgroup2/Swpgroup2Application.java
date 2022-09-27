@@ -17,7 +17,7 @@ public class Swpgroup2Application {
 		CourseRepository cRepo = context.getBean(CourseRepository.class);
 		ManagerRepository mRepo = context.getBean(ManagerRepository.class);
 		//Course s = Course.builder().ImgSrc("11a").Rating(5.2f).CourseManager(mRepo.getReferenceById(1)).Description("aaaaa").build();
-		cRepo.save(Course.builder().ImgSrc("11a").Rating(5.2f).CourseManager(mRepo.getReferenceById(1)).Description("aaaaa").CourseName("test").build());
+		//cRepo.save(Course.builder().ImgSrc("11a").Rating(5.2f).CourseManager(mRepo.getReferenceById(1)).Description("aaaaa").CourseName("test").build());
 		for(Course c : cRepo.findAll()){
 			System.out.println(c.toString());
 			
