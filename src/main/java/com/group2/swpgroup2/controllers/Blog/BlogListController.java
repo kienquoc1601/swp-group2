@@ -28,19 +28,36 @@ public class BlogListController {
         model.addAttribute("blog", blog);
         return "Blog/blogdetail";
     }
+
+    
+
+    //get data from form and save blog to database
+    // @RequestMapping(value="/blog/add", method = RequestMethod.GET)
+    // public String BlogAdd(Model model) {
+
+    //     return "Blog/blogadd";
+    // }
+
+    // @RequestMapping(value="/blog/add", method = RequestMethod.GET)
+    // public String BlogAdd(Model model) {
+
+    //     return "Blog/blogadd";
+    // }
+    // public String BlogAdd(Model model, @RequestParam("title") String title, @RequestParam("blog_image") String blog_image, @RequestParam("blog_description") String blog_description, @RequestParam("poster_uname") String poster_uname, @RequestParam("blog_content") String blog_content, @RequestParam("category") String category, @RequestParam("rating") float rating, @RequestParam("date") Date date) {
+    //     Blog blog = new Blog();
+    //     blog.setTitle(title);
+    //     blog.setBlog_image(blog_image);
+    //     blog.setBlog_description(blog_description);
+    //     blog.setPoster_uname(poster_uname);
+    //     blog.setBlog_content(blog_content);
+    //     blog.setCategory(category);
+    //     blog.setRating(rating);
+    //     blog.setDate(date);
+    //     blogRepo.save(blog);
+    //     return "redirect:/blog";
+    // }
+
     //add blog
-    @RequestMapping(value="/blog/add", method = RequestMethod.POST)
-    public String BlogAdd(Model model, @RequestParam("title") String title, @RequestParam("blog_image") String blog_image, @RequestParam("blog_description") String blog_description, @RequestParam("poster_uname") String poster_uname, @RequestParam("blog_content") String blog_content, @RequestParam("category") String category, @RequestParam("rating") float rating, @RequestParam("date") Date date) {
-        Blog blog = new Blog();
-        blog.setTitle(title);
-        blog.setBlog_image(blog_image);
-        blog.setBlog_description(blog_description);
-        blog.setPoster_uname(poster_uname);
-        blog.setBlog_content(blog_content);
-        blog.setCategory(category);
-        blog.setRating(rating);
-        blog.setDate(date);
-        blogRepo.save(blog);
-        return "redirect:/blog";
-    }
+    
+
 }
