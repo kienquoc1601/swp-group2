@@ -13,7 +13,7 @@
 
 <body>
     <div class="container">
-        <form action="/blog/add" method="post">
+        <form th:action="@{/blog/add}" th:object="${blog}" method="post">
             <!-- title, blog_image, blog_description, choice category -->
             <div class="col-md-12">
                 <div class="mb-3">
@@ -40,12 +40,8 @@
                     </select>
                 </div>
                 <div class="mb-3">
-                    <label for="email" class="form-label">Email address</label>
-                    <input type="text" class="form-control form-control-lg" name="email" placeholder="">
-                </div>
-                <div class="mb-3">
-                    <label for="content" class="form-label">Content</label>
-                    <input type="hidden" name="content">
+                    <label for="blog_content" class="form-label">Content</label>
+                    <input type="hidden" name="blog_content" id="blog_content">
                     <div id="editor-container" class="form-control form-control-lg" style="height: 200px;"></div>
                 </div>
                 <div class="row">
