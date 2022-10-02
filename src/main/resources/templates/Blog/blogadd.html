@@ -13,27 +13,27 @@
 
 <body>
     <div class="container">
-        <form th:action="@{/blog/add}" th:object="${blog}" method="post">
+        <form th:action="@{/blog/add}" th:object="${blog}" method="post" name="blogadd" id="blogadd">
             <!-- title, blog_image, blog_description, choice category -->
             <div class="col-md-12">
                 <div class="mb-3">
                     <label for="title" class="form-label">Title</label>
-                    <input type="text" class="form-control form-control-lg" name="title" placeholder="">
+                    <input type="text" class="form-control form-control-lg" name="title" placeholder="" required>
                 </div>
                 <div class="form-group mb-3">
                     <!-- <label for="blog_image" class="form-label">Blog Image</label>
                     <input type="file" accept="image/*" class="form-control form-control-lg" name="blog_image" placeholder=""> -->
                     <label for="blog_image" class="form-label">Blog Image</label>
-                    <input type="text" class="form-control form-control-lg" name="blog_image" placeholder="">
+                    <input type="text" class="form-control form-control-lg" name="blog_image" placeholder="" required>
                 </div>
                 <div class="mb-3">
                     <label for="blog_description" class="form-label">Blog Description</label>
-                    <input type="text" class="form-control form-control-lg" name="blog_description" placeholder="">
+                    <input type="text" class="form-control form-control-lg" name="blog_description" placeholder="" required>
                 </div>
                 <div class="mb-3">
                     <label for="category" class="form-label">Category</label>
                     <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" name="category">
-                        <option selected>Open this select menu</option>
+                        <option selected value="default">Open this select menu</option>
                         <option value="1">One</option>
                         <option value="2">Two</option>
                         <option value="3">Three</option>
@@ -41,7 +41,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="blog_content" class="form-label">Content</label>
-                    <input type="hidden" name="blog_content" id="blog_content">
+                    <input type="hidden" name="blog_content" id="blog_content" required>
                     <div id="editor-container" class="form-control form-control-lg" style="height: 200px;"></div>
                 </div>
                 <div class="row">
