@@ -12,6 +12,9 @@
 </head>
 
 <body>
+    <!-- get testHeader as a header -->
+    <div th:replace="Blog/testHeader.html :: header-fragment"></div>
+
     <div class="container">
         <form th:action="@{/blog/add}" th:object="${blog}" method="post" name="blogadd" id="blogadd">
             <!-- title, blog_image, blog_description, choice category -->
@@ -50,6 +53,7 @@
             </div>
         </form>
     </div>
+    <!-- get footer from common/footer.html -->
 </body>
 <script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js'></script>
 <script src='//cdn.quilljs.com/1.3.6/quill.js'></script>

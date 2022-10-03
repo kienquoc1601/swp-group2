@@ -11,5 +11,11 @@ public interface BlogRepository extends JpaRepository<Blog,Integer>{
     public List<Blog> findAll();
     //find blog by id
     public Blog findById(int id);
+    //list first 10 blog that have hightest rating
+    public List<Blog> findTop10ByOrderByRatingDesc();
+    //list 5 blog of 5 different category that have most blog
+    public List<Blog> findTop5ByOrderByCategoryDesc();
+    //list all blog by category
+    public List<Blog> findByCategory(String category);
 }
     
