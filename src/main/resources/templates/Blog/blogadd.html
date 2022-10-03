@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add blog</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel='stylesheet' href='//cdn.quilljs.com/1.3.6/quill.snow.css'>
+    <link rel="stylesheet" th:href="@{/blog/css/blogadd.css}">
+</head>
+
+<body>
+    <div class="container">
+        <form th:action="@{/blog/add}" th:object="${blog}" method="post" name="blogadd" id="blogadd">
+            <!-- title, blog_image, blog_description, choice category -->
+            <div class="col-md-12">
+                <div class="mb-3">
+                    <label for="title" class="form-label">Title</label>
+                    <input type="text" class="form-control form-control-lg" name="title" placeholder="" required>
+                </div>
+                <div class="form-group mb-3">
+                    <!-- <label for="blog_image" class="form-label">Blog Image</label>
+                    <input type="file" accept="image/*" class="form-control form-control-lg" name="blog_image" placeholder=""> -->
+                    <label for="blog_image" class="form-label">Blog Image</label>
+                    <input type="text" class="form-control form-control-lg" name="blog_image" placeholder="" required>
+                </div>
+                <div class="mb-3">
+                    <label for="blog_description" class="form-label">Blog Description</label>
+                    <input type="text" class="form-control form-control-lg" name="blog_description" placeholder="" required>
+                </div>
+                <div class="mb-3">
+                    <label for="category" class="form-label">Category</label>
+                    <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" name="category">
+                        <option selected value="default">Open this select menu</option>
+                        <option value="1">One</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="blog_content" class="form-label">Content</label>
+                    <input type="hidden" name="blog_content" id="blog_content" required>
+                    <div id="editor-container" class="form-control form-control-lg" style="height: 200px;"></div>
+                </div>
+                <div class="row">
+                    <button class="btn btn-primary" type="submit"> Save</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+<script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js'></script>
+<script src='//cdn.quilljs.com/1.3.6/quill.js'></script>
+<script th:src="@{/blog/js/blogadd.js}"></script>
+
+</html>
