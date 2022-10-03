@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class MentorListController {
     
-    @GetMapping("/")
+    @GetMapping("/mentorlist")
     public String MentorList(){
         return "common/layout1";
     }
