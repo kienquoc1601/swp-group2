@@ -30,10 +30,11 @@ public class BlogListController {
     public String BlogList(Model model, @RequestParam(name = "category", required = false) String category,
             @RequestParam(name = "page", required = false) Integer page) {
         List<Blog> blogs;
-        if (category != null) {
+        if (category != null && !category.equals("all")) {
             blogs = blogRepo.findByCategory(category);
         } else {
             blogs = blogRepo.findAll();
+            category = "all";
         }
         model.addAttribute("blogs", blogs);
 
@@ -75,6 +76,8 @@ public class BlogListController {
 
     @GetMapping(value = "/blog/add")
     public String addBlog(Model model) {
+        List<Category> categories = categoryRepo.findAll();
+        model.addAttribute("categories", categories);
         return "Blog/blogadd";
     }
 

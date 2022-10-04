@@ -44,8 +44,7 @@
                             <a th:href="@{/blog/detail(blog_id=${blog.blog_id})}" class="fh5co_magna py-2">
                                 <span th:utext="${blog.title}"></span>
                             </a>
-                            <a th:href="${blog.poster_uname}" class="fh5co_mini_time py-3">
-                                <span th:utext="${blog.poster_uname}"></span> - <span th:utext="${blog.date}"></span> </a>
+                            <div><span th:utext="${blog.poster_uname}" th:href="${blog.poster_uname}" class="fh5co_mini_time py-3"></span> - <span th:utext="${blog.date}"></span></div>
                             <div class="fh5co_consectetur"><span th:utext="${blog.blog_description}"></span> </div>
                         </div>
                     </div>
@@ -57,14 +56,14 @@
                     </div>
                     <div class="clearfix"></div>
                     <div class="fh5co_tags_all">
-                        <!-- list categories list 5 blog of 5 different category that have most blog-->
+                        <!-- list categories -->
                         <a class="fh5co_tagg" th:each="category : ${categories}" th:utext="${category.category_name}" th:href="@{/blog(category=${category.category_name})}">Category</a>
                         <!-- end of list categories -->
                     </div>
                     <div>
                         <div class="fh5co_heading fh5co_heading_border_bottom pt-3 py-2 mb-4">Most Popular</div>
                     </div>
-                    <!-- list popularBlogs -->
+                    <!-- list popularBlogs list 5 blog of 5 different category that have most blog-->
                     <div class="row pb-3" th:each="categoryBlog : ${categoryBlogs}" th:onclick="checkout([[@{/blog/detail(blog_id=${categoryBlog.blog_id})}]])" style="cursor: pointer;">
                         <div class="col-5 align-self-center">
                             <img th:src=${categoryBlog.blog_image} alt="img" class="fh5co_most_trading" />
@@ -86,20 +85,6 @@
                         <a th:href="@{/blog(page=${page},category=${category})}" class="btn_pagging" th:utext="${page}">Current page</a>
                         <a th:href="@{/blog(page=${page+1},category=${category})}" th:if="${page < totalPage}" class="btn_mange_pagging">Next</a>
                     </div>
-                    <!-- <div class="btn-group" role="group" aria-label="Basic example">
-                        <a th:href="@{/blog(page=${page-1})}" th:if="${page > 1}" class="btn_mange_pagging">Previous</a>
-                        <a th:href="@{/blog(page=1)}" th:if="${page > 1}" class="btn_pagging">1</a>
-                        <a th:href="@{/blog(page=2)}" th:if="${page > 2}" class="btn_pagging">2</a>
-                        <a th:href="@{/blog(page=3)}" th:if="${page > 3}" class="btn_pagging">3</a>
-                        <a th:href="@{/blog(page=${page+1})}" th:if="${page < totalPage}" class="btn_mange_pagging">Next</a> -->
-
-                    <!-- <a href="#" class="btn_mange_pagging"><i class="fa fa-long-arrow-left"></i>&nbsp;&nbsp; Previous</a>
-
-                        <a href="#" class="btn_pagging">1</a>
-                        <a href="#" class="btn_pagging">2</a>
-                        <a href="#" class="btn_pagging">3</a>
-                        <a href="#" class="btn_pagging">...</a>
-                        <a href="#" class="btn_mange_pagging">Next <i class="fa fa-long-arrow-right"></i>&nbsp;&nbsp; </a> -->
                 </div>
             </div>
         </div>
