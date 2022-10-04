@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org" >
+    <head >
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>layout</title>
+        
+    </head>
+    <body>
+        <div th:replace = "common/header :: header-fragment"></div>
+        <div style="padding-bottom:50px"></div>
+        <div>
+            <div class="row">
+                <div class="col-lg-10 offset-lg-1">
+                  <p style="text-align:center">Đây là lesson </p>
+                  <table th:each="c : ${cList}">
+                    <tr>
+                      <a th:href="@{/modulelist?cid=__${c.chapterID}__}" class="list-group-item list-group-item-action">
+                        <div class="d-flex w-100 justify-content-between">
+                          <h5 class="mb-1" th:text = "${c.ChapterName}"></h5>
+                        </div>
+                        <small>Giới thiệu về Chapter</small>
+                      </a>
+                    </tr>
+                  </table>
+            </div>
+        </div>
+        <div style="padding-bottom:50px"></div>
+        <div th:replace = "common/footer :: footer-fragment"></div>
+    </body>
