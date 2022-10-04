@@ -59,6 +59,8 @@
                         <!-- list categories -->
                         <a class="fh5co_tagg" th:each="category : ${categories}" th:utext="${category.category_name}" th:href="@{/blog(category=${category.category_name})}">Category</a>
                         <!-- end of list categories -->
+                        <!-- a button load more category -->
+                        <a class="fh5co_tagg" th:href="@{/blog}">Load More....</a>
                     </div>
                     <div>
                         <div class="fh5co_heading fh5co_heading_border_bottom pt-3 py-2 mb-4">Most Popular</div>

@@ -31,9 +31,9 @@ public class BlogListController {
             @RequestParam(name = "page", required = false) Integer page) {
         List<Blog> blogs;
         if (category != null && !category.equals("all")) {
-            blogs = blogRepo.findByCategory(category);
+            blogs = blogRepo.findByCategoryOrderByDateDesc(category);
         } else {
-            blogs = blogRepo.findAll();
+            blogs = blogRepo.findAllByOrderByDateDesc();
             category = "all";
         }
         model.addAttribute("blogs", blogs);
@@ -69,8 +69,21 @@ public class BlogListController {
 
     @RequestMapping(value = "/blog/detail", method = RequestMethod.GET)
     public String BlogDetail(Model model, @RequestParam("blog_id") int blog_id) {
+        // if blog_id is not found, redirect to blog list
+        if (!blogRepo.existsById(blog_id)) {
+            return "redirect:/blog";
+        }
         Blog blog = blogRepo.findById(blog_id);
         model.addAttribute("blog", blog);
+
+        List<Blog> trendingBlogs = blogRepo.findTop10ByOrderByRatingDesc();
+        model.addAttribute("trendingBlogs", trendingBlogs);
+
+        List<Blog> categoryBlogs = blogRepo.findTop5ByOrderByCategoryDesc();
+        model.addAttribute("categoryBlogs", categoryBlogs);
+
+        List<Category> categories = categoryRepo.findAll();
+        model.addAttribute("categories", categories);
         return "Blog/blogdetail";
     }
 
@@ -93,9 +106,11 @@ public class BlogListController {
         newBlog.setPoster_uname(blog.getPoster_uname());
         newBlog.setBlog_content(blog.getBlog_content());
         newBlog.setCategory(blog.getCategory());
+        //set status
+        newBlog.setStatus("public");
         // date = today
         newBlog.setDate(new Date(System.currentTimeMillis()));
-        blogRepo.save(newBlog);
-        return "redirect:/blog";
+        blogRepo.save(newBlog);        
+        return "redirect:/blog/add";
     }
 }

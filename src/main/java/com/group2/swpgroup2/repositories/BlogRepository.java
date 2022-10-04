@@ -17,5 +17,9 @@ public interface BlogRepository extends JpaRepository<Blog,Integer>{
     public List<Blog> findTop5ByOrderByCategoryDesc();
     //list all blog by category
     public List<Blog> findByCategory(String category);
+    //list of all blogs in chronological order
+    public List<Blog> findAllByOrderByDateDesc();
+    //list all blog by category in chronological order
+    public List<Blog> findByCategoryOrderByDateDesc(String category);
 }
     
