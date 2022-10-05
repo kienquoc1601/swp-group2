@@ -110,7 +110,9 @@ public class BlogListController {
         newBlog.setStatus("public");
         // date = today
         newBlog.setDate(new Date(System.currentTimeMillis()));
-        blogRepo.save(newBlog);        
-        return "redirect:/blog/add";
+        blogRepo.save(newBlog);
+        // lấy blog vừa thêm vào để lấy id
+        Blog blogAdded = blogRepo.findByTitleAndDateAndStatus(newBlog.getTitle(), newBlog.getDate(), newBlog.getStatus());
+        return "redirect:/blog/detail?blog_id=" + blogAdded.getBlog_id();
     }
 }

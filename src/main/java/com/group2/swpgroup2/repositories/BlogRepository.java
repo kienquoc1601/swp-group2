@@ -1,4 +1,5 @@
 package com.group2.swpgroup2.repositories;
+import java.sql.Date;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -21,5 +22,8 @@ public interface BlogRepository extends JpaRepository<Blog,Integer>{
     public List<Blog> findAllByOrderByDateDesc();
     //list all blog by category in chronological order
     public List<Blog> findByCategoryOrderByDateDesc(String category);
+    //1 blog by title, date post and status 'public'
+    public Blog findByTitleAndDateAndStatus(String title, Date date, String status); 
+
 }
     
