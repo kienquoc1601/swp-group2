@@ -116,15 +116,18 @@
                             <!-- <div class="price">Price: $15</div> -->
                         </div>
                         <div class="course-info">
-                            <div class="course-text">
-                                <h5 th:utext="${#strings.abbreviate(course.CourseName,50)}">Title</h5>
-                                <p th:utext="${#strings.abbreviate(course.Description,40)}">Discription</p>
-                                <!-- <div class="students">120 Students</div> -->
-                            </div>
-                            <div class="course-author">
-                                <div class="ca-pic set-bg" th:data-setbg="@{/home_course/img/authors/1.jpg}"></div>
-                                <p>Group2, <span>Developer</span></p>
-                            </div>
+                            <a th:href="@{/chapterlist?cid=__${course.Id}__}">
+                                <div class="course-text">
+                                    <h5 th:utext="${#strings.abbreviate(course.CourseName,50)}">Title</h5>
+                                    <p th:utext="${#strings.abbreviate(course.Description,40)}">Discription</p>
+                                    
+                                    <!-- <div class="students">120 Students</div> -->
+                                </div>
+                                <div class="course-author">
+                                    <div class="ca-pic set-bg" th:data-setbg="@{/home_course/img/authors/1.jpg}"></div>
+                                    <p>Group2, <span>Developer</span></p>
+                                </div>
+                            </a>
                         </div>
                     </div>
                 </div>
