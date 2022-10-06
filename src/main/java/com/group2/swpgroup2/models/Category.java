@@ -23,4 +23,11 @@ public class Category {
     private int categoryID;
     @Column(name = "category_name")
     private String category_name;
+    //discription, image, numCourse
+    @Column(name = "discription")
+    private String discription;
+    @Column(name = "image")
+    private String image;
+    @Column(name = "num_course")
+    private int numCourse;
 }

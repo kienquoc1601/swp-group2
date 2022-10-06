@@ -61,7 +61,6 @@ public class BlogListController {
 
         List<Category> categories = categoryRepo.findAll();
         model.addAttribute("categories", categories);
-        //add current category
         model.addAttribute("category", category);
 
         return "Blog/blogslist";

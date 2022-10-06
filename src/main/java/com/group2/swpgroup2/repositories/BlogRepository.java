@@ -24,6 +24,11 @@ public interface BlogRepository extends JpaRepository<Blog,Integer>{
     public List<Blog> findByCategoryOrderByDateDesc(String category);
     //1 blog by title, date post and status 'public'
     public Blog findByTitleAndDateAndStatus(String title, Date date, String status); 
+    //list top 8 blog have most rating
+    public List<Blog> findTop8ByOrderByRatingDesc();
+    //list top 8 blog have most rating of each category
+    
+
 
 }
     

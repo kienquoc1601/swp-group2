@@ -10,4 +10,7 @@ public interface CategoryRepository extends JpaRepository<Category,Integer>{
     public List<Category> findAll();
     //find category by id
     public Category findById(int id);
+    //list first 6 category that have hightest numCourse
+    public List<Category> findTop6ByOrderByNumCourseDesc();
+
 }
