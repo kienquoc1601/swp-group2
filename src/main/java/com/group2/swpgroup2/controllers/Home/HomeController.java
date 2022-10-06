@@ -23,8 +23,8 @@ public class HomeController {
     @Autowired
     private BlogRepository blogRepo;
     
-    // @Autowired
-    // private CourseRepository courseRepo;
+     @Autowired
+     private CourseRepository courseRepo;
 
 
     @GetMapping("/home")
@@ -35,12 +35,12 @@ public class HomeController {
 
         // may tôi chạy course thì cứ bị lỗi bean không tìm thấy
         // //list top 8 course that have hightest rating
-        // List<Course> courses = courseRepo.findTop8ByOrderByRatingDesc();
-        // model.addAttribute("courses", courses);
+         List<Course> courses = courseRepo.findAll();
+         model.addAttribute("courses", courses);
 
         // test, Quốc nhớ xóa chỗ này nhé :v
-        List<Blog> blogs = blogRepo.findTop8ByOrderByRatingDesc();
-        model.addAttribute("courses", blogs);
+        //List<Blog> blogs = blogRepo.findTop8ByOrderByRatingDesc();
+        //model.addAttribute("courses", blogs);
         //end test
         return "Home_Course/index";
     }

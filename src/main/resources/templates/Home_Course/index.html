@@ -104,21 +104,21 @@
             <ul class="course-filter controls">
                 <li class="control active" data-filter="all">All</li>
                 <!-- list categories -->
-                <li class="control" th:each="category : ${categories}" th:data-filter=".+${category.category_name}" th:utext="${category.category_name}">Category name</li>
-                <!-- end list categories -->
+                <li class="control" th:each="category : ${categories}"  th:utext="${category.category_name}">Category name</li>
+                <!-- end list categories .th:data-filter=".+${category.category_name}"-->
             </ul>
             <div class="row course-items-area">
                 <!-- list course -->
-                <div class="mix col-lg-3 col-md-4 col-sm-6" th:each="course : ${courses}" th:classappend="${course.category}">
+                <div class="mix col-lg-3 col-md-4 col-sm-6" th:each="course : ${courses}" >
                     <div class="course-item">
-                        <!-- nhớ thay chỗ blog_image, title, description ở dưới -->
-                        <div class="course-thumb set-bg" th:data-setbg="${course.blog_image}">
+                        <!-- nhớ thay chỗ blog_image, title, description ở dưới  . th:classappend="${course.category}"-->
+                        <div class="course-thumb set-bg" th:data-setbg="${course.ImgSrc}">
                             <!-- <div class="price">Price: $15</div> -->
                         </div>
                         <div class="course-info">
                             <div class="course-text">
-                                <h5 th:utext="${#strings.abbreviate(course.title,50)}">Title</h5>
-                                <p th:utext="${#strings.abbreviate(course.blog_description,40)}">Discription</p>
+                                <h5 th:utext="${#strings.abbreviate(course.CourseName,50)}">Title</h5>
+                                <p th:utext="${#strings.abbreviate(course.Description,40)}">Discription</p>
                                 <!-- <div class="students">120 Students</div> -->
                             </div>
                             <div class="course-author">
