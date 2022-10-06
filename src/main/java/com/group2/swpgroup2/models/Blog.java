@@ -36,6 +36,8 @@ public class Blog {
     private String category;
     @Column(name = "rating")
     private float rating;
+    @Column(name = "status")
+    private String status;
     @Column(name = "date")
     private Date date;
 }

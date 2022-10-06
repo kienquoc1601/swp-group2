@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>WebUni - Education Template</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="WebUni Education Template">
+    <meta name="keywords" content="webuni, education, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Favicon -->
+    <link th:href="@{/home_course/img/favicon.ico}" rel="shortcut icon" />
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Raleway:400,400i,500,500i,600,600i,700,700i,800,800i" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" th:href="@{/home_course/css/bootstrap.min.css}" />
+    <link rel="stylesheet" th:href="@{/home_course/css/font-awesome.min.css}" />
+    <link rel="stylesheet" th:href="@{/home_course/css/owl.carousel.css}" />
+    <link rel="stylesheet" th:href="@{/home_course/css/style.css}" />
+
+</head>
+
+<body>
+    <!-- Page Preloder -->
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+
+    <div th:fragment="footerOai">
+        <!-- banner section -->
+        <section class="banner-section spad">
+            <div class="container">
+                <div class="section-title mb-0 pb-2">
+                    <h2>Join Our Community Now!</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec malesuada lorem maximus mauris scelerisque, at rutrum nulla dictum. Ut ac ligula sapien. Suspendisse cursus faucibus finibus.</p>
+                </div>
+                <div class="text-center pt-5">
+                    <a href="#" class="site-btn">Register Now</a>
+                </div>
+            </div>
+        </section>
+        <!-- banner section end -->
+
+
+        <!-- footer section -->
+        <footer class="footer-section spad pb-0">
+            <div class="footer-top">
+                <div class="footer-warp">
+                    <div class="row">
+                        <div class="widget-item">
+                            <h4>Contact Info</h4>
+                            <ul class="contact-list">
+                                <li>Group 2 SWP391</li>
+                            </ul>
+                        </div>
+                        <div class="widget-item">
+                            <h4>Member</h4>
+                            <ul>
+                                <li><a href="">HE150055 Bùi Kiến Quốc</a></li>
+                                <li><a href="">HE150516 Phạm Bá Oai</a></li>
+                                <li><a href="">HE140978 Nguyên Công Hoàng Anh</a></li>
+                                <li><a href="">HE150279 Nguyễn Cao Sơn</a></li>
+                                <li><a href="">HE150290 Vũ Thế Dũng</a></li>
+                            </ul>
+                        </div>
+                        <div class="widget-item">
+                            <h4>Graphic Design</h4>
+                            <ul>
+                                <li><a href="">Applied Studies</a></li>
+                                <li><a href="">Computer Engeneering</a></li>
+                                <li><a href="">Software Engeneering</a></li>
+                                <li><a href="">Informational Engeneering</a></li>
+                                <li><a href="">System Engeneering</a></li>
+                            </ul>
+                        </div>
+                        <div class="widget-item">
+                            <h4>Development</h4>
+                            <ul>
+                                <li><a href="">Applied Studies</a></li>
+                                <li><a href="">Computer Engeneering</a></li>
+                                <li><a href="">Software Engeneering</a></li>
+                                <li><a href="">Informational Engeneering</a></li>
+                                <li><a href="">System Engeneering</a></li>
+                            </ul>
+                        </div>
+                        <div class="widget-item">
+                            <h4>Newsletter</h4>
+                            <form class="footer-newslatter">
+                                <input type="email" placeholder="E-mail">
+                                <button class="site-btn">Subscribe</button>
+                                <p>*We don’t spam</p>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-warp">
+                    <ul class="footer-menu">
+                        <li><a href="#">Terms & Conditions</a></li>
+                        <li><a href="#">Register</a></li>
+                        <li><a href="#">Privacy</a></li>
+                    </ul>
+                    <div class="copyright">
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- footer section end -->
+    </div>
+</body>
+<!--====== Javascripts & Jquery ======-->
+<script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script th:src="@{home_course/js/jquery-3.2.1.min.js}"></script>
+<script th:src="@{home_course/js/bootstrap.min.js}"></script>
+<script th:src="@{home_course/js/mixitup.min.js}"></script>
+<script th:src="@{home_course/js/circle-progress.min.js}"></script>
+<script th:src="@{home_course/js/owl.carousel.min.js}"></script>
+<script th:src="@{home_course/js/main.js}"></script>
+
+</html>
