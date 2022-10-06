@@ -4,6 +4,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 
+import com.group2.swpgroup2.models.Module;
+import com.group2.swpgroup2.repositories.ModuleRepository;
+
 // import com.group2.swpgroup2.models.Course;
 // import com.group2.swpgroup2.models.Manager;
 // import com.group2.swpgroup2.repositories.CourseRepository;
@@ -11,7 +14,7 @@ import org.springframework.context.ApplicationContext;
 
 @SpringBootApplication
 public class Swpgroup2Application {
-
+	
 	public static void main(String[] args) {
 		ApplicationContext context =  SpringApplication.run(Swpgroup2Application.class, args);
 		// CourseRepository cRepo = context.getBean(CourseRepository.class);
@@ -22,6 +25,13 @@ public class Swpgroup2Application {
 		// 	System.out.println(c.toString());
 			
 		// }
+		ModuleRepository mpero = context.getBean(ModuleRepository.class);
+		System.out.println(mpero.findAll().size());
+		
+		for(Module m : mpero.findAll()){
+			System.out.println(m.toString());
+		}
+		System.out.println("vvvvv");
 	}
 
 }

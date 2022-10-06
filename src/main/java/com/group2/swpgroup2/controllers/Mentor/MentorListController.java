@@ -8,6 +8,6 @@ public class MentorListController {
     
     @GetMapping("/mentorlist")
     public String MentorList(){
-        return "common/layout1";
+        return "Module/ModuleList";
     }
 }
