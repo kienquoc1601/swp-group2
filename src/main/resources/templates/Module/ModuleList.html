@@ -1,140 +1,47 @@
 <!DOCTYPE html>
-<html lang="en">
 
-<head>
-  <title>WebUni - Education Template</title>
-  <meta charset="UTF-8">
-  <meta name="description" content="WebUni Education Template">
-  <meta name="keywords" content="webuni, education, creative, html">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Favicon -->
-  <link href="img/favicon.ico" rel="shortcut icon" />
+<html xmlns:th="http://www.thymeleaf.org" >
+    <head >
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>layout</title>
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Raleway:400,400i,500,500i,600,600i,700,700i,800,800i"
-    rel="stylesheet">
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Raleway:400,400i,500,500i,600,600i,700,700i,800,800i"
+            rel="stylesheet">
 
-  <!-- Stylesheets -->
-  <link rel="stylesheet" href="css/bootstrap.min.css" />
-  <link rel="stylesheet" href="css/font-awesome.min.css" />
-  <link rel="stylesheet" href="css/owl.carousel.css" />
-  <link rel="stylesheet" href="css/styleHAF.css" />
-
-  <!--[if lt IE 9]>
-	  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-	  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-	<![endif]-->
-
-</head>
-<!-- Header section -->
-<header class="header">
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">Online Learning</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-      <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
-        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link " href="#">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Blog</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
-              aria-expanded="false">
-              Course Catalog
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li>
-                <hr class="dropdown-divider">
-              </li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Notification</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Login</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Sign Up</a>
-          </li>
-        </ul>
-        <form class="d-flex ms-auto">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
-      </div>
-    </div>
-  </nav>
-</header>
-<!-- Header section end -->
-
-<body>
-  <!-- single course section -->
+        <!-- Stylesheets -->
+        <link rel="stylesheet" href="@{/common/css/bootstrap.min.css}"/>
+        <link rel="stylesheet" href="@{/common/css/font-awesome.min.css}" />
+        <link rel="stylesheet" href="@{/common/css/owl.carousel.css}" />
+        <link rel="stylesheet" href="@{/common/css/styleHAF.css}" />
+        
+    </head>
+    
+      
+    <body>
+      
+      <div th:replace = "common/header :: header-fragment" style="padding-bottom: 100px ;"></div>
+      <div style="padding-bottom:50px"></div>
+        
         <div class="row">
-          <div class="col-lg-10 offset-lg-1">
-            <p style="text-align:center">Đây là lesson </p>
-            <div class="list-group">
-              <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
-                <div class="d-flex w-100 justify-content-between">
-                  <h5 class="mb-1">List group 1</h5>
-                </div>
-                <small>Giới thiệu về list group 1</small>
-              </a>
-              <a href="#" class="list-group-item list-group-item-action">
-                <div class="d-flex w-100 justify-content-between">
-                  <h5 class="mb-1">List group 2</h5>
-                </div>
-                <small class="text-muted">Giới thiệu về list group 2</small>
-              </a>
-              <a href="#" class="list-group-item list-group-item-action">
-                <div class="d-flex w-100 justify-content-between">
-                  <h5 class="mb-1">List group 3</h5>
-                </div>
-                <small class="text-muted">Giới thiệu về list group 3</small>
-              </a>
-            </div>
-          </div>
+            <div class="col-lg-10 offset-lg-1">
+              <p style="text-align:center">Đây là lesson </p>
+              <table th:each="m : ${mList}">
+                <tr>
+                  <a href="#" class="list-group-item list-group-item-action">
+                    <div class="d-flex w-100 justify-content-between">
+                      <h5 class="mb-1" th:text = "${m.ModuleName}"></h5>
+                    </div>
+                    <small>Giới thiệu về module</small>
+                  </a>
+                </tr>
+              </table>
+              
         </div>
-      </div>
-</body>
-
-<!-- footer section -->
-<footer>
-  <div class="footer-content">
-    <h3>Online Learning</h3>
-    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vero suscipit voluptas, ullam pariatur sapiente
-      architecto nemo! Molestiae totam assumenda magni facilis repudiandae, alias quasi voluptatum natus
-      cupiditate sed, quae aliquid?</p>
-    <ul class="socials">
-      <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-      <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-      <li><a href="#"><i class="fa fa-youtube"></i></a></li>
-    </ul>
-  </div>
-  <div class="footer-bottom">
-    <p>By Online learning With love</p>
-  </div>
-</footer>
-<!-- footer section end -->
-
-
-<!--====== Javascripts & Jquery ======-->
-<script src="js/jquery-3.2.1.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/mixitup.min.js"></script>
-<script src="js/circle-progress.min.js"></script>
-<script src="js/owl.carousel.min.js"></script>
-<script src="js/main.js"></script>
-
-</html>
+        
+        <div style="padding-bottom:50px"></div>
+        <div th:replace = "common/footer :: footer-fragment"></div>
+    </body>
+    
+  
