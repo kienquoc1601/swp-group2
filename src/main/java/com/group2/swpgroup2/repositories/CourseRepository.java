@@ -10,5 +10,5 @@ import com.group2.swpgroup2.models.Course;
 @Repository
 public interface CourseRepository extends JpaRepository<Course,Integer>{
     //list 8 course that have hightest rating
-    //public List<Course> findTopByOrderByRatingDesc();
+    public List<Course> findTop8ByOrderByRatingDesc();
 }

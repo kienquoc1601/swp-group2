@@ -42,5 +42,5 @@ public class Course {
     @Column(name = "img_src")
     private String ImgSrc;
     @Column(name = "rating")
-    private float Rating;
+    private float rating;
 }
