@@ -14,11 +14,13 @@
     <link href="https://fonts.googleapis.com/css?family=Raleway:400,400i,500,500i,600,600i,700,700i,800,800i" rel="stylesheet">
 
     <!-- Stylesheets -->
-    <link rel="stylesheet" th:href="@{/home_course/css/bootstrap.min.css}" />
+    <link th:href="@{/Header_Footer/css/bootstrap.min.css}" rel="stylesheet">
     <link rel="stylesheet" th:href="@{/home_course/css/font-awesome.min.css}" />
     <link rel="stylesheet" th:href="@{/home_course/css/owl.carousel.css}" />
     <link rel="stylesheet" th:href="@{/home_course/css/style.css}" />
-    <link rel="stylesheet" th:href="@{/home_course/css/search.css}" />
+    <link th:href="@{/Header_Footer/css/sea2.css}" rel="stylesheet">
+    <link th:href="@{/Header_Footer/css/headers.css}" rel="stylesheet">
+
 
 </head>
 <script>
@@ -34,13 +36,94 @@
     </div>
 
     <!-- headerOai.html -->
-    <div th:replace="common/headerOai :: headerOai"></div>
+    <div th:replace="common/headerOai2 :: headerOai2"></div>
 
+    <div class="container py-4">
+        <div class="p-5 mb-4 bg-light rounded-3">
+            <div class="container-fluid" th:style="'padding-top: 1%!important; padding-bottom: 1%!important;'">
+                <h1 class="fw-bold" th:style="'font-size: 1.5rem;'">News announcement</h1>
+                <p class="col-md-12 " th:style="'font-size: 1rem!important;'">Using a series of utilities, you can create this jumbotron, just like the one in previous versions of Bootstrap. Check out the examples below for how you can remix and restyle it to your liking.</p>
+                <button class="btn btn-outline-secondary" type="button">Example button</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- search section -->
+    <!-- <section class="search-section">
+        <div class="container">
+            <div class="search-warp">
+                <div class="section-title text-white">
+                    <h2>Search your course</h2>
+                </div>
+                <div class="row">
+                    <div class="col-md-10 offset-md-1"> -->
+    <!-- search form -->
+    <!-- <form class="course-search-form">
+                            <input type="text" placeholder="Course">
+                            <input type="text" class="last-m" placeholder="Category">
+                            <button class="site-btn">Search Couse</button>
+                        </form> -->
+    <!-- end search form -->
+    <!-- </div>
+                </div>
+            </div>
+        </div>
+    </section> -->
+    <!-- search section end -->
+
+
+    <!-- course section -->
+    <section class="course-section spad">
+        <div class="container">
+            <div class="section-title mb-0">
+                <h2>Featured Courses</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec malesuada lorem maximus mauris scelerisque, at rutrum nulla dictum. Ut ac ligula sapien. Suspendisse cursus faucibus finibus.</p>
+            </div>
+        </div>
+        <div class="course-warp">
+            <ul class="course-filter controls">
+                <li class="control active" data-filter="all">All</li>
+                <!-- list categories -->
+                <li class="control" th:each="category : ${categories}" th:utext="${category.category_name}">Category name</li>
+                <!-- end list categories .th:data-filter=".+${category.category_name}"-->
+            </ul>
+            <div class="row course-items-area">
+                <!-- list course -->
+                <div class="mix col-lg-3 col-md-4 col-sm-6" th:each="course : ${courses}">
+                    <div class="course-item">
+                        <!-- nhớ thay chỗ blog_image, title, description ở dưới  . th:classappend="${course.category}"-->
+                        <div class="course-thumb set-bg" th:data-setbg="${course.ImgSrc}">
+                            <!-- <div class="price">Price: $15</div> -->
+                        </div>
+                        <div class="course-info">
+                            <a th:href="@{/chapterlist?cid=__${course.Id}__}">
+                                <div class="course-text">
+                                    <h5 th:utext="${#strings.abbreviate(course.CourseName,50)}">Title</h5>
+                                    <p th:utext="${#strings.abbreviate(course.Description,40)}">Discription</p>
+
+                                    <!-- <div class="students">120 Students</div> -->
+                                </div>
+                                <div class="course-author">
+                                    <div class="ca-pic set-bg" th:data-setbg="@{/home_course/img/authors/1.jpg}"></div>
+                                    <p>Group2, <span>Developer</span></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- end list course -->
+            </div>
+            <!-- view more course link -->
+            <div class="text-center">
+                <a href="#" class="btn bg-secondary text-white">View More Courses</a>
+            </div>
+        </div>
+    </section>
+    <!-- course section end -->
     <!-- categories section -->
     <section class="categories-section spad">
         <div class="container">
             <div class="section-title">
-                <br><br><br><br><br><br>
                 <h2>Our Course Categories</h2>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec malesuada lorem maximus mauris scelerisque, at rutrum nulla dictum. Ut ac ligula sapien. Suspendisse cursus faucibus finibus.</p>
             </div>
@@ -67,76 +150,6 @@
             </div>
     </section>
     <!-- categories section end -->
-
-
-    <!-- search section -->
-    <section class="search-section">
-        <div class="container">
-            <div class="search-warp">
-                <div class="section-title text-white">
-                    <h2>Search your course</h2>
-                </div>
-                <div class="row">
-                    <div class="col-md-10 offset-md-1">
-                        <!-- search form -->
-                        <form class="course-search-form">
-                            <input type="text" placeholder="Course">
-                            <input type="text" class="last-m" placeholder="Category">
-                            <button class="site-btn">Search Couse</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- search section end -->
-
-
-    <!-- course section -->
-    <section class="course-section spad">
-        <div class="container">
-            <div class="section-title mb-0">
-                <h2>Featured Courses</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec malesuada lorem maximus mauris scelerisque, at rutrum nulla dictum. Ut ac ligula sapien. Suspendisse cursus faucibus finibus.</p>
-            </div>
-        </div>
-        <div class="course-warp">
-            <ul class="course-filter controls">
-                <li class="control active" data-filter="all">All</li>
-                <!-- list categories -->
-                <li class="control" th:each="category : ${categories}"  th:utext="${category.category_name}">Category name</li>
-                <!-- end list categories .th:data-filter=".+${category.category_name}"-->
-            </ul>
-            <div class="row course-items-area">
-                <!-- list course -->
-                <div class="mix col-lg-3 col-md-4 col-sm-6" th:each="course : ${courses}" >
-                    <div class="course-item">
-                        <!-- nhớ thay chỗ blog_image, title, description ở dưới  . th:classappend="${course.category}"-->
-                        <div class="course-thumb set-bg" th:data-setbg="${course.ImgSrc}">
-                            <!-- <div class="price">Price: $15</div> -->
-                        </div>
-                        <div class="course-info">
-                            <div class="course-text">
-                                <h5 th:utext="${#strings.abbreviate(course.CourseName,50)}">Title</h5>
-                                <p th:utext="${#strings.abbreviate(course.Description,40)}">Discription</p>
-                                <!-- <div class="students">120 Students</div> -->
-                            </div>
-                            <div class="course-author">
-                                <div class="ca-pic set-bg" th:data-setbg="@{/home_course/img/authors/1.jpg}"></div>
-                                <p>Group2, <span>Developer</span></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- end list course -->
-            </div>
-            <!-- view more course link -->
-            <div class="text-center">
-                <a href="#" class="site-btn">View More Courses</a>
-            </div>
-        </div>
-    </section>
-    <!-- course section end -->
 
 
     <!-- signup section -->
@@ -177,6 +190,6 @@
 <script th:src="@{home_course/js/circle-progress.min.js}"></script>
 <script th:src="@{home_course/js/owl.carousel.min.js}"></script>
 <script th:src="@{home_course/js/main.js}"></script>
-<script th:src="@{home_course/js/search.js}"></script>
+<script th:src="@{Header_Footer/js/bootstrap.bundle.min.js}"></script>
 
 </html>
