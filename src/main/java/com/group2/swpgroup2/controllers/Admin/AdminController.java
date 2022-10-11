@@ -7,15 +7,15 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import com.group2.swpgroup2.repositories.BlogRepository;
-import com.group2.swpgroup2.repositories.CourseRepository;
+// import com.group2.swpgroup2.repositories.CourseRepository;
 
 @Controller
 public class AdminController {
     @Autowired
     private BlogRepository blogRepo;
 
-    @Autowired
-    private CourseRepository courseRepo;
+    // @Autowired
+    // private CourseRepository courseRepo;
     
     //admin dashboard
     @GetMapping("/admin")

@@ -58,49 +58,51 @@
                                 <!-- Card Body -->
                                 <div class="card-body">
                                     <div class="table-responsive">
-                                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                        <table class="table table-bordered" id="dataTableOai" width="100%" cellspacing="0" th:style="'table-layout: fixed;'">
                                             <thead>
                                                 <tr>
-                                                    <th>Id</th>
-                                                    <th>Title</th>
-                                                    <th>Image</th>
-                                                    <th>Description</th>
-                                                    <th>Author</th>
-                                                    <th>Content</th>
-                                                    <th>Category</th>
-                                                    <th>Rating</th>
-                                                    <th>Status</th>
-                                                    <th>Created Date</th>
-                                                    <th>Actions</th>
+                                                    <th th:style="'width: 2%;'">Id</th>
+                                                    <th th:style="'width: 5%;'">Author</th>
+                                                    <th th:style="'width: 10%;'">Image</th>
+                                                    <th th:style="'width: 10%;'">Title</th>
+                                                    <th th:style="'width: 10%;'">Description</th>
+                                                    <th th:style="'width: 33%;'">Content</th>
+                                                    <th th:style="'width: 5%;'">Category</th>
+                                                    <th th:style="'width: 5%;'">Rating</th>
+                                                    <th th:style="'width: 5%;'">Status</th>
+                                                    <th th:style="'width: 5%;'">Created Date</th>
+                                                    <th th:style="'width: 5%;'">Actions</th>
                                                 </tr>
                                             </thead>
                                             <tfoot>
                                                 <tr>
-                                                    <th>Id</th>
-                                                    <th>Title</th>
-                                                    <th>Image</th>
-                                                    <th>Description</th>
-                                                    <th>Author</th>
-                                                    <th>Content</th>
-                                                    <th>Category</th>
-                                                    <th>Rating</th>
-                                                    <th>Status</th>
-                                                    <th>Created Date</th>
-                                                    <th>Actions</th>
+                                                    <th th:style="'width: 2%;'">Id</th>
+                                                    <th th:style="'width: 5%;'">Author</th>
+                                                    <th th:style="'width: 10%;'">Image</th>
+                                                    <th th:style="'width: 10%;'">Title</th>
+                                                    <th th:style="'width: 10%;'">Description</th>
+                                                    <th th:style="'width: 33%;'">Content</th>
+                                                    <th th:style="'width: 5%;'">Category</th>
+                                                    <th th:style="'width: 5%;'">Rating</th>
+                                                    <th th:style="'width: 5%;'">Status</th>
+                                                    <th th:style="'width: 5%;'">Created Date</th>
+                                                    <th th:style="'width: 5%;'">Actions</th>
                                                 </tr>
                                             </tfoot>
                                             <tbody>
                                                 <tr th:each="blog : ${blogs}">
-                                                    <td th:text="${blog.blog_id}"></td>
-                                                    <td th:text="${blog.title}"></td>
-                                                    <td th:text="${blog.blog_image}"></td>
-                                                    <td th:text="${blog.blog_description}"></td>
-                                                    <td th:text="${blog.poster_uname}"></td>
-                                                    <td th:text="${blog.blog_content}"></td>
-                                                    <td th:text="${blog.category}"></td>
-                                                    <td th:text="${blog.rating}"></td>
-                                                    <td th:text="${blog.status}"></td>
-                                                    <td th:text="${blog.date}"></td>
+                                                    <td th:style="'width: 2%;'" th:utext="${blog.blog_id}"></td>
+                                                    <td th:style="'width: 5%;'" th:utext="${blog.poster_uname}"></td>
+                                                    <td th:style="'width: 10%;'">
+                                                        <img th:src="@{${blog.blog_image}}" th:alt="${blog.title}" th:style="'width: 100%; height: 100%;'">
+                                                    </td>
+                                                    <td th:style="'width: 10%;'" th:utext="${blog.title}"></td>
+                                                    <td th:style="'width: 10%;'" th:utext="${blog.blog_description}"></td>
+                                                    <td th:style="'width: 33%;'" th:utext="${blog.blog_content}"></td>
+                                                    <td th:style="'width: 5%;'" th:utext="${blog.category}"></td>
+                                                    <td th:style="'width: 5%;'" th:utext="${blog.rating}"></td>
+                                                    <td th:style="'width: 5%;'" th:utext="${blog.status}"></td>
+                                                    <td th:style="'width: 5%;'" th:utext="${blog.date}"></td>
                                                     <td>
                                                         <!-- <a th:href="@{/admin/blog/edit/{id}(id=${blog.id})}" class="btn btn-primary btn-circle btn-sm">
                                                             <i class="fas fa-edit"></i>
@@ -160,5 +162,20 @@
     <!-- Page level custom scripts -->
     <script th:src="@{/admin/js/demo/datatables-demo.js}"></script>
 </body>
+<script>
+    $(document).ready(function() {
+        $('#dataTableOai').DataTable({
+            columnDefs: [{
+                render: function(data, type, row) {
+                    return data + ' (' + row[3] + ')';
+                },
+                targets: 0,
+            }, {
+                visible: false,
+                targets: [3]
+            }, ],
+        });
+    });
+</script>
 
 </html>
