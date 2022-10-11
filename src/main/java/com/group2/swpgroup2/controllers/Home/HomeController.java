@@ -35,8 +35,10 @@ public class HomeController {
 
         // may tôi chạy course thì cứ bị lỗi bean không tìm thấy
         // //list top 8 course that have hightest rating
-        // List<Course> courses = courseRepo.findTop8ByOrderByRatingDesc();
-        // model.addAttribute("courses", courses);
+
+         List<Course> courses = courseRepo.findTop8ByOrderByRatingDesc();
+         model.addAttribute("courses", courses);
+
 
         // test, Quốc nhớ xóa chỗ này nhé :v
         // List<Blog> blogs = blogRepo.findTop8ByOrderByRatingDesc();
