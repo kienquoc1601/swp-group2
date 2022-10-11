@@ -13,12 +13,13 @@
 /*----------------------------------------*/
 
 html,
-body {
+
+/* body {
     height: 100%;
     font-family: 'Raleway', sans-serif;
     -webkit-font-smoothing: antialiased;
     font-smoothing: antialiased;
-}
+} */
 
 h1,
 h2,
@@ -90,7 +91,7 @@ textarea:focus {
 }
 
 a:hover {
-    color: #d82a4e;
+    color: #6c757d;
 }
 
 a:hover,
@@ -134,7 +135,7 @@ ol {
 }
 
 .spad {
-    padding-top: 115px;
+    padding-top: 10px;
     padding-bottom: 115px;
 }
 
@@ -178,7 +179,7 @@ ol {
     position: relative;
     color: #fff;
     cursor: pointer;
-    background: #d82a4e;
+    background: #6c757d;
 }
 
 .site-btn:hover {
@@ -264,15 +265,17 @@ ol {
   Header section
 ---------------------*/
 
-.header-section {
+
+/* .header-section {
     position: absolute;
     width: 100%;
     top: 0;
     left: 0;
     padding-top: 30px;
-}
+} */
 
-.site-logo {
+
+/* .site-logo {
     display: inline-block;
 }
 
@@ -294,7 +297,7 @@ ol {
 }
 
 .main-menu ul li a:hover {
-    color: #d82a4e;
+    color: #6c757d;
 }
 
 .header-btn {
@@ -304,7 +307,7 @@ ol {
 
 .nav-switch {
     display: none;
-}
+} */
 
 
 /*------------------
@@ -378,11 +381,11 @@ ol {
 .categorie-item .ci-text span {
     font-size: 18px;
     font-weight: 600;
-    color: #d82a4e;
+    color: #6c757d;
 }
 
 .categorie-item:hover {
-    background: #d82a4e;
+    background: #6c757d;
 }
 
 .categorie-item:hover .ci-text h5,
@@ -397,7 +400,7 @@ ol {
 ---------------------*/
 
 .search-warp {
-    background: #d82a4e;
+    background: #6c757d;
     padding-top: 60px;
     padding-bottom: 50px;
 }
@@ -425,7 +428,7 @@ ol {
 
 .course-search-form input[type=text]:focus,
 .course-search-form input[type=email]:focus {
-    border-bottom: 2px solid #d82a4e;
+    border-bottom: 2px solid #6c757d;
 }
 
 .course-search-form .site-btn {
@@ -458,7 +461,7 @@ ol {
 
 .search-section.ss-other-page .section-title h2 span {
     display: inline-block;
-    background: #d82a4e;
+    background: #6c757d;
     padding: 20px 60px 10px;
 }
 
@@ -495,7 +498,7 @@ ol {
     font-size: 14px;
     color: #fff;
     font-weight: 600;
-    background: #d82a4e;
+    background: #6c757d;
     display: inline-block;
     padding: 13px 19px;
     margin: 14px;
@@ -516,7 +519,7 @@ ol {
 .course-item .course-info .course-text .students {
     font-size: 18px;
     font-weight: 600;
-    color: #d82a4e;
+    color: #6c757d;
 }
 
 .course-item .course-info .course-author {
@@ -540,7 +543,7 @@ ol {
 }
 
 .course-item .course-info .course-author p span {
-    color: #d82a4e;
+    color: #6c757d;
 }
 
 .course-item.featured-course {
@@ -567,7 +570,7 @@ ol {
 
 .course-item.featured-course .fet-note {
     display: inline-block;
-    background: #d82a4e;
+    background: #6c757d;
     color: #fff;
     font-size: 14px;
     font-weight: 500;
@@ -610,8 +613,8 @@ ol {
 }
 
 .course-filter li.mixitup-control-active {
-    color: #d82a4e;
-    border-bottom: 4px solid #d82a4e;
+    color: #6c757d;
+    border-bottom: 4px solid #6c757d;
 }
 
 
@@ -620,7 +623,7 @@ ol {
 ---------------------*/
 
 .signup-section {
-    background: #d82a4e;
+    background: #6c757d;
     position: relative;
 }
 
@@ -671,7 +674,7 @@ ol {
 .contact-form input[type=text]:focus,
 .contact-form input[type=email]:focus,
 .contact-form textarea:focus {
-    border-bottom: 2px solid #d82a4e;
+    border-bottom: 2px solid #6c757d;
 }
 
 .signup-form input[type=file],
@@ -716,7 +719,7 @@ ol {
 ---------------------*/
 
 .footer-section {
-    border-top: 3px solid #d82a4e;
+    border-top: 3px solid #6c757d;
 }
 
 .footer-warp {
@@ -772,7 +775,7 @@ ol {
     left: -5px;
     top: 6px;
     border-radius: 50%;
-    background: #d82a4e;
+    background: #6c757d;
 }
 
 .footer-newslatter {
@@ -888,7 +891,7 @@ ol {
 }
 
 .site-breadcrumb span {
-    color: #d82a4e;
+    color: #6c757d;
 }
 
 
@@ -903,7 +906,7 @@ ol {
 
 .course-meta-area .course-note {
     display: inline-block;
-    background: #d82a4e;
+    background: #6c757d;
     color: #fff;
     font-size: 14px;
     font-weight: 500;
@@ -956,7 +959,7 @@ ol {
 }
 
 .course-meta .course-author p span {
-    color: #d82a4e;
+    color: #6c757d;
 }
 
 .course-meta .cm-info h6 {
@@ -1029,7 +1032,7 @@ ol {
     color: #fff;
     font-size: 22px;
     padding-top: 10px;
-    background: #d82a4e;
+    background: #6c757d;
 }
 
 
@@ -1163,7 +1166,7 @@ ol {
 }
 
 .sb-widget-item ul li a:hover {
-    color: #d82a4e;
+    color: #6c757d;
 }
 
 .sb-widget-item .tags a {
@@ -1171,7 +1174,7 @@ ol {
     display: inline-block;
     padding: 9px 24px;
     color: #fff;
-    background: #d82a4e;
+    background: #6c757d;
     margin-bottom: 10px;
     margin-right: 6px;
     font-weight: 500;
@@ -1190,7 +1193,7 @@ ol {
 }
 
 .site-pagination span.active {
-    color: #d82a4e;
+    color: #6c757d;
 }
 
 
@@ -1199,7 +1202,7 @@ ol {
 ---------------------*/
 
 .contact-form-warp {
-    background: #d82a4e;
+    background: #6c757d;
     padding: 45px 47px;
 }
 
@@ -1227,7 +1230,7 @@ ol {
 .contact-info-area .phone-number span {
     font-size: 18px;
     font-weight: 700;
-    color: #d82a4e;
+    color: #6c757d;
     display: block;
     margin-bottom: 5px;
 }
@@ -1247,7 +1250,7 @@ ol {
     height: 3px;
     left: 0;
     bottom: 0;
-    background: #d82a4e;
+    background: #6c757d;
 }
 
 .contact-info-area .contact-list {
@@ -1276,7 +1279,7 @@ ol {
     left: -5px;
     top: 6px;
     border-radius: 50%;
-    background: #d82a4e;
+    background: #6c757d;
 }
 
 .contact-info-area .social-links {
@@ -1336,7 +1339,7 @@ ol {
 }
 
 .accordion-area .panel-header .panel-link.active {
-    background: #d82a4e;
+    background: #6c757d;
     color: #fff;
 }
 
@@ -1403,7 +1406,7 @@ ol {
 }
 
 .tab-element .nav-tabs .nav-link.active {
-    background: #d82a4e;
+    background: #6c757d;
     color: #fff;
 }
 
@@ -1451,7 +1454,7 @@ ol {
 
 .fact-item h2 {
     font-size: 60px;
-    color: #d82a4e;
+    color: #6c757d;
 }
 
 .icon-box h5 {
@@ -1460,7 +1463,7 @@ ol {
 
 .icon-box h5 span {
     font-size: 60px;
-    color: #d82a4e;
+    color: #6c757d;
     margin-right: 15px;
 }
 
@@ -1469,13 +1472,13 @@ ol {
   Responsive
 ---------------------*/
 
-@media (min-width: 1200px) {
+@media (min-width: 150%) {
     .container {
-        max-width: 1180px;
+        max-width: 170%;
     }
 }
 
-@media (max-width: 1705px) {
+@media (max-width: 150%) {
     .realated-courses .owl-next {
         position: relative;
         margin: 0 auto;
@@ -1681,7 +1684,7 @@ ol {
         padding: 30px;
     }
     .search-section.ss-other-page .section-title h2 {
-        background: #d82a4e;
+        background: #6c757d;
     }
     .course-item.featured-course .course-thumb {
         position: relative;

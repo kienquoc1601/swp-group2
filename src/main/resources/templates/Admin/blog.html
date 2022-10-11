@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Admin OnLearner</title>
+
+    <!-- Custom fonts for this template-->
+    <link th:href="@{/admin/vendor/fontawesome-free/css/all.min.css}" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link th:href="@{/admin/css/sb-admin-2.min.css}" rel="stylesheet">
+
+    <!-- Custom styles for this page -->
+    <link th:href="@{/admin/vendor/datatables/dataTables.bootstrap4.min.css}" rel="stylesheet">
+
+</head>
+
+<body id="page-top">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <div th:replace="Admin/main :: sidebarAdmin"></div>
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+                <div th:replace="Admin/main :: navAdmin"></div>
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+
+                    <!-- Page Heading -->
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <h1 class="h3 mb-0 text-gray-800">Blogs</h1>
+                    </div>
+
+                    <!-- Content Row -->
+                    <div class="row">
+                        <!-- show all Blogs -->
+                        <div class="col-xl-12 col-lg-12">
+                            <div class="card shadow mb-4">
+                                <!-- Card Header - Dropdown -->
+                                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                    <h6 class="m-0 font-weight-bold text-primary">All Blogs</h6>
+                                </div>
+                                <!-- Card Body -->
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered" id="dataTableOai" width="100%" cellspacing="0" th:style="'table-layout: fixed;'">
+                                            <thead>
+                                                <tr>
+                                                    <th th:style="'width: 2%;'">Id</th>
+                                                    <th th:style="'width: 5%;'">Author</th>
+                                                    <th th:style="'width: 10%;'">Image</th>
+                                                    <th th:style="'width: 10%;'">Title</th>
+                                                    <th th:style="'width: 10%;'">Description</th>
+                                                    <th th:style="'width: 33%;'">Content</th>
+                                                    <th th:style="'width: 5%;'">Category</th>
+                                                    <th th:style="'width: 5%;'">Rating</th>
+                                                    <th th:style="'width: 5%;'">Status</th>
+                                                    <th th:style="'width: 5%;'">Created Date</th>
+                                                    <th th:style="'width: 5%;'">Actions</th>
+                                                </tr>
+                                            </thead>
+                                            <tfoot>
+                                                <tr>
+                                                    <th th:style="'width: 2%;'">Id</th>
+                                                    <th th:style="'width: 5%;'">Author</th>
+                                                    <th th:style="'width: 10%;'">Image</th>
+                                                    <th th:style="'width: 10%;'">Title</th>
+                                                    <th th:style="'width: 10%;'">Description</th>
+                                                    <th th:style="'width: 33%;'">Content</th>
+                                                    <th th:style="'width: 5%;'">Category</th>
+                                                    <th th:style="'width: 5%;'">Rating</th>
+                                                    <th th:style="'width: 5%;'">Status</th>
+                                                    <th th:style="'width: 5%;'">Created Date</th>
+                                                    <th th:style="'width: 5%;'">Actions</th>
+                                                </tr>
+                                            </tfoot>
+                                            <tbody>
+                                                <tr th:each="blog : ${blogs}">
+                                                    <td th:style="'width: 2%;'" th:utext="${blog.blog_id}"></td>
+                                                    <td th:style="'width: 5%;'" th:utext="${blog.poster_uname}"></td>
+                                                    <td th:style="'width: 10%;'">
+                                                        <img th:src="@{${blog.blog_image}}" th:alt="${blog.title}" th:style="'width: 100%; height: 100%;'">
+                                                    </td>
+                                                    <td th:style="'width: 10%;'" th:utext="${blog.title}"></td>
+                                                    <td th:style="'width: 10%;'" th:utext="${blog.blog_description}"></td>
+                                                    <td th:style="'width: 33%;'" th:utext="${blog.blog_content}"></td>
+                                                    <td th:style="'width: 5%;'" th:utext="${blog.category}"></td>
+                                                    <td th:style="'width: 5%;'" th:utext="${blog.rating}"></td>
+                                                    <td th:style="'width: 5%;'" th:utext="${blog.status}"></td>
+                                                    <td th:style="'width: 5%;'" th:utext="${blog.date}"></td>
+                                                    <td>
+                                                        <!-- <a th:href="@{/admin/blog/edit/{id}(id=${blog.id})}" class="btn btn-primary btn-circle btn-sm">
+                                                            <i class="fas fa-edit"></i>
+                                                        </a>
+                                                        <a th:href="@{/admin/blog/delete/{id}(id=${blog.id})}" class="btn btn-danger btn-circle btn-sm">
+                                                            <i class="fas fa-trash "></i>
+                                                        </a> -->
+                                                        <!-- button -->
+                                                        <button type="button" class="btn btn-primary btn-circle btn-sm" data-toggle="modal" data-target="#editBlogModal">
+                                                            <i class="fas fa-edit"></i>
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- end of content row -->
+                        </div>
+                        <!-- /.container-fluid -->
+
+                    </div>
+                    <!-- End of Main Content -->
+                </div>
+                <!-- End of Content Wrapper -->
+            </div>
+            <!-- End of Page Wrapper -->
+
+            <!-- Scroll to Top Button-->
+            <a class="scroll-to-top rounded" href="#page-top">
+                <i class="fas fa-angle-up"></i>
+            </a>
+        </div>
+    </div>
+    <!-- th:href="@{/admin/ -->
+    <!-- Bootstrap core JavaScript-->
+    <script th:src="@{/admin/vendor/jquery/jquery.min.js}"></script>
+    <script th:src="@{/admin/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script th:src="@{/admin/vendor/jquery-easing/jquery.easing.min.js}"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script th:src="@{/admin/js/sb-admin-2.min.js}"></script>
+
+    <!-- Page level plugins -->
+    <script th:src="@{/admin/vendor/chart.js/Chart.min.js}"></script>
+
+    <!-- Page level custom scripts -->
+    <script th:src="@{/admin/js/demo/chart-area-demo.js}"></script>
+    <script th:src="@{/admin/js/demo/chart-pie-demo.js}"></script>
+    <!-- Page level plugins -->
+    <script th:src="@{/admin/vendor/datatables/jquery.dataTables.min.js}"></script>
+    <script th:src="@{/admin/vendor/datatables/dataTables.bootstrap4.min.js}"></script>
+
+    <!-- Page level custom scripts -->
+    <script th:src="@{/admin/js/demo/datatables-demo.js}"></script>
+</body>
+<script>
+    $(document).ready(function() {
+        $('#dataTableOai').DataTable({
+            columnDefs: [{
+                render: function(data, type, row) {
+                    return data + ' (' + row[3] + ')';
+                },
+                targets: 0,
+            }, {
+                visible: false,
+                targets: [3]
+            }, ],
+        });
+    });
+</script>
+
+</html>
