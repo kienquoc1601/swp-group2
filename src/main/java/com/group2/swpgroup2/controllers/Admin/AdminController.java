@@ -33,4 +33,15 @@ public class AdminController {
         model.addAttribute("blogs", blogRepo.findAll());
         return "Admin/blog";
     }
+
+    //admin blog detail
+    @GetMapping("/admin/blog/{id}")
+    public String AdminBlogDetail(Model model, HttpServletRequest request, @PathVariable("id") int id){
+        //model current url to active menu
+        model.addAttribute("currentUrl", request.getRequestURI().toString());
+        //get blog by id
+        model.addAttribute("blog", blogRepo.findById(id));
+        return "Admin/blog-detail";
+    }
+
 }
