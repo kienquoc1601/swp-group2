@@ -28,16 +28,16 @@ public class HomeController {
     // private CourseRepository courseRepo;
 
     @GetMapping("/home")
-    public String Home(Model model) {
+    public String Home(Model model, @CookieValue(value = "username", defaultValue = "") String username) {
         // list first 6 category that have hightest numCourse
         List<Category> categories = categoryRepo.findTop6ByOrderByNumCourseDesc();
         model.addAttribute("categories", categories);
-
+        model.addAttribute("username", username);
         // may tôi chạy course thì cứ bị lỗi bean không tìm thấy
         // //list top 8 course that have hightest rating
 
-         List<Course> courses = courseRepo.findTop8ByOrderByRatingDesc();
-         model.addAttribute("courses", courses);
+        //  List<Course> courses = courseRepo.findTop8ByOrderByRatingDesc();
+        //  model.addAttribute("courses", courses);
 
 
         // test, Quốc nhớ xóa chỗ này nhé :v

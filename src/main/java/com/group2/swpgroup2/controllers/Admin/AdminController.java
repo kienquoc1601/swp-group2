@@ -34,14 +34,14 @@ public class AdminController {
         return "Admin/blog";
     }
 
-    //admin blog detail
-    @GetMapping("/admin/blog/{id}")
-    public String AdminBlogDetail(Model model, HttpServletRequest request, @PathVariable("id") int id){
-        //model current url to active menu
-        model.addAttribute("currentUrl", request.getRequestURI().toString());
-        //get blog by id
-        model.addAttribute("blog", blogRepo.findById(id));
-        return "Admin/blog-detail";
+    //get mapping to delete a blog by id and return message successfully, don't need get current url
+    @GetMapping("/admin/blog/delete/{id}")
+    public String AdminBlogDelete(Model model, @PathVariable("id") int id){
+        //delete blog by id
+        blogRepo.deleteById(id);
+        //return message successfully
+        model.addAttribute("message", "Delete successfully");
+        //redirect to admin blog page
+        return "redirect:/admin/blog";
     }
-
 }

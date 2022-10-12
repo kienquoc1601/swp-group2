@@ -98,8 +98,8 @@
                                                     </td>
                                                     <td th:style="'display:none;'" th:utext="${blog.title}"></td>
                                                     <td th:style="'display:none;'" th:utext="${blog.blog_description}"></td>
-                                                    <!-- add read more link if length >=4000 (Not working with content have css component ????)-->
-                                                    <td th:style="'width: 76%;'" th:utext="${blog.blog_content.length() >= 4000 ? blog.blog_content.substring(0, 4000) + '...' : blog.blog_content}"></td>
+                                                    <!-- add read more link if length >=2000 (Not working with content have css component ????)-->
+                                                    <td th:style="'width: 76%;'" th:utext="${blog.blog_content.length() >= 2000 ? blog.blog_content.substring(0, 2000) + '...' : blog.blog_content}"></td>
                                                     <td th:style="'display:none;'" th:utext="${blog.category}"></td>
                                                     <td th:style="'display:none;'" th:utext="${blog.rating}"></td>
                                                     <td th:style="'display:none;'" th:utext="${blog.status}"></td>
@@ -108,10 +108,9 @@
                                                         <a class="btn btn-primary btn-circle btn-sm">
                                                             <i class="fas fa-edit"></i>
                                                         </a>
-                                                        <a class="btn btn-danger btn-circle btn-sm">
+                                                        <a th:href="@{/admin/blog/delete/{id}(id=${blog.blog_id})}" class="btn btn-danger btn-circle btn-sm">
                                                             <i class="fas fa-trash "></i>
                                                         </a>
-                                                        <!-- button  th:href="@{/admin/blog/delete/{id}(id=${blog.id})}"-->
                                                     </td>
                                                 </tr>
                                             </tbody>
@@ -183,8 +182,8 @@
             }, {
                 // limit the number of characters ( 4000)
                 render: function(data, type, row) {
-                    return type === 'display' && data.length > 4000 ?
-                        data.substr(0, 4000) + '…' :
+                    return type === 'display' && data.length > 2000 ?
+                        data.substr(0, 2000) + '…' :
                         data;
                 },
                 targets: 5,

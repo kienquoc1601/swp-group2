@@ -7,9 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.group2.swpgroup2.models.Blog;
@@ -66,13 +65,13 @@ public class BlogListController {
         return "Blog/blogslist";
     }
 
-    @RequestMapping(value = "/blog/detail", method = RequestMethod.GET)
-    public String BlogDetail(Model model, @RequestParam("blog_id") int blog_id) {
+    @GetMapping("/blog/detail/{id}")
+    public String BlogDetail(Model model, @PathVariable("id") int id) {
         // if blog_id is not found, redirect to blog list
-        if (!blogRepo.existsById(blog_id)) {
+        if (!blogRepo.existsById(id)) {
             return "redirect:/blog";
         }
-        Blog blog = blogRepo.findById(blog_id);
+        Blog blog = blogRepo.findById(id);
         model.addAttribute("blog", blog);
 
         List<Blog> trendingBlogs = blogRepo.findTop10ByOrderByRatingDesc();
