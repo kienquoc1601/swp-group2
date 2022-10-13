@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.*;
 // import com.group2.swpgroup2.repositories.BlogRepository;
 import com.group2.swpgroup2.repositories.CategoryRepository;
 // import com.group2.swpgroup2.repositories.CourseRepository;
+import com.group2.swpgroup2.repositories.CourseRepository;
 
 import java.util.List;
 
@@ -14,7 +15,7 @@ import org.springframework.ui.Model;
 
 // import com.group2.swpgroup2.models.Blog;
 import com.group2.swpgroup2.models.Category;
-// import com.group2.swpgroup2.models.Course;
+import com.group2.swpgroup2.models.Course;
 
 @Controller
 public class HomeController {
@@ -24,8 +25,8 @@ public class HomeController {
     // @Autowired
     // private BlogRepository blogRepo;
 
-    // @Autowired
-    // private CourseRepository courseRepo;
+     @Autowired
+     private CourseRepository courseRepo;
 
     @GetMapping("/home")
     public String Home(Model model) {
