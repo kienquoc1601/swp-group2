@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mark Table</title>
+    <style>
+        body{
+            font-size: 16px;
+            font-family: 'Times New Roman', Times, serif;
+            background-color: aquamarine;
+        }
+        table{
+            width: 60%;
+        }
+        table, td, th{
+            border-bottom: 1px solid #333;
+            border-collapse: collapse;
+        }
+        td, th{
+            padding: 6px 10px;
+        }
+        table thead th{
+            text-align: left;
+        }
+        .table.table-dark{
+            background: gray;
+            color: wheat;
+        }
+        .table.table-hover tbody tr:hover{
+            background: #333;
+        }
+    </style>
+  </head>
+  <body>
+    <h1>module: SQL User Defined Functions - Deep dive into Querying</h1>
+    <table class="table table-dark table-hover">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>ID</th>
+          <th>Full Name</th>
+          <th>Mark</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>SE1634</td>
+          <td>Nguyen Van A</td>
+          <td>9.8</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>SE1654</td>
+          <td>Nguyen Van V</td>
+          <td>8.3</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>SE1124</td>
+          <td>Nguyen Van C</td>
+          <td>6.8</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>SE1434</td>
+          <td>Nguyen Van D</td>
+          <td>8.5</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>SE1563</td>
+          <td>Nguyen Van E</td>
+          <td>9.0</td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td>SE1635</td>
+          <td>Nguyen Van F</td>
+          <td>9.8</td>
+        </tr>
+        <tr>
+          <td>7</td>
+          <td>SE1630</td>
+          <td>Nguyen Van G</td>
+          <td>9.8</td>
+        </tr>
+        <tr>
+          <td>8</td>
+          <td>SE1633</td>
+          <td>Nguyen Van H</td>
+          <td>9.8</td>
+        </tr>
+        <tr>
+          <td>9</td>
+          <td>SE1638</td>
+          <td>Nguyen Van I</td>
+          <td>9.8</td>
+        </tr>
+        <tr>
+          <td>10</td>
+          <td>SE1674</td>
+          <td>Nguyen Van J</td>
+          <td>9.8</td>
+        </tr>
+        <tr>
+          <td>11</td>
+          <td>SE1624</td>
+          <td>Nguyen Van K</td>
+          <td>9.8</td>
+        </tr>
+        <tr>
+          <td>12</td>
+          <td>SE1604</td>
+          <td>Nguyen Van L</td>
+          <td>9.8</td>
+        </tr>
+        <tr>
+          <td>13</td>
+          <td>SE1614</td>
+          <td>Nguyen Van R</td>
+          <td>9.8</td>
+        </tr>
+        <tr>
+          <td>14</td>
+          <td>SE1334</td>
+          <td>Nguyen Van U</td>
+          <td>9.8</td>
+        </tr>
+        <tr>
+          <td>15</td>
+          <td>SE1544</td>
+          <td>Nguyen Van V</td>
+          <td>9.8</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+            <td colspan="3">Average</td>
+            <td>8.6</td>
+        </tr>
+      </tfoot>
+    </table>
+  </body>
+</html>
