@@ -10,5 +10,8 @@ import com.group2.swpgroup2.models.CourseStudent;
 @Repository
 public interface CourseStudentRepo extends JpaRepository<CourseStudent, Integer>{
     public ArrayList<Integer> findByCourseID(int courseID);
-    public ArrayList<Integer> findByStudentID(int studentID);    
+    public ArrayList<Integer> findByStudentID(int studentID);  
+    
+    public CourseStudent findByCourseIDAndStudentID(int courseID, int studentID);
+
 }

@@ -33,19 +33,14 @@
     <link th:href="@{/Header_Footer/css/headers.css}" rel="stylesheet">
     <!-- sea2.css -->
     <link th:href="@{/Header_Footer/css/sea2.css}" rel="stylesheet">
+
+    <link th:href="@{/admin/vendor/fontawesome-free/css/all.min.css}" rel="stylesheet" type="text/css">
 </head>
 <script>
     $('.search-input').focus(function() {
         $(this).parent().addClass('focus');
     }).blur(function() {
         $(this).parent().removeClass('focus');
-    })
-    $('.dropdown').on('show.bs.dropdown', function(e) {
-        $(this).find('.dropdown-menu').first().stop(true, true).slideDown(300);
-    });
-
-    $('.dropdown').on('hide.bs.dropdown', function(e) {
-        $(this).find('.dropdown-menu').first().stop(true, true).slideUp(300);
     });
 </script>
 
@@ -121,7 +116,43 @@
                             </div>
                         </div>
                     </form>
+                    <!-- <nav class=" nav nav-masthead nav-link px-2" th:href="@{/mycourse}">My Course</nav> -->
+                    <nav class="nav nav-masthead ">
+                        <a class="nav-link px-2" th:href="@{/mycourse}">My Course</a>
+                    </nav>
+                    <ul class="navbar-nav ml-auto" th:style="'margin-right: 2%;'">
+                        <!-- Nav Item - Alerts -->
+                        <li class="nav-item dropdown no-arrow mx-1">
+                            <a class="dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fa fa-shopping-cart fa-2x"></i>
+                                <!-- if courseBought is not empty -->
+                                <!-- <span class="badge badge-danger badge-counter" th:if="${#lists.size(courseBought) > 0}" th:text="${#lists.size(courseBought)}"></span> -->
+                                <span class="badge badge-danger badge-counter">3+</span>
 
+                                <!-- <span class="badge badge-danger badge-counter" th:utext="${#lists.size(coursesBought) >=5 ? #lists.size(coursesBought) +'+' : #lists.size(coursesBought)}">Number of course in cart</span> -->
+                            </a>
+                            <!-- Dropdown - Alerts -->
+                            <div>
+                                <div class="dropdown-list dropdown-menu dropdown-menu-left shadow animated--grow-out " aria-labelledby="alertsDropdown">
+                                    <h6 class="dropdown-header">
+                                        Course Cart
+                                    </h6>
+                                    <a class="dropdown-item d-flex align-items-center" href="#" th:each="course : ${coursesBought}">
+                                        <div class="mr-3">
+                                            <!-- image -->
+                                            <!-- <img th:src="${course.ImgSrc}" th:style="'height: 40px; height: 40px;'" alt=""> -->
+                                            <img th:src="@{https://i.pravatar.cc}" th:style="'height: 40px; height: 40px;'" alt="">
+                                        </div>
+                                        <div>
+                                            <span class="font-weight-bold" th:utext="${course.CourseName}">Title </span>
+                                            <div class="small text-gray-500" th:utext="'<strong>' + ${course.CourseManager.Name} + '&emsp;$</strong>'+ ${course.price} ">Manager</div>
+                                        </div>
+                                    </a>
+                                    <a class="dropdown-item text-center small text-gray-500" href="#">Checkout</a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
                     <div class="dropdown text-end">
                         <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
                             <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
