@@ -15,7 +15,6 @@
 
     <!-- Stylesheets -->
     <link th:href="@{/Header_Footer/css/bootstrap.min.css}" rel="stylesheet">
-    <link th:href="@{/Header_Footer/css/sea2.css}" rel="stylesheet">
     <link th:href="@{/Header_Footer/css/headers.css}" rel="stylesheet">
 
     <!-- Custom fonts for this template-->
@@ -24,6 +23,9 @@
     <link th:href="@{/admin/css/sb-admin-2.min.css}" rel="stylesheet">
     <!-- get jquery newest -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Bootstrap core JavaScript-->
+    <script th:src="@{/admin/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+
 </head>
 <script>
     function addtoCart(courseId) {
@@ -34,8 +36,11 @@
                 courseId: courseId,
             },
             success: function(data) {
-                data = JSON.parse(data);
-                alert(data);
+                if (data == "fail") {
+                    alert("Course already in cart");
+                } else {
+                    // alert("Add to cart successfully");
+                }
             },
             error: function(data) {
                 alert("Add to cart fail");
@@ -43,21 +48,51 @@
         });
     }
 
-    function showCart() {
-        //1. lấy dữ liệu từ server dưới dạng json, chuyển thành list object
-        //2. hiển thị dữ liệu lên giao diện
-        alert("show cart function");
+    // function showCart() {
+    //     //1. lấy dữ liệu từ server dưới dạng json, chuyển thành list object
+    //     //2. hiển thị dữ liệu lên giao diện (success)
+    //     $.ajax({
+    //         url: "/showCart",
+    //         method: "GET",
+    //         success: function(data) {
+    //             //3. chuyển json thành list object
+    //             const courses = JSON.parse(JSON.stringify(data));
+    //             //4. chuyển list object thành html string
+    //             let text = "";
+    //             for (c in courses) {
+    //                 text += "<a class='dropdown-item d-flex align-items-center' href='#'>" +
+    //                     "<div class='mr-3'>" +
+    //                     "<img src='" + courses[c].imgSrc + "' style='width: 50px; height: 50px; object-fit: scale-down;'>" +
+    //                     "</div>" + "<div>" +
+    //                     "<span class='font-weight-bold'>" + courses[c].courseName + "</span>" +
+    //                     "<div class='small text-gray-500'><strong>" + courses[c].courseManager.name + "&emsp;$</strong>" +
+    //                     courses[c].price + "</div>" + "</div>";
+    //             }
+    //             //5. hiển thị html string lên giao diện
+    //             const xmlhttp = new XMLHttpRequest();
+    //             xmlhttp.open("GET", "/showCart", true);
+    //             xmlhttp.send();
+    //             xmlhttp.onload = function() {
+    //                 document.getElementById("showcart").innerHTML = text;
+    //                 document.getElementById("loading").style.display = "none";
+    //             }
+    //         },
+    //         error: function(data) {
+    //             alert("show cart fail");
+    //         },
+    //     });
+    // }
+
+    function removeCourseCartCookie() {
         $.ajax({
-            url: "/showCart",
+            url: "/removeCart",
             method: "GET",
-            dataType: "json",
-            contentType: "application/json",
             success: function(data) {
-                alert("show cart success");
-                alert(data);
+                //redirect to courses page
+                window.location.href = "/courses";
             },
             error: function(data) {
-                alert("show cart fail");
+                alert("remove course cart cookie fail");
             }
         });
     }
@@ -65,22 +100,37 @@
 
 <body>
     <!-- headerOai.html -->
-    <div th:replace="common/headerOai2 :: headerOai2"></div>
+    <div th:replace="common/headerOai3 :: headerOai3"></div>
 
     <div class="container mt-3">
         <h2 th:utext="${username}"></h2>
         <h7 th:utext="'<strong> ID: </strong>'+${student.studentID}"></h7> <br>
         <h7 th:utext="'<strong> Name: </strong>'+${student.fullname}"></h7>
+        <button type="button" class="btn btn-danger" onclick="removeCourseCartCookie()">Remove Course Cart Cookie</button>
         <!-- list all coursesBought -->
-        <h5>My Course</h5>
-        <!-- <button th:onclick="'javascript:showCart()'" class="btn btn-success">Cart</button> -->
+        <h5>Course in cart</h5>
+        <div th:id="test"></div>
+
+        <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                <img src="https://github.com/mdo.png" class="rounded me-2" alt="...">
+                <strong class="me-auto">Bootstrap</strong>
+                <small class="text-muted">11 mins ago</small>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+                Hello, world! This is a toast message.
+            </div>
+        </div>
+        <!-- button remove courseCartCookie -->
         <!-- show size of courseList if it not empty or null -->
-        <h7 th:if="${#lists.size(courseCartList) != 0}" th:utext="'<strong> Size: </strong>'+${#lists.size(courseCartList)}"></h7>
+        <!-- <h7 th:if="${#lists.size(courseCartList) != 0}" th:utext="'<strong> Size: </strong>'+${#lists.size(courseCartList)}"></h7> -->
         <!-- <h6 th:utext="${#lists.size(courseList)}"></h6> -->
-        <div th:each="course : ${courseCartList}">
+        <!-- <div th:each="course : ${courseCartList}">
             <h5 th:utext="${course.Id}"></h5>
             <h6 th:utext="${course.CourseName}"></h6>
-        </div>
+        </div> -->
+        <h4>All course</h4>
         <div class="table-responsive">
             <table class="table table-bordered">
                 <thead>
@@ -113,14 +163,8 @@
             </table>
         </div>
     </div>
+    <!-- footerOai2.html -->
+    <div th:replace="common/footerOai2 :: footerOai2"></div>
 </body>
-<!--====== Javascripts & Jquery ======-->
-<script th:src="@{Header_Footer/js/bootstrap.bundle.min.js}"></script>
-<!-- Bootstrap core JavaScript-->
-<script th:src="@{/admin/vendor/jquery/jquery.min.js}"></script>
-<script th:src="@{/admin/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
-
-
-
 
 </html>
