@@ -66,7 +66,12 @@ public class CartRestController {
             if(courseCartCookie.equals("")) {
                 courseCartCookie = String.valueOf(courseId);
             } else {
-                courseCartCookie = courseCartCookie + "_" + courseId;
+                //if coursesInCartArray.length >= 10, return "cart full", else add course to cart
+                if(coursesInCartArray.length >= 10) {
+                    return "cart full";
+                } else {
+                    courseCartCookie = courseCartCookie + "_" + courseId;
+                }
             }
         } else {
             return "fail";

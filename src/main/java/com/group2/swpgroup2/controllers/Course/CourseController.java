@@ -1,6 +1,6 @@
 package com.group2.swpgroup2.controllers.Course;
 
-import java.util.ArrayList;
+// import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.Cookie;
@@ -12,13 +12,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+// import org.springframework.web.bind.annotation.ModelAttribute;
+// import org.springframework.web.bind.annotation.PostMapping;
 
 import com.group2.swpgroup2.models.Student;
 import com.group2.swpgroup2.models.Course;
 import com.group2.swpgroup2.repositories.CourseRepository;
-import com.group2.swpgroup2.repositories.CourseStudentRepo;
+// import com.group2.swpgroup2.repositories.CourseStudentRepo;
 import com.group2.swpgroup2.repositories.StudentRepository;
 
 @Controller
@@ -29,8 +29,8 @@ public class CourseController {
     @Autowired
     private StudentRepository studentRepo;
 
-    @Autowired
-    private CourseStudentRepo courseStudentRepo;
+    // @Autowired
+    // private CourseStudentRepo courseStudentRepo;
 
     @GetMapping("/courses")
     public String Course(HttpServletRequest request, HttpServletResponse response, Model model,
