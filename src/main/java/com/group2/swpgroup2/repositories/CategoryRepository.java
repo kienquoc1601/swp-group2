@@ -12,5 +12,7 @@ public interface CategoryRepository extends JpaRepository<Category,Integer>{
     public Category findById(int id);
     //list first 6 category that have hightest numCourse
     public List<Category> findTop6ByOrderByNumCourseDesc();
+    
+    
 
 }
