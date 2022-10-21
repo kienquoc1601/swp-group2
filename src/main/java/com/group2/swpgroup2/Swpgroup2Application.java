@@ -1,10 +1,14 @@
 package com.group2.swpgroup2;
 
+import java.util.List;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 
+import com.group2.swpgroup2.models.Course;
 import com.group2.swpgroup2.models.Module;
+import com.group2.swpgroup2.repositories.CourseRepository;
 import com.group2.swpgroup2.repositories.ModuleRepository;
 
 // import com.group2.swpgroup2.models.Course;
@@ -25,13 +29,13 @@ public class Swpgroup2Application {
 		// 	System.out.println(c.toString());
 			
 		// }
-		ModuleRepository mpero = context.getBean(ModuleRepository.class);
-		System.out.println(mpero.findAll().size());
-		
-		for(Module m : mpero.findAll()){
-			System.out.println(m.toString());
-		}
-		System.out.println("vvvvv");
+
+
+		// CourseRepository cRepo = context.getBean(CourseRepository.class);
+		// List<Course> clist = cRepo.findByCategoryName(null);
+		// for(Course c : clist){
+		// 	System.out.println(c.getCourseName());
+		// }
 	}
 
 }
