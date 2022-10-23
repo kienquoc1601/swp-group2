@@ -23,5 +23,9 @@ public interface CourseRepository extends JpaRepository<Course,Integer>{
     @Query(value = "SELECT TOP (2) * FROM course WHERE price = 0 ORDER BY rating DESC", nativeQuery = true)
     List<Course> findTop2CourseFreeHightestRating();
 
+    @Query(value = "SELECT courseID FROM [CourseStudent] WHERE studentID = ?1", nativeQuery = true)
+    List<Integer> findByStudentId(int studentId);
 
+    @Query(value = "INSERT INTO [CourseStudent] (studentID, courseID) VALUES (?1, ?2)", nativeQuery = true)
+    void addCourseByStudentId(int studentId, int courseId);
 }
