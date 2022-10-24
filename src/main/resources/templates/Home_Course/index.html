@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <title>WebUni - Education Template</title>
+    <title>OnLearner - Online Education Platform</title>
     <meta charset="UTF-8">
     <meta name="description" content="WebUni Education Template">
     <meta name="keywords" content="webuni, education, creative, html">
@@ -30,7 +30,11 @@
 </script>
 
 <body>
-    
+    <!-- Page Preloder -->
+    <!-- <div id="preloder">
+        <div class="loader"></div>
+    </div> -->
+
 
     <!-- headerOai.html -->
     <div th:replace="common/headerOai2 :: headerOai2"></div>
@@ -39,7 +43,7 @@
         <div class="p-5 mb-4 bg-light rounded-3">
             <div class="container-fluid" th:style="'padding-top: 1%!important; padding-bottom: 1%!important;'">
                 <h1 class="fw-bold" th:style="'font-size: 1.5rem;'">News announcement</h1>
-                <p class="col-md-12 " th:style="'font-size: 1rem!important;'">Using a series of utilities, you can create this jumbotron, just like the one in previous versions of Bootstrap. Check out the examples below for how you can remix and restyle it to your liking.</p>
+                <p class="col-md-12 " th:style="'font-size: 1rem!important;'" th:text="${username}">Using a series of utilities, you can create this jumbotron, just like the one in previous versions of Bootstrap. Check out the examples below for how you can remix and restyle it to your liking.</p>
                 <button class="btn btn-outline-secondary" type="button">Example button</button>
             </div>
         </div>
@@ -112,7 +116,7 @@
             </div>
             <!-- view more course link -->
             <div class="text-center">
-                <a href="#" class="btn bg-secondary text-white">View More Courses</a>
+                <a th:href="@{/courses}" class="btn bg-secondary text-white">View More Courses</a>
             </div>
         </div>
     </section>

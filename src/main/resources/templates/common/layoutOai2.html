@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link th:href="@{/Header_Footer/css/bootstrap.min.css}" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link th:href="@{/Header_Footer/css/headers.css}" rel="stylesheet">
+    <!-- sea2.css -->
+    <link th:href="@{/Header_Footer/css/sea2.css}" rel="stylesheet">
+
+</head>
+
+<body>
+    <!-- headerOai.html -->
+    <div th:replace="common/headerOai2 :: headerOai2"></div>
+
+    <!-- Write your code here in middle of Page -->
+    <h1>
+        Write your code here
+    </h1>
+
+    <!-- footerOai2.html -->
+    <div th:replace="common/footerOai2 :: footerOai2"></div>
+</body>
+<script th:src="@{Header_Footer/js/bootstrap.bundle.min.js}"></script>
+
+</html>

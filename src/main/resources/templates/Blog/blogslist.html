@@ -42,7 +42,7 @@
                             </div>
                         </div>
                         <div class="col-md-7 animate-box">
-                            <a th:href="@{/blog/detail(blog_id=${blog.blog_id})}" class="fh5co_magna py-2">
+                            <a th:href="@{/blog/detail/{id}(id=${blog.blog_id})}" class="fh5co_magna py-2">
                                 <span th:utext="${blog.title}"></span>
                             </a>
                             <div><span th:utext="${blog.poster_uname}" th:href="${blog.poster_uname}" class="fh5co_mini_time py-3"></span> - <span th:utext="${blog.date}"></span></div>

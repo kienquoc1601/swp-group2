@@ -57,4 +57,6 @@ public class Course {
     private String ImgSrc;
     @Column(name = "rating")
     private float rating;
+    @Column(name = "price")
+    private float price;
 }

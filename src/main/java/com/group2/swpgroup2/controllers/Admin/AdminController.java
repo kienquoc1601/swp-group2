@@ -33,4 +33,15 @@ public class AdminController {
         model.addAttribute("blogs", blogRepo.findAll());
         return "Admin/blog";
     }
+
+    //get mapping to delete a blog by id and return message successfully, don't need get current url
+    @GetMapping("/admin/blog/delete/{id}")
+    public String AdminBlogDelete(Model model, @PathVariable("id") int id){
+        //delete blog by id
+        blogRepo.deleteById(id);
+        //return message successfully
+        model.addAttribute("message", "Delete successfully");
+        //redirect to admin blog page
+        return "redirect:/admin/blog";
+    }
 }
