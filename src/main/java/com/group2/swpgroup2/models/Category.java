@@ -1,5 +1,8 @@
 package com.group2.swpgroup2.models;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.*;
 
 import lombok.AllArgsConstructor;
@@ -21,6 +24,8 @@ public class Category {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "categoryID")
     private int categoryID;
+    @ManyToMany(mappedBy = "CourseCategories")
+    private Set<Course> CategoryCourses = new HashSet<>();
     @Column(name = "category_name")
     private String category_name;
     //discription, image, numCourse

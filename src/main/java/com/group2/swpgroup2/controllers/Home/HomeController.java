@@ -4,6 +4,7 @@ import org.springframework.web.bind.annotation.*;
 
 // import com.group2.swpgroup2.repositories.BlogRepository;
 import com.group2.swpgroup2.repositories.CategoryRepository;
+
 import com.group2.swpgroup2.repositories.CourseRepository;
 
 import java.util.List;
@@ -24,8 +25,10 @@ public class HomeController {
     // @Autowired
     // private BlogRepository blogRepo;
 
+
     @Autowired
     private CourseRepository courseRepo;
+
 
     @GetMapping("/home")
     public String Home(Model model, @CookieValue(value = "username", defaultValue = "") String username) {
