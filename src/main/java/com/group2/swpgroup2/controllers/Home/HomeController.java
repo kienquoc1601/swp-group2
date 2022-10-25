@@ -22,8 +22,8 @@ public class HomeController {
     @Autowired
     private CategoryRepository categoryRepo;
 
-    // @Autowired
-    // private BlogRepository blogRepo;
+    //@Autowired
+    //private BlogRepository blogRepo;
 
 
     @Autowired
