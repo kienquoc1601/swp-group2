@@ -1,15 +1,15 @@
 package com.group2.swpgroup2;
 
-import java.util.List;
+// import java.util.List;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 
-import com.group2.swpgroup2.models.Course;
-import com.group2.swpgroup2.models.Module;
-import com.group2.swpgroup2.repositories.CourseRepository;
-import com.group2.swpgroup2.repositories.ModuleRepository;
+// import com.group2.swpgroup2.models.Course;
+// import com.group2.swpgroup2.models.Module;
+// import com.group2.swpgroup2.repositories.CourseRepository;
+// import com.group2.swpgroup2.repositories.ModuleRepository;
 
 // import com.group2.swpgroup2.models.Course;
 // import com.group2.swpgroup2.models.Manager;
