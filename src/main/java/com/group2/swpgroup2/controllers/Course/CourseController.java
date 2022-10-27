@@ -42,6 +42,7 @@ public class CourseController {
         model.addAttribute("courses", courses);
         // 2. get student by username
         Student student = studentRepo.findByUsername(username);
+        System.out.println("student: " + student.getUsername());
         model.addAttribute("student", student);
         return "Home_Course/courses";
     }
