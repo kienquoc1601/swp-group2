@@ -2,169 +2,191 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
+    <title>WebUni - Education Template</title>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="WebUni Education Template">
+    <meta name="keywords" content="webuni, education, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <!-- css of bootstrap 5 -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Favicon -->
+    <link th:href="@{/home_course/img/favicon.ico}" rel="shortcut icon" />
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Raleway:400,400i,500,500i,600,600i,700,700i,800,800i" rel="stylesheet">
 
     <!-- Stylesheets -->
     <link th:href="@{/Header_Footer/css/bootstrap.min.css}" rel="stylesheet">
-    <link th:href="@{/Header_Footer/css/headers.css}" rel="stylesheet">
-
-    <!-- Custom fonts for this template-->
-    <link th:href="@{/admin/vendor/fontawesome-free/css/all.min.css}" rel="stylesheet" type="text/css">
-    <!-- Custom styles for this template-->
-    <link th:href="@{/admin/css/sb-admin-2.min.css}" rel="stylesheet">
-    <!-- get jquery newest -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <!-- Bootstrap core JavaScript-->
-    <script th:src="@{/admin/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+    <link rel="stylesheet" th:href="@{/home_course/css/font-awesome.min.css}" />
+    <link rel="stylesheet" th:href="@{/home_course/css/owl.carousel.css}" />
+    <link rel="stylesheet" th:href="@{/home_course/css/style.css}" />
 
 </head>
 <script>
-    function addtoCart(courseId) {
-        $.ajax({
-            url: "/addToCart",
-            method: "POST",
-            data: {
-                courseId: courseId,
-            },
-            success: function(data) {
-                if (data == "fail") {
-                    alert("Course already in cart");
-                } else {
-                    // alert("Add to cart successfully");
-                }
-            },
-            error: function(data) {
-                alert("Add to cart fail");
-            }
-        });
-    }
-
-    // function showCart() {
-    //     //1. lấy dữ liệu từ server dưới dạng json, chuyển thành list object
-    //     //2. hiển thị dữ liệu lên giao diện (success)
-    //     $.ajax({
-    //         url: "/showCart",
-    //         method: "GET",
-    //         success: function(data) {
-    //             //3. chuyển json thành list object
-    //             const courses = JSON.parse(JSON.stringify(data));
-    //             //4. chuyển list object thành html string
-    //             let text = "";
-    //             for (c in courses) {
-    //                 text += "<a class='dropdown-item d-flex align-items-center' href='#'>" +
-    //                     "<div class='mr-3'>" +
-    //                     "<img src='" + courses[c].imgSrc + "' style='width: 50px; height: 50px; object-fit: scale-down;'>" +
-    //                     "</div>" + "<div>" +
-    //                     "<span class='font-weight-bold'>" + courses[c].courseName + "</span>" +
-    //                     "<div class='small text-gray-500'><strong>" + courses[c].courseManager.name + "&emsp;$</strong>" +
-    //                     courses[c].price + "</div>" + "</div>";
-    //             }
-    //             //5. hiển thị html string lên giao diện
-    //             const xmlhttp = new XMLHttpRequest();
-    //             xmlhttp.open("GET", "/showCart", true);
-    //             xmlhttp.send();
-    //             xmlhttp.onload = function() {
-    //                 document.getElementById("showcart").innerHTML = text;
-    //                 document.getElementById("loading").style.display = "none";
-    //             }
-    //         },
-    //         error: function(data) {
-    //             alert("show cart fail");
-    //         },
-    //     });
-    // }
-
-    function removeCourseCartCookie() {
-        $.ajax({
-            url: "/removeCart",
-            method: "GET",
-            success: function(data) {
-                //redirect to courses page
-                window.location.href = "/courses";
-            },
-            error: function(data) {
-                alert("remove course cart cookie fail");
-            }
-        });
+    function choosecategory(link) {
+        window.location.href = link;
     }
 </script>
 
 <body>
+    <!-- Page Preloder -->
+    <!-- <div id="preloder">
+        <div class="loader"></div>
+    </div> -->
+
     <!-- headerOai.html -->
     <div th:replace="common/headerOai3 :: headerOai3"></div>
 
+    <!-- search course textbox -->
     <div class="container mt-3">
-        <h2 th:utext="${username}"></h2>
-        <h7 th:utext="'<strong> ID: </strong>'+${student.studentID}"></h7> <br>
-        <h7 th:utext="'<strong> Name: </strong>'+${student.fullname}"></h7>
-        <button type="button" class="btn btn-danger" onclick="removeCourseCartCookie()">Remove Course Cart Cookie</button>
-        <!-- list all coursesBought -->
-        <h5>Course in cart</h5>
-        <div th:id="test"></div>
-
-        <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-            <div class="toast-header">
-                <img src="https://github.com/mdo.png" class="rounded me-2" alt="...">
-                <strong class="me-auto">Bootstrap</strong>
-                <small class="text-muted">11 mins ago</small>
-                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-            </div>
-            <div class="toast-body">
-                Hello, world! This is a toast message.
+        <!-- heading title search Course -->
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="text-center"><strong>OnLearner </strong> - Online learning platform </h3>
             </div>
         </div>
-        <!-- button remove courseCartCookie -->
-        <!-- show size of courseList if it not empty or null -->
-        <!-- <h7 th:if="${#lists.size(courseCartList) != 0}" th:utext="'<strong> Size: </strong>'+${#lists.size(courseCartList)}"></h7> -->
-        <!-- <h6 th:utext="${#lists.size(courseList)}"></h6> -->
-        <!-- <div th:each="course : ${courseCartList}">
-            <h5 th:utext="${course.Id}"></h5>
-            <h6 th:utext="${course.CourseName}"></h6>
-        </div> -->
-        <h4>All course</h4>
-        <div class="table-responsive">
-            <table class="table table-bordered">
-                <thead>
-                    <tr>
-                        <th>Id</th>
-                        <th>Name</th>
-                        <th>Manager</th>
-                        <th>Description</th>
-                        <th>Img_src</th>
-                        <th>Rating</th>
-                        <th>Price</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr th:each="course : ${courses}">
-                        <td th:utext="${course.Id}"></td>
-                        <td th:utext="${course.CourseName}"></td>
-                        <td th:utext="${course.CourseManager.Name}"></td>
-                        <td th:utext="${course.Description}"></td>
-                        <td th:utext="${course.ImgSrc}"></td>
-                        <td th:utext="${course.rating}"></td>
-                        <td th:utext="${course.price}"></td>
-                        <td>
-                            <a href="#" class="btn btn-primary">Detail</a>
-                            <button class="btn btn-success" th:onclick="'javascript:addtoCart(' + ${course.Id} + ')'">Add to cart</button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+
+        <div class="row col-12 card card-body">
+            <form action="/searchCourse" method="GET">
+                <div class="row">
+                    <div class="col-10">
+                        <input type="text" class="form-control" name="searchCourse" placeholder="Search course">
+                    </div>
+                    <div class="col-2">
+                        <button type="submit" class="btn btn-primary">Search</button>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
-    <!-- footerOai2.html -->
+    <!-- course section -->
+    <section class="course-section spad pb-0">
+        <div class="course-warp">
+            <div class="row col-md-12">
+                <h3 class="text-center">Our featured categories</h3>
+            </div>
+            <ul class="course-filter controls" style="padding-top: 20px;">
+                <li class="btn" th:classappend="${category == 0 ? 'btn-secondary' : 'btn-outline-secondary'}" th:onclick="choosecategory([[@{/courses}]])">All</li>
+                <li class="btn" th:each="cate : ${categories}" th:utext="${cate.category_name}" th:classappend="${category == cate.categoryID ? 'btn-secondary' : 'btn-outline-secondary'}" th:onclick="choosecategory([[@{/courses(category=${cate.categoryID})}]])"></li>
+            </ul>
+            <div class="row course-items-area">
+                <!-- course -->
+                <div class="mix col-lg-3 col-md-4 col-sm-6" th:each="course : ${courses}">
+                    <div class="course-item" th:onclick="|window.location.href='@{/course/{name}(name=${course.CourseName})}'|" style="cursor: pointer;">
+                        <div class="course-thumb set-bg" th:data-setbg="${course.ImgSrc}">
+                            <!-- if price = 0.0 then price is free -->
+                            <div class="price" th:if="${course.price == 0.0}" style="border-radius: 20%;">Free</div>
+                            <div class="price" th:if="${course.price != 0.0}" th:text="${'$' + course.price}" style="border-radius: 20%;"></div>
+                            <button class="btn btn-success btn-lg">Add to cart</button>
+                        </div>
+                        <div class="course-info">
+                            <div class="course-text">
+                                <h5 th:utext="${#strings.abbreviate(course.CourseName,50)}">Title</h5>
+                                <p th:utext="${#strings.abbreviate(course.Description,80)}">Description</p>
+                                <!-- <div class="students">Number Of Students</div> -->
+                            </div>
+                            <div class="course-author">
+                                <div class="ca-pic set-bg" th:data-setbg="${course.getCourseManager().getImgSrc()}"></div>
+                                <p th:utext="${course.getCourseManager().getName() +',  <span><strong>'+ course.getCourseManager().getOrgName() +'</strong></span>'}">CourseManager </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mx-0">
+                <div class="col-12 text-center pb-4 pt-4">
+                    <!-- pagination with page and category parameter-->
+                    <div class="btn-group" role="group" aria-label="Basic example">
+                        <a th:href="@{/courses(page=${page-1},category=${category})}" th:if="${page > 1}" class="btn btn-info" style="margin-right: 5%;">Previous</a>
+                        <!-- current page -->
+                        <a th:href="@{/courses(page=${page},category=${category})}" class="btn btn-primary" th:utext="${page}" style="margin-right: 5%;">Current page</a>
+                        <a th:href="@{/courses(page=${page+1},category=${category})}" th:if="${page < totalPage}" class="btn btn-success" style="margin-right: 5%;">Next</a>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <h3 class="text-center">Top courses with the most students enrolled and highest ratings</h3>
+                </div>
+            </div>
+            <div class="featured-courses" style="padding-top: 40px;">
+                <div class="featured-course course-item" th:each="course : ${featuredCoursesEnroll}" th:onclick="|window.location.href='@{/course/{name}(name=${course.CourseName})}'|" style="cursor: pointer;">
+                    <div class="course-thumb set-bg" th:data-setbg="${course.ImgSrc}">
+                        <div class="price" th:if="${course.price == 0.0}" style="border-radius: 20%;">Free</div>
+                        <div class="price" th:if="${course.price != 0.0}" th:text="${'$' + course.price}" style="border-radius: 20%;"></div>
+                        <button class="btn btn-success btn-lg">Add to cart</button>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6 offset-lg-6 pl-0">
+                            <div class="course-info">
+                                <div class="course-text">
+                                    <div class="fet-note">Featured Course</div>
+                                    <h5 th:utext="${#strings.abbreviate(course.CourseName,100)}">Title</h5>
+                                    <p th:utext="${#strings.abbreviate(course.Description,200)}">Description</p>
+                                    <!-- <div class="students">120 Students</div> -->
+                                </div>
+                                <div class="course-author">
+                                    <div class="ca-pic set-bg" th:data-setbg="${course.getCourseManager().getImgSrc()}"></div>
+                                    <p th:utext="${course.getCourseManager().getName() +',  <span><strong>'+ course.getCourseManager().getOrgName() +'</strong></span>'}">CourseManager </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="featured-course course-item" th:each="course : ${featuredCoursesRating}">
+                    <a th:href="@{/course/{name}(name=${course.CourseName})}">
+                        <div class="course-thumb set-bg" th:data-setbg="${course.ImgSrc}">
+                            <div class="price" th:if="${course.price == 0.0}" style="border-radius: 20%;">Free</div>
+                            <div class="price" th:if="${course.price != 0.0}" th:text="${'$' + course.price}" style="border-radius: 20%;"></div>
+                            <button class="btn btn-success btn-lg">Add to cart</button>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6 pr-0">
+                                <div class="course-info">
+                                    <div class="course-text">
+                                        <div class="fet-note">Featured Course</div>
+                                        <h5 th:utext="${#strings.abbreviate(course.CourseName,50)}">Title</h5>
+                                        <p th:utext="${#strings.abbreviate(course.Description,120)}">Description</p>
+                                        <!-- <div class="students">120 Students</div> -->
+                                    </div>
+                                    <div class="course-author">
+                                        <div class="ca-pic set-bg" th:data-setbg="${course.getCourseManager().getImgSrc()}"></div>
+                                        <p th:utext="${course.getCourseManager().getName() +',  <span><strong>'+ course.getCourseManager().getOrgName() +'</strong></span>'}">CourseManager </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- course section end -->
+
+
+    <!-- banner section -->
+    <section class="banner-section spad">
+        <div class="container">
+            <div class="section-title mb-0 pb-2">
+                <h2>Join Our Community Now!</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec malesuada lorem maximus mauris scelerisque, at rutrum nulla dictum. Ut ac ligula sapien. Suspendisse cursus faucibus finibus.</p>
+            </div>
+            <div class="text-center pt-5">
+                <a href="#" class="site-btn">Register Now</a>
+            </div>
+        </div>
+    </section>
+    <!-- banner section end -->
+
+
+    <!-- footerOai.html -->
     <div th:replace="common/footerOai2 :: footerOai2"></div>
 </body>
+<!--====== Javascripts & Jquery ======-->
+<script th:src="@{home_course/js/jquery-3.2.1.min.js}"></script>
+<script th:src="@{home_course/js/bootstrap.min.js}"></script>
+<!-- <script th:src="@{home_course/js/mixitup.min.js}"></script> -->
+<script th:src="@{home_course/js/circle-progress.min.js}"></script>
+<script th:src="@{home_course/js/owl.carousel.min.js}"></script>
+<script th:src="@{home_course/js/main.js}"></script>
+<script th:src="@{Header_Footer/js/bootstrap.bundle.min.js}"></script>
 
 </html>

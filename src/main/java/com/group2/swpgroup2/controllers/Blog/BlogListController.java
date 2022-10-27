@@ -25,7 +25,7 @@ public class BlogListController {
     @Autowired
     private CategoryRepository categoryRepo;
 
-    @GetMapping("/blog")
+    @GetMapping("/blogs")
     public String BlogList(Model model, @RequestParam(name = "category", required = false) String category,
             @RequestParam(name = "page", required = false) Integer page) {
         List<Blog> blogs;
