@@ -38,13 +38,9 @@ public class Course {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "courseID")
     private int Id;
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
-    @JoinTable(
-        name = "CourseCategory", 
-        joinColumns = @JoinColumn(name = "courseID"), 
-        inverseJoinColumns = @JoinColumn(name = "categoryID")
-    )
-    private Set<Category> CourseCategories = new HashSet<>();
+    @OneToOne
+    @JoinColumn(name = "categoryID")
+    private Category categoryID;
     @Column(name = "course_name")
     private String CourseName;
     //@Column(name = "course_manager")

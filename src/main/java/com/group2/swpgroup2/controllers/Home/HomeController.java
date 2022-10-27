@@ -30,7 +30,7 @@ public class HomeController {
     private CourseRepository courseRepo;
 
 
-    @GetMapping("/home")
+    @GetMapping("")
     public String Home(Model model, @CookieValue(value = "username", defaultValue = "") String username) {
         // list first 6 category that have hightest numCourse
         List<Category> categories = categoryRepo.findTop6ByOrderByNumCourseDesc();
@@ -50,7 +50,7 @@ public class HomeController {
         return "Home_Course/index";
         // return "common/headerOai2";
     }
-
+    
     @GetMapping("/home2")
     public String Home2(Model model) {
         return "common/headerOai2";

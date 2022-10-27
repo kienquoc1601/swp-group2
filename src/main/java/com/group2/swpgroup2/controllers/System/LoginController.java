@@ -24,40 +24,40 @@ public class LoginController {
     private StudentRepository studentRepo;
 
     @GetMapping("/login")
-    public String Login() {
-        return "OaiTemp/login";
+    public String login() {
+        return "Login/login";
     }
 
-    @PostMapping("/login")
-    public String Login(@ModelAttribute("account") Account account, HttpServletResponse response, Model model) {
-        Account accountDB = accountRepo.findByUsername(account.getUsername());
-        if (accountDB != null) {
-            if (accountDB.getPassword().equals(account.getPassword())) {
-                // if user click remember me, save cookie
-                // if (account.isRememberMe()) {
-                    Cookie cookie = new Cookie("username", accountDB.getUsername());
-                    //set cookie expire in 1 day, path is root
-                    cookie.setMaxAge(60 * 60 * 24);
-                    cookie.setPath("/");
-                    response.addCookie(cookie);
-                    cookie = new Cookie("password", accountDB.getPassword());
-                    cookie.setMaxAge(60 * 60 * 24);
-                    cookie.setPath("/");
-                    response.addCookie(cookie);
-                // }
-                model.addAttribute("account", accountDB);
-                //add model student if found student by username
-                Student student = studentRepo.findByUsername(accountDB.getUsername());
-                if (student != null) {
-                    //add student to model
-                    model.addAttribute("student", student);
-                } else {
-                    //return to login page if not found student
-                    return "redirect:/login";
-                }
-                return "redirect:/home";
-            }
-        }
-        return "redirect:/login";
-    }
+    // @PostMapping("/login")
+    // public String Login(@ModelAttribute("account") Account account, HttpServletResponse response, Model model) {
+    //     Account accountDB = accountRepo.findByUsername(account.getUsername());
+    //     if (accountDB != null) {
+    //         if (accountDB.getPassword().equals(account.getPassword())) {
+    //             // if user click remember me, save cookie
+    //             // if (account.isRememberMe()) {
+    //                 Cookie cookie = new Cookie("username", accountDB.getUsername());
+    //                 //set cookie expire in 1 day, path is root
+    //                 cookie.setMaxAge(60 * 60 * 24);
+    //                 cookie.setPath("/");
+    //                 response.addCookie(cookie);
+    //                 cookie = new Cookie("password", accountDB.getPassword());
+    //                 cookie.setMaxAge(60 * 60 * 24);
+    //                 cookie.setPath("/");
+    //                 response.addCookie(cookie);
+    //             // }
+    //             model.addAttribute("account", accountDB);
+    //             //add model student if found student by username
+    //             Student student = studentRepo.findByUsername(accountDB.getUsername());
+    //             if (student != null) {
+    //                 //add student to model
+    //                 model.addAttribute("student", student);
+    //             } else {
+    //                 //return to login page if not found student
+    //                 return "redirect:/login";
+    //             }
+    //             return "redirect:/home";
+    //         }
+    //     }
+    //     return "redirect:/login";
+    // }
 }
