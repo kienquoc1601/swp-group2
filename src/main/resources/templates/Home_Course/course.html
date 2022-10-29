@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>WebUni - Education Template</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="WebUni Education Template">
+    <meta name="keywords" content="webuni, education, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Favicon -->
+    <link th:href="@{../home_course/img/favicon.ico}" rel="shortcut icon" />
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Raleway:400,400i,500,500i,600,600i,700,700i,800,800i" rel="stylesheet">
+
+    <!-- Stylesheets -->
+    <link th:href="@{../Header_Footer/css/bootstrap.min.css}" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{../home_course/css/font-awesome.min.css}" />
+    <link rel="stylesheet" th:href="@{../home_course/css/owl.carousel.css}" />
+    <link rel="stylesheet" th:href="@{../home_course/css/style.css}" />
+
+</head>
+
+<body>
+    <!-- Page Preloder -->
+    <!-- <div id="preloder">
+        <div class="loader"></div>
+    </div> -->
+
+    <!-- headerOai.html -->
+    <div th:replace="common/headerOai3 :: headerOai3"></div>
+
+    <!-- single course section -->
+    <section class="single-course spad pb-0">
+        <div class="container">
+            <div class="course-meta-area" style="border-radius: 2%;">
+                <div class="row">
+                    <div class="col-lg-10 offset-lg-1">
+                        <div class="course-note" style="border-radius: 2%;">Feature Course</div>
+                        <h3 th:utext="${course.CourseName}"></h3>
+                        <div class="course-metas">
+                            <div class="course-meta">
+                                <div class="course-author">
+                                    <div class="ca-pic set-bg" th:data-setbg="${course.getCourseManager().getImgSrc()}"></div>
+                                    <h6>Teacher</h6>
+                                    <p th:utext="${course.getCourseManager().getName() +',  <span><strong>'+ course.getCourseManager().getOrgName() +'</strong></span>'}">CourseManager </p>
+                                </div>
+                            </div>
+                            <div class="course-meta">
+                                <div class="cm-info">
+                                    <h6>Category</h6>
+                                    <p th:utext="${categoryOfCourse.getCategory_name()}">Category</p>
+                                </div>
+                            </div>
+                            <div class="course-meta">
+                                <div class="cm-info">
+                                    <h6>Students</h6>
+                                    <p th:utext="${'<strong>' + numberOfStudentEnroll + '</strong>' + ' Enrolled Student'}">Number of student enroll this course</p>
+                                </div>
+                            </div>
+                            <div class="course-meta">
+                                <div class="cm-info">
+                                    <h6>Reviews</h6>
+                                    <p>Reviews <span class="rating">
+                                        <!-- chuyển rating của course thành số sao tương ứng -->
+                                        <i class="fa fa-star" th:if="${course.rating > 0}"></i>
+                                        <i class="fa fa-star" th:if="${course.rating > 1}"></i>
+                                        <i class="fa fa-star" th:if="${course.rating > 2}"></i>
+                                        <i class="fa fa-star" th:if="${course.rating > 3}"></i>
+                                        <i class="fa fa-star" th:if="${course.rating > 4}"></i>
+                                        <i class="fa fa-star is-fade" th:if="${course.rating <= 1}"></i>
+                                        <i class="fa fa-star is-fade" th:if="${course.rating <= 2}"></i>
+                                        <i class="fa fa-star is-fade" th:if="${course.rating <= 3}"></i>
+                                        <i class="fa fa-star is-fade" th:if="${course.rating <= 4}"></i>
+                                        </span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="btn btn-outline-primary btn-lg" th:text="${'Price: $' + course.price}">Price</button>
+                        <button class="btn btn-success btn-lg">Buy this course</button>
+                    </div>
+                </div>
+            </div>
+            <img th:src="${course.ImgSrc}" alt="CourseImage" class="course-preview">
+            <div class="row">
+                <div class="col-lg-10 offset-lg-1 course-list">
+                    <div class="cl-item">
+                        <h4>Course Description</h4>
+                        <p th:utext="${#strings.abbreviate(course.Description,200)}"></p>
+                    </div>
+                    <div class="cl-item">
+                        <h4>Certification</h4>
+                        <p>Phasellus sollicitudin et nunc eu efficitur. Sed ligula nulla, molestie quis ligula in, eleifend rhoncus ipsum. Donec ultrices, sem vel efficitur molestie, massa nisl posuere ipsum, ut vulputate mauris ligula a metus. Aenean vel
+                            congue diam, sed bibendum ipsum. Nunc vulputate aliquet tristique. Integer et pellentesque urna. Lorem ipsum dolor sit amet, consectetur. Phasellus sollicitudin et nunc eu efficitur. Sed ligula nulla, molestie quis ligula in,
+                            eleifend rhoncus ipsum. Donec ultrices, sem vel efficitur molestie, massa nisl posuere ipsum.</p>
+                    </div>
+                    <div class="cl-item">
+                        <h4 style="margin-bottom: 10px;">The Manager</h4>
+                        <!-- an avatar image of Manager at col 2 -->
+                        <div class="row">
+                            <div class="col-md-4">
+                                <img th:src="${course.getCourseManager().getImgSrc()}" alt="ManagerAvatar" class="course-preview" style="width: 100%; height: 100%; object-fit: cover;">
+                            </div>
+                            <div class="col-md-8">
+                                <p th:utext="${course.getCourseManager().getName() +', come form <span><strong>'+ course.getCourseManager().getOrgName() +' </strong></span> Organization'}">CourseManager </p>
+                                <!-- dòng chữ "Short Description" in nghiêng -->
+                                <p style="font-style: italic;">Short Description</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Buy this course button in center row -->
+                <div class="row">
+                    <div class="col-md-12">
+                        <button class="btn btn-success btn-lg" style="margin: 2% auto; display: block;">Buy this course</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+    <!-- single course section end -->
+
+
+    <!-- Page -->
+    <section class="realated-courses spad">
+        <div class="course-warp">
+            <h2 class="rc-title">Realated Courses</h2>
+            <div class="rc-slider owl-carousel">
+                <!-- course -->
+                <div class="course-item" th:each="course : ${relatedCourses}" th:onclick="|window.location.href='@{/course/{name}(name=${course.CourseName})}'|" style="cursor: pointer;">
+                    <div class="course-thumb set-bg" th:data-setbg="${course.ImgSrc}">
+                        <div class="price" th:if="${course.price == 0.0}" style="border-radius: 20%;">Free</div>
+                        <div class="price" th:if="${course.price != 0.0}" th:text="${'$' + course.price}" style="border-radius: 20%;"></div>
+                        <button class="btn btn-success btn-lg">Add to cart</button>
+                    </div>
+                    <div class="course-info">
+                        <div class="course-text">
+                            <h5 th:utext="${#strings.abbreviate(course.CourseName,60)}">Title</h5>
+                            <p th:utext="${#strings.abbreviate(course.Description,60)}">Description</p>
+                            <!-- <div class="students">120 Students</div> -->
+                        </div>
+                        <div class="course-author">
+                            <div class="ca-pic set-bg" th:data-setbg="${course.getCourseManager().getImgSrc()}"></div>
+                            <p th:utext="${course.getCourseManager().getName() +',  <span><strong>'+ course.getCourseManager().getOrgName() +'</strong></span>'}">CourseManager </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Page end -->
+
+    <!-- banner section -->
+    <section class="banner-section spad">
+        <div class="container">
+            <div class="section-title mb-0 pb-2">
+                <h2>Join Our Community Now!</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec malesuada lorem maximus mauris scelerisque, at rutrum nulla dictum. Ut ac ligula sapien. Suspendisse cursus faucibus finibus.</p>
+            </div>
+            <div class="text-center pt-5">
+                <a href="#" class="site-btn">Register Now</a>
+            </div>
+        </div>
+    </section>
+    <!-- banner section end -->
+    <!-- footerOai.html -->
+    <div th:replace="common/footerOai2 :: footerOai2"></div>
+</body>
+
+<!--====== Javascripts & Jquery ======-->
+<script th:src="@{../home_course/js/jquery-3.2.1.min.js}"></script>
+<script th:src="@{../home_course/js/bootstrap.min.js}"></script>
+<!-- <script th:src="@{../home_course/js/mixitup.min.js}"></script> -->
+<script th:src="@{../home_course/js/circle-progress.min.js}"></script>
+<script th:src="@{../home_course/js/owl.carousel.min.js}"></script>
+<script th:src="@{../home_course/js/main.js}"></script>
+<script th:src="@{../Header_Footer/js/bootstrap.bundle.min.js}"></script>
+
+</html>
