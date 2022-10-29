@@ -85,6 +85,27 @@ public interface CourseRepository extends JpaRepository<Course, Integer> {
     @Query(value = "SELECT c.* FROM [OnLearningDB].[dbo].[Course] as c join [OnLearningDB].[dbo].[CourseStudent] as cs on c.courseID = cs.courseID join [OnLearningDB].[dbo].[Student] as s on cs.studentID = s.studentID WHERE s.username = ?1", nativeQuery = true)
     List<Course> findAllCourseOfStudent(String username);
 
+    //list all course have name contain keyword
+    @Query(value = "SELECT * FROM [OnLearningDB].[dbo].[Course] WHERE course_name LIKE %?1%", nativeQuery = true)
+    List<Course> findCourseByName(String searchCourse);
 
+    //list all course have name contain keyword and courseID = id
+    @Query(value = "SELECT * FROM [OnLearningDB].[dbo].[Course] WHERE course_name LIKE %?1% AND courseID = ?2", nativeQuery = true)
+    List<Course> findCourseByCategoryAndName(String searchCourse, Integer category);
 
+    // list những course có category chứa searchCourse
+    @Query(value = "SELECT c.* FROM [OnLearningDB].[dbo].[Course] as c join [OnLearningDB].[dbo].[Category] as ca on c.categoryID = ca.categoryID WHERE ca.category_name LIKE %?1%", nativeQuery = true)
+    List<Course> findCourseByCategoryName(String searchCourse);
+
+    // list những course có courseManager name chứa searchCourse
+    @Query(value = "SELECT c.* FROM [OnLearningDB].[dbo].[Course] AS c JOIN [OnLearningDB].[dbo].[Manager] AS m ON c.course_manager = m.managerID WHERE m.name LIKE %?1% OR m.org_name LIKE %?1%", nativeQuery = true)
+    List<Course> findCourseByCourseManagerName(String searchCourse);
+
+    //list course found by course name, manager name, org name, category name
+    @Query(value = "SELECT c.* FROM [OnLearningDB].[dbo].[Course] AS c JOIN [OnLearningDB].[dbo].[Manager] AS m ON c.course_manager = m.managerID JOIN [OnLearningDB].[dbo].[Category] AS ca ON c.categoryID = ca.categoryID  WHERE c.course_name LIKE %?1% OR m.name LIKE %?1% OR m.org_name LIKE %?1% OR ca.category_name LIKE %?1% ", nativeQuery = true)
+    List<Course> findCourseByAll(String searchCourse);
+
+    //list top 8 course have highest rating
+    @Query(value = "SELECT TOP(8) * FROM [OnLearningDB].[dbo].[Course] ORDER BY rating DESC", nativeQuery = true)
+    List<Course> findTop8CourseByRating();
 }

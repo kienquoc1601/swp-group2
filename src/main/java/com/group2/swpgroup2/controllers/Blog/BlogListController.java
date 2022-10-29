@@ -3,6 +3,8 @@ package com.group2.swpgroup2.controllers.Blog;
 import java.sql.Date;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,7 +29,8 @@ public class BlogListController {
 
     @GetMapping("/blogs")
     public String BlogList(Model model, @RequestParam(name = "category", required = false) String category,
-            @RequestParam(name = "page", required = false) Integer page) {
+            @RequestParam(name = "page", required = false) Integer page, HttpServletRequest request) {
+        model.addAttribute("currentUrl", request.getRequestURI().toString());
         List<Blog> blogs;
         if (category != null && !category.equals("all")) {
             blogs = blogRepo.findByCategoryOrderByDateDesc(category);
@@ -66,7 +69,8 @@ public class BlogListController {
     }
 
     @GetMapping("/blog/detail/{id}")
-    public String BlogDetail(Model model, @PathVariable("id") int id) {
+    public String BlogDetail(Model model, @PathVariable("id") int id, HttpServletRequest request) {
+        model.addAttribute("currentUrl", request.getRequestURI().toString());
         // if blog_id is not found, redirect to blog list
         if (!blogRepo.existsById(id)) {
             return "redirect:/blog";
@@ -86,7 +90,8 @@ public class BlogListController {
     }
 
     @GetMapping(value = "/blog/add")
-    public String addBlog(Model model) {
+    public String addBlog(Model model, HttpServletRequest request) {
+        model.addAttribute("currentUrl", request.getRequestURI().toString());
         List<Category> categories = categoryRepo.findAll();
         model.addAttribute("categories", categories);
         return "Blog/blogadd";
@@ -104,13 +109,14 @@ public class BlogListController {
         newBlog.setPoster_uname(blog.getPoster_uname());
         newBlog.setBlog_content(blog.getBlog_content());
         newBlog.setCategory(blog.getCategory());
-        //set status
+        // set status
         newBlog.setStatus("public");
         // date = today
         newBlog.setDate(new Date(System.currentTimeMillis()));
         blogRepo.save(newBlog);
         // lấy blog vừa thêm vào để lấy id
-        Blog blogAdded = blogRepo.findByTitleAndDateAndStatus(newBlog.getTitle(), newBlog.getDate(), newBlog.getStatus());
+        Blog blogAdded = blogRepo.findByTitleAndDateAndStatus(newBlog.getTitle(), newBlog.getDate(),
+                newBlog.getStatus());
         return "redirect:/blog/detail?blog_id=" + blogAdded.getBlog_id();
     }
 }
