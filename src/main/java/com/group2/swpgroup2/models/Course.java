@@ -1,19 +1,19 @@
 package com.group2.swpgroup2.models;
 
 
-import java.util.HashSet;
-import java.util.Set;
+// import java.util.HashSet;
+// import java.util.Set;
 
-import javax.persistence.CascadeType;
+// import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
+// import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+// import javax.persistence.JoinTable;
+// import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -38,9 +38,15 @@ public class Course {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "courseID")
     private int Id;
-    @OneToOne
-    @JoinColumn(name = "categoryID")
-    private Category categoryID;
+    @Column(name = "categoryID")
+    private int categoryID;
+    // @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    // @JoinTable(
+    //     name = "CourseCategory", 
+    //     joinColumns = @JoinColumn(name = "courseID"), 
+    //     inverseJoinColumns = @JoinColumn(name = "categoryID")
+    // )
+    // private Set<Category> CourseCategories = new HashSet<>();
     @Column(name = "course_name")
     private String CourseName;
     //@Column(name = "course_manager")

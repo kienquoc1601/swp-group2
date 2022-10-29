@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    function addtoCart(courseId) {
+        $.ajax({
+            url: "/addToCart",
+            method: "POST",
+            data: {
+                courseId: courseId,
+            },
+            success: function(data) {
+                if (data == "fail") {
+                    alert("Course already in cart");
+                } else {
+                    // alert("Add to cart successfully");
+                }
+            },
+            error: function(data) {
+                alert("Add to cart fail");
+            }
+        });
+    }
+
+    function removeCourseCartCookie() {
+        $.ajax({
+            url: "/removeCart",
+            method: "GET",
+            success: function(data) {
+                //redirect to courses page
+                window.location.href = "/courses";
+            },
+            error: function(data) {
+                alert("remove course cart cookie fail");
+            }
+        });
+    }
+</script>
+
+<body>
+    <!-- headerOai.html -->
+    <div th:replace="common/headerOai3 :: headerOai3"></div>
+
+    <div class="container mt-3">
+
+        <button type="button" class="btn btn-danger" onclick="removeCourseCartCookie()">Remove Course Cart Cookie</button>
+        <!-- list all coursesBought -->
+        <h5>Course in cart</h5>
+        <div th:id="test"></div>
+
+        <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                <img src="https://github.com/mdo.png" class="rounded me-2" alt="...">
+                <strong class="me-auto">Bootstrap</strong>
+                <small class="text-muted">11 mins ago</small>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+                Hello, world! This is a toast message.
+            </div>
+        </div>
+        <!-- button remove courseCartCookie -->
+        <!-- show size of courseList if it not empty or null -->
+        <!-- <h7 th:if="${#lists.size(courseCartList) != 0}" th:utext="'<strong> Size: </strong>'+${#lists.size(courseCartList)}"></h7> -->
+        <!-- <h6 th:utext="${#lists.size(courseList)}"></h6> -->
+        <!-- <div th:each="course : ${courseCartList}">
+            <h5 th:utext="${course.Id}"></h5>
+            <h6 th:utext="${course.CourseName}"></h6>
+        </div> -->
+        <h4>All course</h4>
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Manager</th>
+                        <th>Description</th>
+                        <th>Img_src</th>
+                        <th>Rating</th>
+                        <th>Price</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="course : ${courses}">
+                        <td th:utext="${course.Id}"></td>
+                        <td th:utext="${course.CourseName}"></td>
+                        <td th:utext="${course.CourseManager.Name}"></td>
+                        <td th:utext="${course.Description}"></td>
+                        <td th:utext="${course.ImgSrc}"></td>
+                        <td th:utext="${course.rating}"></td>
+                        <td th:utext="${course.price}"></td>
+                        <td>
+                            <a href="#" class="btn btn-primary">Detail</a>
+                            <button class="btn btn-success" th:onclick="'javascript:addtoCart(' + ${course.Id} + ')'">Add to cart</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!-- footerOai2.html -->
+    <div th:replace="common/footerOai2 :: footerOai2"></div>
+</body>
+
+</html>
