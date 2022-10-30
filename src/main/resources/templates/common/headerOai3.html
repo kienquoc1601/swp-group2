@@ -73,14 +73,15 @@
                     </a>
                     <div class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
                         <nav class="nav nav-masthead justify-content-center float-md-end col-12 col-lg-auto">
-                            <a class="nav-link px-2 active" aria-current="page" th:href="@{/home}">Home</a>
-                            <a class="nav-link px-2" th:href="@{/courses}">Courses</a>
-                            <a class="nav-link px-2" th:href="@{/blogs}">Blog</a>
+                            <a class="nav-link px-2" aria-current="page" th:href="@{/home}" th:classappend="${#strings.equals(currentUrl,'/home')} ?  active: ''">Home</a>
+                            <a class="nav-link px-2" th:href="@{/courses}" th:classappend="${#strings.equals(currentUrl,'/courses')} ?  active: ''">Courses</a>
+                            <a class="nav-link px-2" th:href="@{/blogs}" th:classappend="${#strings.equals(currentUrl,'/blogs')} ?  active: ''">Blogs</a>
                         </nav>
                     </div>
 
                     <nav class="nav nav-masthead ">
-                        <a class="nav-link px-2" th:href="@{/mycourses}">My Course</a>
+                        <a style="margin-right: 20px;" class="nav-link px-2" th:href="@{/blog/add}" th:classappend="${#strings.equals(currentUrl,'/blog/add')} ?  active: ''">Write blog</a>
+                        <a style="margin-right: 20px;" class="nav-link px-2" th:href="@{/mycourses}" th:classappend="${#strings.equals(currentUrl,'/mycourses')} ?  active: ''">My Course</a>
                     </nav>
                     <a role="button" class="dropdown-toggle" th:onclick="'javascript:showCart()'" th:style="'margin-right: 2%;'" id="alertsDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fa fa-shopping-cart fa-2x"></i>

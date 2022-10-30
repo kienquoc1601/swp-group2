@@ -38,8 +38,9 @@ public class Course {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "courseID")
     private int Id;
-    @Column(name = "categoryID")
-    private int categoryID;
+    @OneToOne
+    @JoinColumn(name = "categoryID")
+    private Category Category;
     // @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     // @JoinTable(
     //     name = "CourseCategory", 
@@ -61,4 +62,6 @@ public class Course {
     private float rating;
     @Column(name = "price")
     private float price;
+    @Column(name = "num_of_students")
+    private int numOfStudents;
 }

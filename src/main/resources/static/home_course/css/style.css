@@ -481,7 +481,7 @@ ol {
 ---------------------*/
 
 .course-warp {
-    max-width: 1559px;
+    max-width: 1600px;
     padding: 0 15px;
     margin: 0 auto -30px;
 }
@@ -1472,13 +1472,13 @@ ol {
   Responsive
 ---------------------*/
 
-@media (min-width: 150%) {
+@media (min-width: 180%) {
     .container {
-        max-width: 170%;
+        max-width: 200%;
     }
 }
 
-@media (max-width: 150%) {
+@media (max-width: 200%) {
     .realated-courses .owl-next {
         position: relative;
         margin: 0 auto;

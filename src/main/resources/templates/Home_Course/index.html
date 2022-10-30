@@ -7,11 +7,8 @@
     <meta name="description" content="WebUni Education Template">
     <meta name="keywords" content="webuni, education, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Favicon -->
-    <link th:href="@{/home_course/img/favicon.ico}" rel="shortcut icon" />
-
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Raleway:400,400i,500,500i,600,600i,700,700i,800,800i" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Sen" rel="stylesheet">
 
     <!-- Stylesheets -->
     <link th:href="@{/Header_Footer/css/bootstrap.min.css}" rel="stylesheet">
@@ -21,11 +18,6 @@
 
 
 </head>
-<script>
-    function checkout(link) {
-        window.location.href = link;
-    }
-</script>
 
 <body>
     <!-- Page Preloder -->
@@ -41,130 +33,151 @@
         <div class="p-5 mb-4 bg-light rounded-3">
             <div class="container-fluid" th:style="'padding-top: 1%!important; padding-bottom: 1%!important;'">
                 <h1 class="fw-bold" th:style="'font-size: 1.5rem;'">News announcement</h1>
-                <p class="col-md-12 " th:style="'font-size: 1rem!important;'" th:text="${username}">Using a series of utilities, you can create this jumbotron, just like the one in previous versions of Bootstrap. Check out the examples below for how you can remix and restyle it to your liking.</p>
+                <p class="col-md-12 " th:style="'font-size: 1rem!important;'" th:text="${username}"></p>
                 <button class="btn btn-outline-secondary" type="button">Example button</button>
             </div>
         </div>
     </div>
-
-    <!-- course section -->
-    <section class="course-section spad">
-        <div class="container">
-            <div class="section-title mb-0">
-                <h2>Featured Courses</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec malesuada lorem maximus mauris scelerisque, at rutrum nulla dictum. Ut ac ligula sapien. Suspendisse cursus faucibus finibus.</p>
-            </div>
-        </div>
-        <div class="course-warp">
-            <ul class="course-filter controls">
-                <li class="control active" data-filter="all">All</li>
-                <!-- list categories -->
-                <li class="control" th:each="category : ${categories}" th:utext="${category.category_name}">Category name</li>
-                <!-- end list categories .th:data-filter=".+${category.category_name}"-->
-            </ul>
-            <div class="row course-items-area">
-                <!-- list course -->
-                <div class="mix col-lg-3 col-md-4 col-sm-6" th:each="course : ${courses}">
-                    <div class="course-item">
-                        <!-- nhớ thay chỗ blog_image, title, description ở dưới  . th:classappend="${course.category}"-->
-                        <div class="course-thumb set-bg" th:data-setbg="${course.ImgSrc}">
-                            <!-- <div class="price">Price: $15</div> -->
-                        </div>
-                        <div class="course-info">
-                            <a th:href="@{/chapterlist?cid=__${course.Id}__}">
-                                <div class="course-text">
-                                    <h5 th:utext="${#strings.abbreviate(course.CourseName,50)}">Title</h5>
-                                    <p th:utext="${#strings.abbreviate(course.Description,40)}">Discription</p>
-
-                                    <!-- <div class="students">120 Students</div> -->
-                                </div>
-                                <div class="course-author">
-                                    <div class="ca-pic set-bg" th:data-setbg="@{/home_course/img/authors/1.jpg}"></div>
-                                    <p>Group2, <span>Developer</span></p>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <!-- end list course -->
-            </div>
-            <!-- view more course link -->
-            <div class="text-center">
-                <a th:href="@{/courses}" class="btn bg-secondary text-white">View More Courses</a>
-            </div>
-        </div>
-    </section>
-    <!-- course section end -->
     <!-- categories section -->
     <section class="categories-section spad">
         <div class="container">
-            <div class="section-title">
+            <div class="section-title" style="margin-bottom: 50px;">
                 <h2>Our Course Categories</h2>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec malesuada lorem maximus mauris scelerisque, at rutrum nulla dictum. Ut ac ligula sapien. Suspendisse cursus faucibus finibus.</p>
             </div>
             <div class="row">
                 <!-- list categories -->
-                <div class="col-lg-4 col-md-6" th:each="category : ${categories}" th:onclick="checkout([[@{/course(cate_id=${category.categoryID})}]])" style="cursor: pointer;">
+                <div class="col-lg-4 col-md-6" th:each="category : ${categories}" th:onclick="|window.location.href='@{/courses(category=${category.categoryID})}'|" style="cursor: pointer;">
                     <div class="categorie-item">
                         <div class="ci-thumb set-bg" th:data-setbg="${category.image}"></div>
                         <div class="ci-text">
                             <h5 th:utext="${category.category_name}">Category title</h5>
-                            <p th:utext="${category.discription}">Discription</p>
+                            <p th:utext="${#strings.abbreviate(category.discription,100)}">Discription</p>
                             <!-- num of course -->
-                            <span>Number of course</span>
+                            <span th:utext="${category.numCourse} + ' courses'">Number of course</span>
                         </div>
                     </div>
                 </div>
                 <!-- end list categories -->
             </div>
             <div class="row">
-                <!-- button in middle of row -->
-                <div class="col-lg-12 text-center">
-                    <a href="#" class="site-btn">Browse All Categories</a>
+                <div class="col-lg-12 text-center" th:onclick="|window.location.href='@{/courses}'|" style="cursor: pointer;">
+                    <button class="btn btn-secondary btn-lg">Browse All Categories</button>
                 </div>
             </div>
     </section>
     <!-- categories section end -->
-
-
-    <!-- signup section -->
-    <!-- <section class="signup-section spad">
-        <div class="signup-bg set-bg" data-setbg="img/signup-bg.jpg"></div>
-        <div class="container-fluid">
+    <!-- course section -->
+    <section class="course-section spad pb-0" style="margin-bottom: 80px;">
+        <div class="course-warp">
+            <div class="row col-md-12 section-title" style="margin-bottom: 50px;">
+                <h2 class="text-center">Our featured Course</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec malesuada lorem maximus mauris scelerisque, at rutrum nulla dictum. Ut ac ligula sapien. Suspendisse cursus faucibus finibus.</p>
+            </div>
+            <div class="row course-items-area">
+                <!-- course -->
+                <div class="mix col-lg-3 col-md-4 col-sm-6" th:each="course : ${courses}">
+                    <div class="course-item" th:onclick="|window.location.href='@{/course/{name}(name=${course.CourseName})}'|" style="cursor: pointer;">
+                        <div class="course-thumb set-bg" th:data-setbg="${course.ImgSrc}">
+                            <!-- if price = 0.0 then price is free -->
+                            <div style="position:absolute; top:0; left: 20px; margin-top: 10px;">
+                                <button class="btn btn-danger" th:text="${(course.price == 0.0) ? ('Free') : ('$' + course.price)}" style="border-radius: 20%;"></button>
+                                <button class="btn btn-outline-success">Add</button>
+                            </div>
+                            <span class="rating" style="position:absolute; top: 0; right: 20px; margin-top: 10px;">
+                                <!-- chuyển rating của course thành số sao tương ứng -->
+                                <i class="fa fa-star" th:if="${course.rating > 0}"></i>
+                                <i class="fa fa-star" th:if="${course.rating > 1}"></i>
+                                <i class="fa fa-star" th:if="${course.rating > 2}"></i>
+                                <i class="fa fa-star" th:if="${course.rating > 3}"></i>
+                                <i class="fa fa-star" th:if="${course.rating > 4}"></i>
+                                <i class="fa fa-star is-fade" th:if="${course.rating <= 1}"></i>
+                                <i class="fa fa-star is-fade" th:if="${course.rating <= 2}"></i>
+                                <i class="fa fa-star is-fade" th:if="${course.rating <= 3}"></i>
+                                <i class="fa fa-star is-fade" th:if="${course.rating <= 4}"></i>
+                            </span>
+                        </div>
+                        <div class="course-info">
+                            <div class="course-text">
+                                <h5 th:utext="${#strings.abbreviate(course.CourseName,30)}">Title</h5>
+                                <p th:utext="${#strings.abbreviate(course.Description,65)}">Description</p>
+                                <div class="students" th:text="${(course.numOfStudents == 0) ? ('New Course') : (course.numOfStudents + ' Students')}">Number Of Students</div>
+                            </div>
+                            <div class="course-author">
+                                <div class="ca-pic set-bg" th:data-setbg="${course.getCourseManager().getImgSrc()}">
+                                </div>
+                                <p th:utext="${course.getCourseManager().getName() +',  <span><strong>'+ course.getCourseManager().getOrgName() +'</strong></span>'}">
+                                    CourseManager </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="row">
-                <div class="col-lg-6">
-                    <div class="signup-warp">
-                        <div class="section-title text-white text-left">
-                            <h2>Sign up to became a teacher</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec malesuada lorem maximus mauris scelerisque, at rutrum nulla dictum. Ut ac ligula sapien. Suspendisse cursus faucibus finibus.</p>
-                        </div> -->
-    <!-- signup form -->
-    <!-- <form class="signup-form">
-        <input type="text" placeholder="Your Name">
-        <input type="text" placeholder="Your E-mail">
-        <input type="text" placeholder="Your Phone">
-        <label for="v-upload" class="file-up-btn">Upload Course</label>
-        <input type="file" id="v-upload">
-        <button class="site-btn">Search Couse</button>
-    </form>
-    </div>
-    </div>
-    </div>
-    </div>
-    </section> -->
-    <!-- signup section end -->
+                <div class="col-lg-12 text-center" th:onclick="|window.location.href='@{/courses}'|" style="cursor: pointer;">
+                    <button class="btn btn-secondary btn-lg">Browse All Courses</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- course section end -->
 
+    <!-- blog section -->
+    <section class="course-section spad">
+        <div class="course-warp">
+            <!-- show blog list in card-body -->
+            <div class="row col-md-12 section-title" style="margin-bottom: 50px;">
+                <h2 class="text-center">Our Blog</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec malesuada lorem maximus mauris scelerisque, at rutrum nulla dictum. Ut ac ligula sapien. Suspendisse cursus faucibus finibus.</p>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-4 col-md-6" th:each="blog : ${blogs}">
+                    <div class="course-item" th:onclick="|window.location.href='@{/blog/detail/{id}(id=${blog.blog_id})}'|" style="cursor: pointer;">
+                        <div class="course-thumb set-bg" th:data-setbg="${blog.blog_image}"></div>
+                        <div class="course-text">
+                            <h4 th:utext="${blog.title}">Title</h4>
+                            <p>by <span th:utext="${blog.poster_uname}">Poster</span> on <span th:utext="${blog.date}">12 Aug 2018</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-12 text-center" th:onclick="|window.location.href='@{/blogs}'|" style="cursor: pointer;">
+                    <button class="btn btn-secondary btn-lg">Browse All Blogs</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- blog section end -->
+
+    <!-- banner section -->
+    <section class="banner-section spad">
+        <div class="container">
+            <div class="section-title mb-0 pb-2">
+                <h2>Join Our Community Now!</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec malesuada lorem maximus mauris scelerisque, at rutrum nulla dictum. Ut ac ligula sapien. Suspendisse cursus faucibus finibus.</p>
+            </div>
+            <div class="text-center pt-5">
+                <a href="#" class="site-btn">Register Now</a>
+            </div>
+        </div>
+    </section>
+    <!-- banner section end -->
+    <hr class="hr" />
     <!-- footerOai.html -->
     <div th:replace="common/footerOai2 :: footerOai2"></div>
 
 </body>
 <!--====== Javascripts & Jquery ======-->
 <script th:src="@{home_course/js/jquery-3.2.1.min.js}"></script>
-<script th:src="@{home_course/js/bootstrap.min.js}"></script>
-<script th:src="@{home_course/js/mixitup.min.js}"></script>
-<script th:src="@{home_course/js/circle-progress.min.js}"></script>
-<script th:src="@{home_course/js/owl.carousel.min.js}"></script>
+<script th:src="@{/blog/js/owl.carousel.min.js}"></script>
+<!-- <script th:src="@{home_course/js/bootstrap.min.js}"></script> -->
+<!-- <script th:src="@{home_course/js/mixitup.min.js}"></script> -->
+<!-- <script th:src="@{home_course/js/circle-progress.min.js}"></script> -->
+<!-- <script th:src="@{home_course/js/owl.carousel.min.js}"></script> -->
 <script th:src="@{home_course/js/main.js}"></script>
-<script th:src="@{Header_Footer/js/bootstrap.bundle.min.js}"></script>
+<!-- <script th:src="@{Header_Footer/js/bootstrap.bundle.min.js}"></script> -->
 
 </html>
