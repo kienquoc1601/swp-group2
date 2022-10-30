@@ -31,10 +31,10 @@ public class HomeController {
 
 
     @GetMapping("")
-    public String Home(Model model, @CookieValue(value = "username", defaultValue = "") String username) {
+    public String Home(Model model ,@CookieValue(value = "username", defaultValue = "") String username) {
         // list first 6 category that have hightest numCourse
-        List<Category> categories = categoryRepo.findTop6ByOrderByNumCourseDesc();
-        model.addAttribute("categories", categories);
+        //List<Category> categories = categoryRepo.findTop6ByOrderByNumCourseDesc();
+        //model.addAttribute("categories", categories);
         model.addAttribute("username", username);
         // may tôi chạy course thì cứ bị lỗi bean không tìm thấy
         // //list top 8 course that have hightest rating
