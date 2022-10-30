@@ -11,7 +11,7 @@
     <link th:href="@{../home_course/img/favicon.ico}" rel="shortcut icon" />
 
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Raleway:400,400i,500,500i,600,600i,700,700i,800,800i" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Sen" rel="stylesheet">
 
     <!-- Stylesheets -->
     <link th:href="@{../Header_Footer/css/bootstrap.min.css}" rel="stylesheet">
@@ -131,14 +131,27 @@
                 <!-- course -->
                 <div class="course-item" th:each="course : ${relatedCourses}" th:onclick="|window.location.href='@{/course/{name}(name=${course.CourseName})}'|" style="cursor: pointer;">
                     <div class="course-thumb set-bg" th:data-setbg="${course.ImgSrc}">
-                        <div class="price" th:if="${course.price == 0.0}" style="border-radius: 20%;">Free</div>
-                        <div class="price" th:if="${course.price != 0.0}" th:text="${'$' + course.price}" style="border-radius: 20%;"></div>
-                        <button class="btn btn-success btn-lg">Add to cart</button>
+                        <div style="position:absolute; top:0; left: 20px; margin-top: 10px;">
+                            <button class="btn btn-danger" th:text="${(course.price == 0.0) ? ('Free') : ('$' + course.price)}" style="border-radius: 20%;"></button>
+                            <button class="btn btn-outline-success">Add</button>
+                        </div>
+                        <span class="rating" style="position:absolute; top: 0; right: 20px; margin-top: 10px;">
+                            <!-- chuyển rating của course thành số sao tương ứng -->
+                            <i class="fa fa-star" th:if="${course.rating > 0}"></i>
+                            <i class="fa fa-star" th:if="${course.rating > 1}"></i>
+                            <i class="fa fa-star" th:if="${course.rating > 2}"></i>
+                            <i class="fa fa-star" th:if="${course.rating > 3}"></i>
+                            <i class="fa fa-star" th:if="${course.rating > 4}"></i>
+                            <i class="fa fa-star is-fade" th:if="${course.rating <= 1}"></i>
+                            <i class="fa fa-star is-fade" th:if="${course.rating <= 2}"></i>
+                            <i class="fa fa-star is-fade" th:if="${course.rating <= 3}"></i>
+                            <i class="fa fa-star is-fade" th:if="${course.rating <= 4}"></i>
+                            </span>
                     </div>
                     <div class="course-info">
                         <div class="course-text">
-                            <h5 th:utext="${#strings.abbreviate(course.CourseName,60)}">Title</h5>
-                            <p th:utext="${#strings.abbreviate(course.Description,60)}">Description</p>
+                            <h5 th:utext="${#strings.abbreviate(course.CourseName,30)}">Title</h5>
+                            <p th:utext="${#strings.abbreviate(course.Description,65)}">Description</p>
                             <!-- <div class="students">120 Students</div> -->
                         </div>
                         <div class="course-author">

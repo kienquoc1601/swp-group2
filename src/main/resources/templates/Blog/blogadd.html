@@ -9,9 +9,16 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel='stylesheet' href='//cdn.quilljs.com/1.3.6/quill.snow.css'>
     <link rel="stylesheet" th:href="@{/blog/css/blogadd.css}">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Sen" rel="stylesheet">
+
+    <!-- Stylesheets -->
+    <link th:href="@{/Header_Footer/css/bootstrap.min.css}" rel="stylesheet">
 </head>
 
 <body>
+    <!-- headerOai.html -->
+    <div th:replace="common/headerOai3 :: headerOai3"></div>
     <div class="container">
         <form th:action="@{/blog/add}" th:object="${blog}" method="post" name="blogadd" id="blogadd">
             <!-- title, blog_image, blog_description, choice category -->
@@ -43,13 +50,19 @@
                     <div id="editor-container" class="form-control form-control-lg" style="height: 500px;"></div>
                 </div>
                 <div class="row" th:style="'padding: 5px;'">
-                    <!-- 2 button ở phía dưới cùng bên phải -->
-                    <button class="col btn btn-success" type="button"> Save draft</button>
-                    <button class="col btn btn-primary" type="submit"> Submit</button>
+                    <div class="col-6">
+                        <!-- a button in middle of col -->
+                        <button class="btn btn-primary btn-lg" style="margin: 0 auto; display: block;">Save draft</button>
+                    </div>
+                    <div class="col-6">
+                        <button type="submit" class="btn btn-success btn-lg" style="margin: 0 auto; display: block;">Submit</button>
+                    </div>
                 </div>
             </div>
         </form>
     </div>
+    <!-- footerOai.html -->
+    <div th:replace="common/footerOai2 :: footerOai2"></div>
     <!-- get footer from common/footer.html -->
 </body>
 <script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js'></script>

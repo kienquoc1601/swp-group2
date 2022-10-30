@@ -1,8 +1,5 @@
 package com.group2.swpgroup2.filters;
 
-
-
-
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,11 +15,9 @@ import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
-
-
 @Configuration
 @EnableWebSecurity
-public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
+public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Autowired
 	DataSource dataSource;
 	@Override
@@ -54,52 +49,51 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 	
 	
 	@Override
-	protected void configure(AuthenticationManagerBuilder auth) throws Exception{
+	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth.jdbcAuthentication().dataSource(dataSource);
 	}
 
 	@Bean
-	public PasswordEncoder getPasswordEncoder(){
+	public PasswordEncoder getPasswordEncoder() {
 		return NoOpPasswordEncoder.getInstance();
 	}
-
-
 
 	// @Autowired
 	// DataSource dataSource;
 
 	// @Bean
 	// UserDetailsManager users(DataSource dataSource) {
-	// 	auth.
-	// 	return users;
+	// auth.
+	// return users;
 	// }
-    // @Bean
-	// public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-	// 	http
-	// 		.authorizeHttpRequests((requests) -> requests
-    //             .antMatchers("/**/*.js", "/**/*.css").permitAll()
-	// 			.antMatchers("/", "/home").permitAll()
-	// 			.anyRequest().authenticated()
-                
-	// 		)
-	// 		.formLogin((form) -> form
-	// 			.loginPage("/login")
-	// 			.permitAll()
-	// 		)
-	// 		.logout((logout) -> logout.permitAll());
+	// @Bean
+	// public SecurityFilterChain securityFilterChain(HttpSecurity http) throws
+	// Exception {
+	// http
+	// .authorizeHttpRequests((requests) -> requests
+	// .antMatchers("/**/*.js", "/**/*.css").permitAll()
+	// .antMatchers("/", "/home").permitAll()
+	// .anyRequest().authenticated()
 
-	// 	return http.build();
+	// )
+	// .formLogin((form) -> form
+	// .loginPage("/login")
+	// .permitAll()
+	// )
+	// .logout((logout) -> logout.permitAll());
+
+	// return http.build();
 	// }
 
 	// @Bean
 	// public UserDetailsService userDetailsService() {
-	// 	UserDetails user =
-	// 		 User.withDefaultPasswordEncoder()
-	// 			.username("user")
-	// 			.password("password")
-	// 			.roles("USER")
-	// 			.build();
+	// UserDetails user =
+	// User.withDefaultPasswordEncoder()
+	// .username("user")
+	// .password("password")
+	// .roles("USER")
+	// .build();
 
-	// 	return new InMemoryUserDetailsManager(user);
+	// return new InMemoryUserDetailsManager(user);
 	// }
 }

@@ -37,7 +37,7 @@
     --breakpoint-xs: 0;
     --breakpoint-sm: 576px;
     --breakpoint-md: 768px;
-    --breakpoint-lg: 992px;
+    --breakpoint-lg: 1200px;
     --breakpoint-xl: 1200px;
     --font-family-sans-serif: "Nunito", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace
@@ -71,7 +71,7 @@ section {
 
 body {
     margin: 0;
-    font-family: Nunito, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-family: "Sen";
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5;
@@ -605,12 +605,12 @@ pre code {
     }
 }
 
-@media (min-width:992px) {
+@media (min-width:1000px) {
     .container,
     .container-lg,
     .container-md,
     .container-sm {
-        max-width: 960px
+        max-width: 1200
     }
 }
 
@@ -620,7 +620,7 @@ pre code {
     .container-md,
     .container-sm,
     .container-xl {
-        max-width: 1140px
+        max-width: 1600px
     }
 }
 
@@ -1256,7 +1256,7 @@ pre code {
     }
 }
 
-@media (min-width:992px) {
+@media (min-width:1200px) {
     .col-lg {
         flex-basis: 0;
         flex-grow: 1;
@@ -3272,7 +3272,7 @@ input[type=submit].btn-block {
     }
 }
 
-@media (min-width:992px) {
+@media (min-width:1200px) {
     .dropdown-menu-lg-left {
         right: auto;
         left: 0
@@ -4523,7 +4523,7 @@ input[type=submit].btn-block {
     }
 }
 
-@media (min-width:992px) {
+@media (min-width:1200px) {
     .navbar-expand-lg {
         flex-flow: row nowrap;
         justify-content: flex-start
@@ -5666,7 +5666,7 @@ a.badge-dark:focus {
     }
 }
 
-@media (min-width:992px) {
+@media (min-width:1200px) {
     .list-group-horizontal-lg {
         flex-direction: row
     }
@@ -5940,7 +5940,8 @@ a.close.disabled {
 }
 
 .modal-open {
-    overflow: hidden
+    overflow: auto;
+    padding-right: 0 !important;
 }
 
 .modal-open .modal {
@@ -6139,7 +6140,7 @@ a.close.disabled {
     }
 }
 
-@media (min-width:992px) {
+@media (min-width:1200px) {
     .modal-lg,
     .modal-xl {
         max-width: 800px
@@ -6148,7 +6149,7 @@ a.close.disabled {
 
 @media (min-width:1200px) {
     .modal-xl {
-        max-width: 1140px
+        max-width: 1500px
     }
 }
 
@@ -7061,7 +7062,7 @@ button.bg-dark:hover {
     }
 }
 
-@media (min-width:992px) {
+@media (min-width:1200px) {
     .d-lg-none {
         display: none!important
     }
@@ -7540,7 +7541,7 @@ button.bg-dark:hover {
     }
 }
 
-@media (min-width:992px) {
+@media (min-width:1200px) {
     .flex-lg-row {
         flex-direction: row!important
     }
@@ -7786,7 +7787,7 @@ button.bg-dark:hover {
     }
 }
 
-@media (min-width:992px) {
+@media (min-width:1200px) {
     .float-lg-left {
         float: left!important
     }
@@ -9109,7 +9110,7 @@ button.bg-dark:hover {
     }
 }
 
-@media (min-width:992px) {
+@media (min-width:1200px) {
     .m-lg-0 {
         margin: 0!important
     }
@@ -9869,7 +9870,7 @@ button.bg-dark:hover {
     }
 }
 
-@media (min-width:992px) {
+@media (min-width:1200px) {
     .text-lg-left {
         text-align: left!important
     }
@@ -10054,8 +10055,8 @@ a.text-dark:hover {
 
 @media print {
     *,
-    ::after,
-    ::before {
+     ::after,
+     ::before {
         text-shadow: none!important;
         box-shadow: none!important
     }
@@ -10094,10 +10095,10 @@ a.text-dark:hover {
         size: a3
     }
     body {
-        min-width: 992px!important
+        min-width: 1200px!important
     }
     .container {
-        min-width: 992px!important
+        min-width: 1200px!important
     }
     .navbar {
         display: none
