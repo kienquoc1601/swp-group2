@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Admin OnLearner</title>
+
+</head>
+
+<body id="page-top">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <div th:replace="Admin/main :: sidebarAdmin"></div>
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+                <div th:replace="Admin/main :: navAdmin"></div>
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+
+                    <!-- Page Heading -->
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <h1 class="h3 mb-0 text-gray-800">Courses</h1>
+                    </div>
+
+                    <!-- Content Row -->
+                    <div class="row">
+                        <!-- show all Courses -->
+                        <div class="col-xl-12 col-lg-12">
+                            <div class="card shadow mb-4">
+                                <!-- Card Header - Dropdown -->
+                                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                    <h6 class="m-0 font-weight-bold text-primary">
+                                        All Courses
+                                        <button class="addcourse btn btn btn-primary">Add Course</button>
+                                        <script>
+                                            $(document).ready(function() {
+                                                $(".addcourse").click(function() {
+                                                    var $modal = $('#addCourseModal');
+                                                    $modal.modal('show');
+
+                                                });
+                                            });
+                                        </script>
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="addCourseModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+                                                <div class="modal-content">
+                                                    <form th:action="@{/admin/course/add}" method="post" th:object="${CourseCategoryManager}">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLabel">Modal title
+                                                            </h5>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <div class="container-fluid">
+                                                                <div class="row">
+                                                                    <div class="col-12 form-group">
+                                                                        <label for="courseName">Name</label>
+                                                                        <input type="text" class="form-control" name="courseName" id="courseName" placeholder="Enter name">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="form-group col-md-4">
+                                                                        <label for="categoryId">Category</label>
+                                                                        <select id="categoryId" class="form-control" name="categoryId">
+                                                                            <option selected disabled>Choose...</option>
+                                                                            <option th:each="cate : ${categories}"
+                                                                                th:text="${cate.category_name}"
+                                                                                th:value="${cate.categoryID}"></option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="form-group col-md-4">
+                                                                        <label for="courseManagerId">Manager</label>
+                                                                        <select id="courseManagerId" class="form-control" name="courseManagerId">
+                                                                            <option selected disabled> Choose Manager
+                                                                            </option>
+                                                                            <option th:each="manager : ${managers}"
+                                                                                th:text="${manager.Name}"
+                                                                                th:value="${manager.Id}"></option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="form-group col-md-4">
+                                                                        <label for="coursePrice">Price</label>
+                                                                        <input type="text" class="form-control" name="coursePrice" id="coursePrice" placeholder="Enter price">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="col-12 form-group">
+                                                                        <label for="courseDescription">Description</label>
+                                                                        <textarea class="form-control" name="courseDescription" id="courseDescription" placeholder="Enter description"></textarea>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="col-12 form-group">
+                                                                        <label for="courseImage">Image</label>
+                                                                        <input type="text" class="form-control" name="courseImage" id="courseImage" placeholder="Enter image">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                            <button type="submit" class="btn btn-primary">Save
+                                                                changes</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </h6>
+                                </div>
+                                <!-- Card Body -->
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered" id="dataTableOaiCourse" width="100%" cellspacing="0" th:style="'table-layout: fixed;'">
+                                            <thead>
+                                                <tr>
+                                                    <th th:style="'width: 4%;'">Id</th>
+                                                    <th th:style="'display:none;'">Author</th>
+                                                    <th th:style="'width: 16%;'">Author</th>
+                                                    <th th:style="'display:none;'">Title</th>
+                                                    <th th:style="'display:none;'">Description</th>
+                                                    <th th:style="'width: 74%;'">Content</th>
+                                                    <th th:style="'display:none;'">Category</th>
+                                                    <th th:style="'display:none;'">Rating</th>
+                                                    <th th:style="'display:none;'">Price</th>
+                                                    <th th:style="'display:none;'">NumofStudents</th>
+                                                    <th th:style="'width: 6%;'">Actions</th>
+                                                </tr>
+                                            </thead>
+                                            <tfoot>
+                                                <tr>
+                                                    <th th:style="'width: 4%;'">Id</th>
+                                                    <th th:style="'display:none;'">Author</th>
+                                                    <th th:style="'width: 16%;'">Author</th>
+                                                    <th th:style="'display:none;'">Title</th>
+                                                    <th th:style="'display:none;'">Description</th>
+                                                    <th th:style="'width: 74%;'">Content</th>
+                                                    <th th:style="'display:none;'">Category</th>
+                                                    <th th:style="'display:none;'">Rating</th>
+                                                    <th th:style="'display:none;'">Price</th>
+                                                    <th th:style="'display:none;'">NumofStudents</th>
+                                                    <th th:style="'width: 6%;'">Actions</th>
+                                                </tr>
+                                            </tfoot>
+                                            <tbody>
+                                                <tr th:each="course : ${courses}">
+                                                    <td th:style="'width: 4%;'" th:utext="${course.Id}"></td>
+                                                    <td th:style="'display:none;'" th:utext="${course.getCourseManager().getName()}"></td>
+                                                    <td th:style="'width: 16%;'">
+                                                        <img th:src="@{${course.ImgSrc}}" th:alt="${course.CourseName}" th:style="'width: 100%; height: 100%;'">
+                                                    </td>
+                                                    <td th:style="'display:none;'" th:utext="${course.CourseName}"></td>
+                                                    <td th:style="'display:none;'" th:utext="${course.Description}">
+                                                    </td>
+                                                    <td th:style="'width: 74%;'">Content of course</td>
+                                                    <td th:style="'display:none;'" th:utext="${course.getCategory().getCategory_name()}"></td>
+                                                    <td th:style="'display:none;'" th:utext="${course.rating}"></td>
+                                                    <td th:style="'display:none;'" th:utext="${course.price}"></td>
+                                                    <td th:style="'display:none;'" th:utext="${course.numOfStudents}">
+                                                    </td>
+                                                    <td th:style="'width: 6%;'">
+                                                        <a class="updatebtn btn btn-primary btn-circle btn-sm" th:data-id="${course.Id}" th:data-name="${course.CourseName}" th:data-description="${course.Description}" th:data-category="${course.getCategory().getCategoryID()}" th:data-manager="${course.getCourseManager().getId()}"
+                                                            th:data-image="${course.ImgSrc}" th:data-rating="${course.rating}" th:data-price="${course.price}" th:data-numOfStudents="${course.numOfStudents}">
+                                                            <i class="fas fa-edit"></i>
+                                                        </a>
+                                                        <a th:href="@{/course/{name}(name=${course.CourseName})}" class="btn btn-info btn-circle btn-sm">
+                                                            <i class="fas fa-info-circle"></i>
+                                                        </a>
+                                                        <a th:href="@{/admin/course/delete/{id}(id=${course.Id})}" class="btn btn-danger btn-circle btn-sm">
+                                                            <i class="fas fa-trash "></i>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- end of content row -->
+                        </div>
+                        <!-- /.container-fluid -->
+
+                    </div>
+                    <!-- End of Main Content -->
+                </div>
+                <!-- End of Content Wrapper -->
+            </div>
+            <!-- End of Page Wrapper -->
+
+            <!-- Scroll to Top Button-->
+            <a class="scroll-to-top rounded" href="#page-top">
+                <i class="fas fa-angle-up"></i>
+            </a>
+        </div>
+    </div>
+    <!-- th:href=" @{/admin/ -->
+
+    <h5> <strong th:style="'text-decoration: underline;'"></strong></h5>
+    <!-- Modal -->
+    <div class="modal fade" id="updateModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <form th:action="@{/admin/course/update}" method="post" th:object="${CourseCategoryManager}">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Modal title
+                        </h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-12 form-group">
+                                    <label for="courseName">Name</label>
+                                    <input type="text" class="form-control" name="courseName" id="courseName" placeholder="Enter name">
+                                    <input type="hidden" class="form-control" name="courseId" id="courseId" placeholder="Enter name">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-md-4">
+                                    <label for="categoryId">Category</label>
+                                    <select id="categoryId" class="form-control" name="categoryId">
+                                        <option selected disabled>Choose...</option>
+                                        <option th:each="cate : ${categories}" th:text="${cate.category_name}"
+                                            th:value="${cate.categoryID}"></option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for="courseManagerId">Manager</label>
+                                    <select id="courseManagerId" class="form-control" name="courseManagerId">
+                                        <option selected disabled> Choose Manager</option>
+                                        <option th:each="manager : ${managers}" th:text="${manager.Name}"
+                                            th:value="${manager.Id}"></option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for="coursePrice">Price</label>
+                                    <input type="text" class="form-control" name="coursePrice" id="coursePrice" placeholder="Enter price">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 form-group">
+                                    <label for="courseDescription">Description</label>
+                                    <textarea class="form-control" name="courseDescription" id="courseDescription" placeholder="Enter description"></textarea>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 form-group">
+                                    <label for="courseImage">Image</label>
+                                    <input type="text" class="form-control" name="courseImage" id="courseImage" placeholder="Enter image">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-md-4">
+                                    <label for="courseRating">Rating</label>
+                                    <input type="text" class="form-control" name="courseRating" id="courseRating" placeholder="Enter rating" readonly>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for="numOfStudents">Number of
+                                        Students</label>
+                                    <input type="text" class="form-control" name="numOfStudents" id="numOfStudents" placeholder="Enter number of student" readonly>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</body>
+<script>
+    $(document).ready(function() {
+        $('#dataTableOaiCourse').DataTable({
+            columnDefs: [{
+                render: function(data, type, row) {
+                    //return data + row 1 + row 3 + row 4 + row 6 + row 7 + row 8 + row 9;
+                    let content = data + '<h5 ><strong>Author: </strong>' + row[1] + '</h5>' +
+                        '<h5 ><strong>Title: </strong>' + row[3] + '</h5>' +
+                        '<h5 ><strong>Description: </strong>' + row[4] + '</h5>' +
+                        '<h5 ><strong>Category: </strong>' + row[6] + '</h5>' +
+                        '<h5 ><strong>Rating: </strong>' + row[7] + '</h5>' +
+                        '<h5 ><strong>Price: $</strong>' + row[8] + '</h5>' +
+                        '<h5 ><strong>Student enrolled: </strong>' + row[9] + '</h5>';
+                    return content;
+                },
+                targets: 2,
+            }, {
+                visible: false,
+                targets: [1, 3, 4, 6, 7, 8, 9]
+            }, {
+                // limit the number of characters ( 4000)
+                render: function(data, type, row) {
+                    return type === 'display' && data.length > 2000 ?
+                        data.substr(0, 2000) + '…' :
+                        data;
+                },
+                targets: 5,
+            }],
+        });
+        $('.updatebtn').click(function() {
+            var $modal = $('#updateModal').clone().removeAttr('id');
+            var $btn = $(this);
+            $modal.find('[name="courseId"]').val($btn.attr('data-id'));
+            $modal.find('[name="courseName"]').val($btn.attr('data-name'));
+            $modal.find('[name="courseDescription"]').val($btn.attr('data-description'));
+            $modal.find('[name="courseImage"]').val($btn.attr('data-image'));
+            $modal.find('[name="coursePrice"]').val($btn.attr('data-price'));
+            $modal.find('[name="courseRating"]').val($btn.attr('data-rating'));
+            $modal.find('[name="numOfStudents"]').val($btn.attr('data-numOfStudents'));
+            $modal.find('[name="categoryId"]').val($btn.attr('data-category'));
+            $modal.find('[name="courseManagerId"]').val($btn.attr('data-manager'));
+            $modal.modal('show');
+            $modal.modal();
+        });
+    });
+</script>
+
+</html>

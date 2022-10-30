@@ -63,13 +63,13 @@ public class CourseController {
         // model.addAttribute("student", student);
         model.addAttribute("currentUrl", request.getRequestURI().toString());
         List<Course> courses;
-        List<Course> featuredCoursesEnroll = courseRepo.findFeaturedCourseEnroll();
-        List<Course> featuredCoursesRating = courseRepo.findFeaturedCourseRating();
+        List<Course> featuredCoursesEnroll = courseRepo.findTop1CourseWithNumberOfStudentEnrollHighest();
+        List<Course> featuredCoursesRating = courseRepo.findTop1CourseWithHighestRating();
         List<Category> categories = categoryRepo.findAll();
         if (category != null && !category.equals(0)) {
-            courses = courseRepo.findCourseByCategory(category);
+            courses = courseRepo.findAllCourseWithNumberOfStudentEnrollByCategoryIdOrderByIdDesc(category);
         } else {
-            courses = courseRepo.findCourseOrderByIdDesc();
+            courses = courseRepo.findAllCourseWithNumberOfStudentEnrollOrderByIdDesc();
             category = 0;
         }
         // pagination
@@ -99,8 +99,11 @@ public class CourseController {
             categoryObj.setDiscription("nothing");
             categoryObj.setImage("nothing");
             categoryObj.setNumCourse(0);
+            System.out.println("categoryObj: " + categoryObj.getCategory_name());
+
         } else {
             categoryObj = categoryRepo.findCategoryById(category);
+            System.out.println("categoryObj: " + categoryObj.getDiscription());
         }
         model.addAttribute("categoryObj", categoryObj);
         
@@ -129,7 +132,7 @@ public class CourseController {
         }
         model.addAttribute("course", course);
         // category of this course
-        Category category = categoryRepo.findById(course.getCategoryID());
+        Category category = categoryRepo.findById(course.getCategory().getCategoryID());
         model.addAttribute("categoryOfCourse", category);
         // number of student enroll this course
         int numberOfStudentEnroll = courseRepo.getNumberOfStudentEnroll(course.getId());
@@ -137,7 +140,7 @@ public class CourseController {
         // list of related courses
         List<Course> relatedCourses;
         // list of course in same category (same category, not this course)
-        List<Course> sameCateCoourse = courseRepo.findSameCategory(course.getCategoryID(), course.getId());
+        List<Course> sameCateCoourse = courseRepo.findSameCategory(course.getCategory().getCategoryID(), course.getId());
         // add course from list of same category to related course
         relatedCourses = sameCateCoourse;
         // list of course have same Manager (same Manager, not this course)
@@ -177,18 +180,18 @@ public class CourseController {
         model.addAttribute("searchCourse", searchCourse);
         model.addAttribute("currentUrl", request.getRequestURI().toString());
         List<Course> coursesFoundList;
-        List<Course> featuredCoursesEnroll = courseRepo.findFeaturedCourseEnroll();
-        List<Course> featuredCoursesRating = courseRepo.findFeaturedCourseRating();
+        List<Course> featuredCoursesEnroll = courseRepo.findTop1CourseWithNumberOfStudentEnrollHighest ();
+        List<Course> featuredCoursesRating = courseRepo.findTop1CourseWithHighestRating();
         List<Category> categories = categoryRepo.findAll();
         if (category != null && !category.equals(0)) {
-            coursesFoundList = courseRepo.findCourseByCategoryAndName(searchCourse, category);
+            coursesFoundList = courseRepo.findAllCourseWithNumberOfStudentEnrollByNameContainKeywordAndCategoryId(searchCourse, category);
         } else {
-            coursesFoundList = courseRepo.findCourseByName(searchCourse);
+            coursesFoundList = courseRepo.findAllCourseWithNumberOfStudentEnrollByNameContainKeyword(searchCourse);
             category = 0;
         }
 
         // list course found by course name, manager name, org name, category name
-        List<Course> coursesFindAll = courseRepo.findCourseByAll(searchCourse);
+        List<Course> coursesFindAll = courseRepo.findAllCourseWithNumberOfStudentEnrollFoundByCourseNameManagerNameOrgNameCategoryName(searchCourse);
         coursesFoundList.addAll(coursesFindAll);
         // pagination
         int pageSize = 12;

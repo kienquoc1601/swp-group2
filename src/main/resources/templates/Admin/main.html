@@ -128,14 +128,14 @@
                     Addons
                 </div>
 
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
+                <li class="nav-item " th:classappend="${#strings.equals(currentUrl,'/admin/courses')} ?  active: ''">
+                    <a class="nav-link" th:href="@{/admin/courses}">
                         <i class="fas fa-fw fa-book"></i>
                         <span>Course</span></a>
                 </li>
 
-                <li class="nav-item " th:classappend="${#strings.equals(currentUrl,'/admin/blog')} ?  active: ''">
-                    <a class="nav-link" th:href="@{/admin/blog}">
+                <li class="nav-item " th:classappend="${#strings.equals(currentUrl,'/admin/blogs')} ?  active: ''">
+                    <a class="nav-link" th:href="@{/admin/blogs}">
                         <i class="fas fa-fw fa-newspaper"></i>
                         <span>Blogs</span>
                     </a>

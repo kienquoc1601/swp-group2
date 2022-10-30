@@ -72,7 +72,7 @@
             <div class="row col-md-12" style="margin-top: 20px; margin-bottom: 20px;">
                 <h4 class="text-center" th:if="${courses.size() == 0 and searchCourse != null}" style="font-style: italic;" th:utext="${'Not found any course have name: <strong>' + searchCourse + '</strong>'}"></h4>
                 <h4 class="text-center" th:if="${courses.size() > 0 and searchCourse != null}" style="font-style: italic;" th:utext="${'Found <strong>' + courses.size() + '</strong> courses with <strong>' + searchCourse + '</strong>'}"></h4>
-                <h4 class="text-center" th:if="${categoryObj.category_name != 'All'}" style="font-style: italic;" th:utext="${'<strong>' + categoryObj.category_name + ': </strong> ' + categoryObj.discription}"></h4>
+                <h4 class="text-center" th:if="${categoryObj.getCategory_name() != 'All'}" style="font-style: italic;" th:utext="${'<strong>' + categoryObj.getCategory_name() + ': </strong> ' + categoryObj.getDiscription()}"></h4>
             </div>
             <div class="row course-items-area">
                 <!-- course -->
@@ -101,7 +101,7 @@
                             <div class="course-text">
                                 <h5 th:utext="${#strings.abbreviate(course.CourseName,30)}">Title</h5>
                                 <p th:utext="${#strings.abbreviate(course.Description,65)}">Description</p>
-                                <!-- <div class="students">Number Of Students</div> -->
+                                <div class="students" th:text="${(course.numOfStudents == 0) ? ('New Course') : (course.numOfStudents + ' Students')}">Number Of Students</div>
                             </div>
                             <div class="course-author">
                                 <div class="ca-pic set-bg" th:data-setbg="${course.getCourseManager().getImgSrc()}"></div>
@@ -154,7 +154,7 @@
                                     <div class="fet-note">Featured Course</div>
                                     <h5 th:utext="${#strings.abbreviate(course.CourseName,100)}">Title</h5>
                                     <p th:utext="${#strings.abbreviate(course.Description,200)}">Description</p>
-                                    <!-- <div class="students">120 Students</div> -->
+                                    <div class="students" th:text="${(course.numOfStudents == 0) ? ('New Course') : (course.numOfStudents + ' Students')}">Number Of Students</div>
                                 </div>
                                 <div class="course-author">
                                     <div class="ca-pic set-bg" th:data-setbg="${course.getCourseManager().getImgSrc()}"></div>
@@ -190,7 +190,7 @@
                                     <div class="fet-note">Featured Course</div>
                                     <h5 th:utext="${#strings.abbreviate(course.CourseName,50)}">Title</h5>
                                     <p th:utext="${#strings.abbreviate(course.Description,120)}">Description</p>
-                                    <!-- <div class="students">120 Students</div> -->
+                                    <div class="students" th:text="${(course.numOfStudents == 0) ? ('New Course') : (course.numOfStudents + ' Students')}">Number Of Students</div>
                                 </div>
                                 <div class="course-author">
                                     <div class="ca-pic set-bg" th:data-setbg="${course.getCourseManager().getImgSrc()}"></div>
