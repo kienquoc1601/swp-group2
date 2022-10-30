@@ -27,10 +27,11 @@ public class ModuleListController {
         return "Module/ModuleList";
     }
 
-    @GetMapping("/modulelist?cid={id}")
-    public String ModuleListByID(Model model , @PathVariable String id){
-        List<Integer> ids = Arrays.asList(Integer.parseInt(id));
-        List<Module> mList = moduleRepo.findAllById(ids);
+    @GetMapping("/modulelist/cid={id}")
+    public String ModuleList(Model model , @PathVariable String id){
+        //List<Integer> ids = Arrays.asList(Integer.parseInt(id));
+        List<Module> mList = moduleRepo.findByChapter(Integer.parseInt(id));
+        
         model.addAttribute("mList", mList);
         return "Module/ModuleList";
     }

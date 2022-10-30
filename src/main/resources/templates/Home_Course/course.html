@@ -79,6 +79,7 @@
                         </div>
                         <button class="btn btn-outline-primary btn-lg" th:text="${'Price: $' + course.price}">Price</button>
                         <button class="btn btn-success btn-lg">Buy this course</button>
+                        <a th:href="@{/chapterlist/cid=__${course.Id}__}"><button class="btn btn-success btn-lg">Go to Course</button></a>
                     </div>
                 </div>
             </div>

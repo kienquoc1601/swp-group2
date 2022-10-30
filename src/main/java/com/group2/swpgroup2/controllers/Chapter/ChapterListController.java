@@ -24,12 +24,15 @@ public class ChapterListController {
         return "Chapter/ChapterList";
     }
     
-    @GetMapping("/chapterlist?cid={id}")
+    @GetMapping("/chapterlist/cid={id}")
     public String ModuleListByID(Model model , @PathVariable String id){
-        List<Integer> ids = Arrays.asList(Integer.parseInt(id));
-        List<Chapter> cList = chapterRepo.findAllById(ids);
+        
+        List<Chapter> cList = chapterRepo.findByCourse(Integer.parseInt(id));
+        for (Chapter chapter : cList) {
+            System.out.println(chapter.ChapterName);
+        }
         model.addAttribute("cList", cList);
-        return "Module/ModuleList";
+        return "Chapter/ChapterList";
     }
     
 }

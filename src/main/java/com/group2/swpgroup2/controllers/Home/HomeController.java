@@ -27,17 +27,17 @@ public class HomeController {
     @Autowired
     private CourseRepository courseRepo;
 
-    @GetMapping("/home")
+    @GetMapping("")
     public String Home(Model model, HttpServletRequest request,
             @CookieValue(value = "username", defaultValue = "") String username) {
         model.addAttribute("currentUrl", request.getRequestURI().toString());
         model.addAttribute("username", username);
 
         // 1. get all category with number of course join with course table
-        List<Category> categories = categoryRepo.getTop8CategoryWithNumCourse();
+        //List<Category> categories = categoryRepo.getTop8CategoryWithNumCourse();
         // đảo ngẫu nhiên thứ tự các category trong list
-        Collections.shuffle(categories);
-        model.addAttribute("categories", categories);
+        //Collections.shuffle(categories);
+        //model.addAttribute("categories", categories);
 
         // 2. get top 8 course have highest rating
         List<Course> courses = courseRepo.findTop8CourseByRating();

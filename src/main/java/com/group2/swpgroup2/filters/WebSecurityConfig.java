@@ -24,7 +24,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception{
 		http.authorizeRequests()
 					.antMatchers("/blog").hasRole("ADMIN")
-					.antMatchers("/chapterlist").hasRole("USER")
+					.antMatchers("/modulelist/**").hasRole("USER")
+					.antMatchers("/chapterlist/**").hasRole("USER")
 					.antMatchers("/courses").hasRole("USER")
 					.antMatchers("/blogs").hasRole("USER")
 					.antMatchers("/course").hasRole("USER")
@@ -36,15 +37,16 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		http.sessionManagement()
             .sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED);
 		
-	}
-	// public SecurityFilterChain filterChain(HttpSecurity http) {
-	// 	http
-	// 		.formLogin(form -> form
-	// 			.loginPage("/login")
-	// 			.permitAll()
-	// 		);
-	// 	// ...
+	 }
+	// @Override
+	// protected void configure(HttpSecurity http) throws Exception{
+	// 	http.authorizeRequests().anyRequest().permitAll();
+					
+	// 	http.sessionManagement()
+    //         .sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED);
+		
 	// }
+
 	
 	
 	
