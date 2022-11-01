@@ -35,7 +35,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 					.loginPage("/login")
 					.permitAll());
 		http.sessionManagement()
-            .sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED);
+            .sessionCreationPolicy(SessionCreationPolicy.ALWAYS);
 		
 	 }
 	// @Override

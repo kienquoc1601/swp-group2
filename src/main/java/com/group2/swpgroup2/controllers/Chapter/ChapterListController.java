@@ -34,5 +34,5 @@ public class ChapterListController {
         model.addAttribute("cList", cList);
         return "Chapter/ChapterList";
     }
-    
+     
 }
