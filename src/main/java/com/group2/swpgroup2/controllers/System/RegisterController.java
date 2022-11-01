@@ -50,6 +50,7 @@ public class RegisterController {
         User u = new User(username,password, true);
         uRepo.save(u);
         Student s = Student.builder().username(username).fullname(fullname).dob(dob).gender(a).build();
+
         sRepo.save(s);
         return "redirect:/";
     }

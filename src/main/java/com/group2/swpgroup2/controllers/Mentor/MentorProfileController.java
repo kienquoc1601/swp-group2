@@ -4,6 +4,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,9 +25,9 @@ public class MentorProfileController {
         return "MentorProfile/MentorProfile";
     }
 
-    @GetMapping("/mentorprofile?cid={id}")
-    public String ModuleListByID(Model model , @PathVariable String id){
-        Optional<Mentor> m = mentorRepository.findById(Integer.parseInt(id));
+    @GetMapping("/mentorprofile/cid={id}")
+    public String ModuleListByID(Model model , @PathVariable String id, HttpServletRequest request){
+        Mentor m = mentorRepository.findByID(Integer.parseInt(id));
         model.addAttribute("m", m);
         return "MentorProfile/MentorProfile";
     }
