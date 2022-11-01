@@ -1,6 +1,7 @@
 package com.group2.swpgroup2.controllers.System;
 
 import java.lang.ProcessBuilder.Redirect;
+import java.sql.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -35,11 +36,20 @@ public class RegisterController {
         @RequestParam(value = "fullname" , required = false) String fullname,
         @RequestParam(value = "username", required = false) String username,
         @RequestParam(value = "password", required = false) String password,
+        @RequestParam(value = "dob", required = false) Date dob,
+        @RequestParam(value = "gender", required = false) String gender,
         Model model
-    ){
+    )
+    {
+        boolean a;
+        if(gender.equalsIgnoreCase("male")){
+            a = true;
+        }else{
+            a = false;
+        }
         User u = new User(username,password, true);
         uRepo.save(u);
-        Student s = new Student(username , fullname);
+        Student s = Student.builder().username(username).fullname(fullname).dob(dob).gender(a).build();
         sRepo.save(s);
         return "redirect:/";
     }
