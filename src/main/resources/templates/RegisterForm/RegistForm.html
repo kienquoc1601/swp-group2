@@ -13,7 +13,7 @@
 <body>
     <div class="container">
         <div class="title">Registration</div>
-        <form action="#" th:action="@{/register}" th:object="${register}" method="post">
+        <form th:action="@{/register}" method="post">
             <div class="user-details">
                 <div class="input-box">
                     <span class="detail">Full Name</span>
@@ -22,12 +22,12 @@
 
                 <div class="input-box">
                     <span class="detail">User name</span>
-                    <input type="text" placeholder="Enter your username" th:field="*{username}" required>
+                    <input type="text" placeholder="Enter your username" th:name="username" required>
                 </div>
 
                 <div class="input-box">
                     <span class="detail">Password</span>
-                    <input type="text" placeholder="Enter your Password" th:field="*{password}" required>
+                    <input type="text" placeholder="Enter your Password" th:name="password" required>
                 </div>
 
                 <div class="input-box">

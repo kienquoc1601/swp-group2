@@ -19,7 +19,7 @@ import lombok.ToString;
 @Builder
 @ToString
 @Entity
-@Table(name = "user")
+@Table(name = "users")
 public class User {
     @Id
     @Column(name = "username")

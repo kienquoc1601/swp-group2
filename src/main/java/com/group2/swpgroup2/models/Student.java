@@ -19,13 +19,14 @@ import lombok.ToString;
 @Entity
 @Table(name = "Student")
 public class Student {
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "studentID")
     private int studentID;
     // @OneToOne
     // @JoinColumn(name = "username")
-    // private Account username;
+    // private User username;
     @Column(name = "username")
     private String username;
     @Column(name = "fullname")
@@ -36,4 +37,15 @@ public class Student {
     private boolean gender;
     @Column(name = "dob")
     private Date dob;   
+    public Student(User u, String fullname2) {
+        //u = username;
+        fullname2 = fullname;
+        gender = true;
+    }
+
+    public Student(String username2, String fullname2) {
+        username2 = username;
+        fullname2 = fullname;
+        gender = true;
+    }
 }
