@@ -27,7 +27,7 @@ public class HomeController {
     @Autowired
     private CourseRepository courseRepo;
 
-    @GetMapping("")
+    @GetMapping("   ")
     public String Home(Model model, HttpServletRequest request,
             @CookieValue(value = "username", defaultValue = "") String username) {
         model.addAttribute("currentUrl", request.getRequestURI().toString());
