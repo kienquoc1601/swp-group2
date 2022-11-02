@@ -73,7 +73,7 @@
                     </a>
                     <div class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
                         <nav class="nav nav-masthead justify-content-center float-md-end col-12 col-lg-auto">
-                            <a class="nav-link px-2" aria-current="page" th:href="@{/home}" th:classappend="${#strings.equals(currentUrl,'/home')} ?  active: ''">Home</a>
+                            <a class="nav-link px-2" aria-current="page" th:href="@{/}" th:classappend="${#strings.equals(currentUrl,'/home')} ?  active: ''">Home</a>
                             <a class="nav-link px-2" th:href="@{/courses}" th:classappend="${#strings.equals(currentUrl,'/courses')} ?  active: ''">Courses</a>
                             <a class="nav-link px-2" th:href="@{/blogs}" th:classappend="${#strings.equals(currentUrl,'/blogs')} ?  active: ''">Blogs</a>
                         </nav>
@@ -108,8 +108,8 @@
                         </ul>
                     </div>
                     <div class="text-end ">
-                        <button type="button " class="btn btn-outline-light me-2 ">Login</button>
-                        <button type="button " class="btn btn-warning ">Sign-up</button>
+                        <a th:href=@{/login}><button type="button " class="btn btn-outline-light me-2 ">Login</button></a>
+                        <a th:href=@{/register}><button type="button " class="btn btn-warning ">Sign-up</button></div></a>
                     </div>
                 </div>
             </div>

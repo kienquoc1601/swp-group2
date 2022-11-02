@@ -12,8 +12,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.group2.swpgroup2.models.Authority;
 import com.group2.swpgroup2.models.Student;
 import com.group2.swpgroup2.models.User;
+import com.group2.swpgroup2.repositories.AuthRepository;
 import com.group2.swpgroup2.repositories.StudentRepository;
 import com.group2.swpgroup2.repositories.UserRepository;
 
@@ -23,7 +25,8 @@ public class RegisterController {
     private UserRepository uRepo;
     @Autowired
     private StudentRepository sRepo;
-    
+    @Autowired
+    private AuthRepository aRepo;
     
 
     @GetMapping("/register")
@@ -51,6 +54,8 @@ public class RegisterController {
         uRepo.save(u);
         Student s = Student.builder().username(username).fullname(fullname).dob(dob).gender(a).build();
         sRepo.save(s);
+        Authority au = new Authority(username , "ROLE_USER");
+        aRepo.save(au);
         return "redirect:/";
     }
     

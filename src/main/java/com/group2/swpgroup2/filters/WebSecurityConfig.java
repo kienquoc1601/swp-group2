@@ -14,6 +14,7 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
 @Configuration
 @EnableWebSecurity
@@ -34,6 +35,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 					.antMatchers("/**/*.js", "/**/*.css").permitAll()
 					.and().formLogin(form -> form
 					.loginPage("/login")
+					.defaultSuccessUrl("/auth", true)
 					.permitAll());
 		http.sessionManagement()
             .sessionCreationPolicy(SessionCreationPolicy.ALWAYS);
@@ -48,7 +50,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		
 	// }
 
-	
+
 	
 	
 	@Override
