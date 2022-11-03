@@ -43,20 +43,20 @@
 
                         <div class="row">
                             <div class="col-md-3">
-                                <h5>FullName</h5>
+                                <h5 >FullName</h5>
                             </div>
-                            <div class="col-md-9 text-secondary">
-                                Bro Bro
+                            <div class="col-md-9 text-secondary" th:text="${m?.FullName}">
+                               
                             </div>
                         </div>
                         <hr>
 
                         <div class="row">
                             <div class="col-md-3">
-                                <h5>Email</h5>
+                                <h5>Gender</h5>
                             </div>
-                            <div class="col-md-9 text-secondary">
-                                BroBro@gmail.com
+                            <div class="col-md-9 text-secondary"   th:text="${m.Gender} ? 'Male' : 'Female'"  >
+                                
                             </div>
                         </div>
                         <hr>
