@@ -4,6 +4,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,8 +26,8 @@ public class LoginController {
     private StudentRepository studentRepo;
 
     @GetMapping("/login")
-    public String Login() {
-        return "OaiTemp/login";
+    public String login() {
+        return "Login/login";
     }
 
     @PostMapping("/login")

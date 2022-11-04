@@ -16,7 +16,7 @@
                   <p style="text-align:center">Đây là lesson </p>
                   <table th:each="c : ${cList}">
                     <tr>
-                      <a th:href="@{/modulelist?cid=__${c.chapterID}__}" class="list-group-item list-group-item-action">
+                      <a th:href="@{/modulelist/cid=__${c.chapterID}__}" class="list-group-item list-group-item-action">
                         <div class="d-flex w-100 justify-content-between">
                           <h5 class="mb-1" th:text = "${c.ChapterName}"></h5>
                         </div>

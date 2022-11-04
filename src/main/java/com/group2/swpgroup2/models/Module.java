@@ -37,5 +37,5 @@ public class Module {
     @Column(name = "module_num")
     public int ModuleNum;
     @Column(name = "module_type")
-    public int ModuleType;//1-text , 2-video , 3-quiz
+    public String ModuleType;//1-text , 2-video , 3-quiz
 }

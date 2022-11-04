@@ -99,12 +99,10 @@
                             </div>
                         </div>
                         <button class="btn btn-outline-primary btn-lg" th:text="${'Price: $' + course.price}">Price</button>
-<<<<<<< Updated upstream
-                        <button class="btn btn-success btn-lg">Buy this course</button>
-=======
+
                         <button class="btn btn-success btn-lg" th:onclick="'javascript:addtoCart(' + ${course.Id} + ')'">Buy this course</button>
                         <a th:href="@{/chapterlist/cid=__${course.Id}__}"><button class="btn btn-success btn-lg">Go to Course</button></a>
->>>>>>> Stashed changes
+
                     </div>
                 </div>
             </div>

@@ -96,14 +96,14 @@ public class CourseController {
             categoryObj = new Category();
             categoryObj.setCategoryID(0);
             categoryObj.setCategory_name("All");
-            categoryObj.setDiscription("nothing");
+            categoryObj.setDescription("nothing");
             categoryObj.setImage("nothing");
             categoryObj.setNumCourse(0);
             System.out.println("categoryObj: " + categoryObj.getCategory_name());
 
         } else {
             categoryObj = categoryRepo.findCategoryById(category);
-            System.out.println("categoryObj: " + categoryObj.getDiscription());
+            System.out.println("categoryObj: " + categoryObj.getDescription());
         }
         model.addAttribute("categoryObj", categoryObj);
         
@@ -121,7 +121,7 @@ public class CourseController {
         response.addCookie(cookie);
         return "redirect:/courses";
     }
-
+    
     @GetMapping("/course/{name}")
     public String CourseDetail(Model model, @PathVariable("name") String name, HttpServletRequest request) {
         model.addAttribute("currentUrl", request.getRequestURI().toString());
