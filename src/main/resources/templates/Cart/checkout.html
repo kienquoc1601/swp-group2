@@ -35,7 +35,7 @@
     <div class="container">
         <div class="py-5 text-center">
             <h2>Checkout form</h2>
-            <p class="lead">Hiển thị vài câu triết lý ở đây</p>
+            <p class="lead">OnLearner - Online Learning platform</p>
         </div>
 
         <div class="row g-5">
@@ -64,6 +64,12 @@
                         <span>Total (USD)</span>
                         <strong th:text="'$' + ${totalPrice}"></strong>
                         <!-- <strong>$20</strong> -->
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between">
+                        <!-- a button to remove all Cart -->
+                        <form th:action="@{/removeCart}" method="get">
+                            <button type="submit" class="btn btn-danger">Remove all</button>
+                        </form>
                     </li>
                 </ul>
 

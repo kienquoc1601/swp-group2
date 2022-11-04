@@ -30,7 +30,7 @@ public class Category {
     private String category_name;
     //discription, image, numCourse
     @Column(name = "description")
-    private String description;
+    private String discription;
     @Column(name = "image")
     private String image;
     @Column(name = "num_course")

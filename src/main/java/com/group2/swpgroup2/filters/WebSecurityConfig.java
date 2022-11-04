@@ -24,31 +24,27 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception{
 		http.authorizeRequests()
-					.antMatchers("/blog").hasRole("ADMIN")
-					.antMatchers("/modulelist/**").hasRole("USER")
-					.antMatchers("/chapterlist/**").hasRole("USER")
-					.antMatchers("/mentorprofile/**").hasRole("USER")
-					.antMatchers("/courses").hasRole("USER")
-					.antMatchers("/blogs").hasRole("USER")
-					.antMatchers("/course").hasRole("USER")
-					.antMatchers("/", "/home").permitAll()
-					.antMatchers("/**/*.js", "/**/*.css").permitAll()
-					.and().formLogin(form -> form
-					.loginPage("/login")
-					.defaultSuccessUrl("/auth", true)
-					.permitAll());
+
+				//.antMatchers("/").permitAll().antMatchers("/login").permitAll()
+				.antMatchers("/blog").hasRole("ADMIN")
+				.antMatchers("/modulelist/**").hasRole("USER")
+				.antMatchers("/chapterlist/**").hasRole("USER")
+				.antMatchers("/mentorprofile/**").hasRole("USER")
+				.antMatchers("/courses").hasRole("USER")
+				.antMatchers("/blogs").hasRole("USER")
+				.antMatchers("/course").hasRole("USER")
+				.antMatchers("/checkout").hasRole("USER")
+				.antMatchers("/addToCart/**").permitAll()
+				.antMatchers("/", "/home").permitAll()
+				.antMatchers("/**/*.js", "/**/*.css").permitAll()
+				.and().formLogin(form -> form
+						.loginPage("/login")
+						.defaultSuccessUrl("/auth", true)
+						.permitAll());
 		http.sessionManagement()
-            .sessionCreationPolicy(SessionCreationPolicy.ALWAYS);
-		
-	 }
-	// @Override
-	// protected void configure(HttpSecurity http) throws Exception{
-	// 	http.authorizeRequests().anyRequest().permitAll();
-					
-	// 	http.sessionManagement()
-    //         .sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED);
-		
-	// }
+				.sessionCreationPolicy(SessionCreationPolicy.ALWAYS);
+		http.csrf().disable();
+	}
 
 
 	
