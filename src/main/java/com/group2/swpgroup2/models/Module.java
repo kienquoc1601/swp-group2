@@ -38,4 +38,6 @@ public class Module {
     public int ModuleNum;
     @Column(name = "module_type")
     public String ModuleType;//1-text , 2-video , 3-quiz
+    @Column(name = "src")
+    public String src;
 }
