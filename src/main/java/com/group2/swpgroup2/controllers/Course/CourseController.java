@@ -158,11 +158,11 @@ public class CourseController {
     }
 
     @GetMapping(value = "/mycourses")
-    public String getMyCourses(HttpServletRequest request, HttpServletResponse response, Model model) {
+    public String getMyCourses(HttpServletRequest request, HttpServletResponse response, Model model, @CookieValue(value = "username", defaultValue = "") String username) {
         System.out.println(
                 "===============================================================GetMapping: /mycourses================================================================================================");
         // 1. get all course of student
-        List<Course> myCourses = courseRepo.findAllCourseOfStudent("user");
+        List<Course> myCourses = courseRepo.findAllCourseOfStudent(username);
         model.addAttribute("myCourses", myCourses);
         model.addAttribute("currentUrl", request.getRequestURI().toString());
         return "Home_Course/mycourses";
