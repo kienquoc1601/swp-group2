@@ -19,57 +19,40 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Autowired
 	DataSource dataSource;
-<<<<<<< Updated upstream
 
-=======
-	
->>>>>>> Stashed changes
+
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
-<<<<<<< Updated upstream
+				//.antMatchers("/").permitAll().antMatchers("/login").permitAll()
 				.antMatchers("/blog").hasRole("ADMIN")
-				.antMatchers("/admin").hasRole("ADMIN")
-				.antMatchers("/chapterlist").hasRole("USER")
+				.antMatchers("/modulelist/**").hasRole("USER")
+				.antMatchers("/chapterlist/**").hasRole("USER")
+				.antMatchers("/mentorprofile/**").hasRole("USER")
 				.antMatchers("/courses").hasRole("USER")
 				.antMatchers("/blogs").hasRole("USER")
 				.antMatchers("/course").hasRole("USER")
+				.antMatchers("/checkout").hasRole("USER")
+				.antMatchers("/addToCart/**").permitAll()
 				.antMatchers("/", "/home").permitAll()
 				.antMatchers("/**/*.js", "/**/*.css").permitAll()
-				.and().formLogin();
+				.and().formLogin(form -> form
+						.loginPage("/login")
+						.defaultSuccessUrl("/auth", true)
+						.permitAll());
 		http.sessionManagement()
 				.sessionCreationPolicy(SessionCreationPolicy.ALWAYS);
-=======
-					.antMatchers("/blog").hasRole("ADMIN")
-					.antMatchers("/modulelist/**").hasRole("USER")
-					.antMatchers("/chapterlist/**").hasRole("USER")
-					.antMatchers("/mentorprofile/**").hasRole("USER")
-					.antMatchers("/courses").hasRole("USER")
-					.antMatchers("/blogs").hasRole("USER")
-					.antMatchers("/course").hasRole("USER")
-					.antMatchers("/checkout").hasRole("USER")
-					.antMatchers("/addToCart/**").permitAll()
-					.antMatchers("/", "/home").permitAll()
-					.antMatchers("/**/*.js", "/**/*.css").permitAll()
-					.and().formLogin(form -> form
-					.loginPage("/login")
-					.defaultSuccessUrl("/auth", true)
-					.permitAll());
-		http.sessionManagement()
-            .sessionCreationPolicy(SessionCreationPolicy.ALWAYS);
-			http.csrf().disable();
-	 }
+		http.csrf().disable();
+	}
 	// @Override
 	// protected void configure(HttpSecurity http) throws Exception{
-	// 	http.authorizeRequests().anyRequest().permitAll();
-					
-	// 	http.sessionManagement()
-    //         .sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED);
-		
-	// }
->>>>>>> Stashed changes
+	// http.authorizeRequests().anyRequest().permitAll();
 
-	}
+	// http.sessionManagement()
+	// .sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED);
+
+	// }
+	
 	// protected void configure(AuthenticationManagerBuilder auth) throws Exception{
 	// auth.inMemoryAuthentication()
 	// .withUser("foo")

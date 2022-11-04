@@ -29,11 +29,7 @@ public class Category {
     @Column(name = "category_name")
     private String category_name;
     //discription, image, numCourse
-<<<<<<< Updated upstream
-    @Column(name = "discription")
-=======
     @Column(name = "description")
->>>>>>> Stashed changes
     private String discription;
     @Column(name = "image")
     private String image;
