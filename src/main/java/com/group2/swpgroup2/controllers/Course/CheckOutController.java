@@ -69,11 +69,15 @@ public class CheckOutController {
         model.addAttribute("sizeOfCart", coursesInCart.size());
 
         // 7. lấy thông tin học sinh bằng username
-        Student student = studentRepo.findByUsername(username);
+        Student student = studentRepo.findStudentByUsername(username);
         // split first name and last name of student full name
         String[] studentName = student.getFullname().split(" ");
         model.addAttribute("studentFirstName", studentName[0]);
-        model.addAttribute("studentLastName", studentName[1]);
+        if (studentName.length > 1) {
+            model.addAttribute("studentLastName", studentName[1]);
+        } else {
+            model.addAttribute("studentLastName", "");
+        }
 
         return "Cart/checkout";
     }
@@ -95,15 +99,23 @@ public class CheckOutController {
             }
         }
         // 3. lấy thông tin học sinh bằng username
-        Student student = studentRepo.findByUsername(username);
+        Student student = studentRepo.findStudentByUsername(username);
+        System.out.println("student username: " + student.getUsername());
+        System.out.println("student id: " + student.getStudentID());
+
         // 4. in ra những course id mà học sinh đã mua
         List<Integer> courseIdsBought = courseRepo.findByStudentId(student.getStudentID());
         System.out.println("course bought: " + courseIdsBought);
-        // 5. kiểm tra xem những course trong cart đã được mua chưa, nếu chưa thì thêm vào
-        // list course mà học sinh đã mua
-        for (Course course : coursesInCart) {
-            if (!courseIdsBought.contains(course.getId())) {
-                courseRepo.addCourseByStudentId(student.getStudentID(), course.getId());
+        // // 5. kiểm tra xem những course trong cart đã được mua chưa, nếu chưa thì
+        // thêm vào
+        // // list course mà học sinh đã mua
+        if (courseIdsBought != null || courseIdsBought.size() != 0) {
+            for (Course course : coursesInCart) {
+                if (!courseIdsBought.contains(course.getId())) {
+                    courseRepo.addCourseByStudentId(student.getStudentID(), course.getId());
+                    System.out.println("add course: " + course.getId());
+
+                }
             }
         }
         // 6. xóa cookie courseCartCookie
@@ -111,7 +123,9 @@ public class CheckOutController {
         courseCartCookieDelete.setMaxAge(0);
         courseCartCookieDelete.setPath("/");
         response.addCookie(courseCartCookieDelete);
-        
-        return "Cart/done";
+
+        // redirect to mycourses page
+        return "redirect:/mycourses";
+
     }
 }

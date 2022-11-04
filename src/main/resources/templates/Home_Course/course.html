@@ -20,6 +20,27 @@
     <link rel="stylesheet" th:href="@{../home_course/css/style.css}" />
 
 </head>
+<script>
+    function addtoCart(courseId) {
+        $.ajax({
+            url: "/addToCart",
+            method: "POST",
+            data: {
+                courseId: courseId,
+            },
+            success: function(data) {
+                if (data == "fail") {
+                    alert("Course already in cart");
+                } else {
+                    // alert("Add to cart successfully");
+                }
+            },
+            error: function(data) {
+                alert("Add to cart fail");
+            }
+        });
+    }
+</script>
 
 <body>
     <!-- Page Preloder -->
@@ -78,7 +99,12 @@
                             </div>
                         </div>
                         <button class="btn btn-outline-primary btn-lg" th:text="${'Price: $' + course.price}">Price</button>
+<<<<<<< Updated upstream
                         <button class="btn btn-success btn-lg">Buy this course</button>
+=======
+                        <button class="btn btn-success btn-lg" th:onclick="'javascript:addtoCart(' + ${course.Id} + ')'">Buy this course</button>
+                        <a th:href="@{/chapterlist/cid=__${course.Id}__}"><button class="btn btn-success btn-lg">Go to Course</button></a>
+>>>>>>> Stashed changes
                     </div>
                 </div>
             </div>
@@ -113,7 +139,7 @@
                 <!-- Buy this course button in center row -->
                 <div class="row">
                     <div class="col-md-12">
-                        <button class="btn btn-success btn-lg" style="margin: 2% auto; display: block;">Buy this course</button>
+                        <button class="btn btn-success btn-lg" style="margin: 2% auto; display: block;" th:onclick="'javascript:addtoCart(' + ${course.Id} + ')'">Buy this course</button>
                     </div>
                 </div>
             </div>
@@ -129,11 +155,11 @@
             <h2 class="rc-title">Realated Courses</h2>
             <div class="rc-slider owl-carousel">
                 <!-- course -->
-                <div class="course-item" th:each="course : ${relatedCourses}" th:onclick="|window.location.href='@{/course/{name}(name=${course.CourseName})}'|" style="cursor: pointer;">
+                <div class="course-item" th:each="course : ${relatedCourses}">
                     <div class="course-thumb set-bg" th:data-setbg="${course.ImgSrc}">
                         <div style="position:absolute; top:0; left: 20px; margin-top: 10px;">
                             <button class="btn btn-danger" th:text="${(course.price == 0.0) ? ('Free') : ('$' + course.price)}" style="border-radius: 20%;"></button>
-                            <button class="btn btn-outline-success">Add</button>
+                            <button class="btn btn-outline-success" th:onclick="'javascript:addtoCart(' + ${course.Id} + ')'">Add</button>
                         </div>
                         <span class="rating" style="position:absolute; top: 0; right: 20px; margin-top: 10px;">
                             <!-- chuyển rating của course thành số sao tương ứng -->
@@ -148,7 +174,7 @@
                             <i class="fa fa-star is-fade" th:if="${course.rating <= 4}"></i>
                             </span>
                     </div>
-                    <div class="course-info">
+                    <div class="course-info" th:onclick="|window.location.href='@{/course/{name}(name=${course.CourseName})}'|" style="cursor: pointer;">
                         <div class="course-text">
                             <h5 th:utext="${#strings.abbreviate(course.CourseName,30)}">Title</h5>
                             <p th:utext="${#strings.abbreviate(course.Description,65)}">Description</p>
@@ -184,7 +210,7 @@
 
 <!--====== Javascripts & Jquery ======-->
 <script th:src="@{../home_course/js/jquery-3.2.1.min.js}"></script>
-<script th:src="@{../home_course/js/bootstrap.min.js}"></script>
+<!-- <script th:src="@{../home_course/js/bootstrap.min.js}"></script> -->
 <!-- <script th:src="@{../home_course/js/mixitup.min.js}"></script> -->
 <script th:src="@{../home_course/js/circle-progress.min.js}"></script>
 <script th:src="@{../home_course/js/owl.carousel.min.js}"></script>

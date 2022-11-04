@@ -7,6 +7,8 @@
     <meta name="description" content="WebUni Education Template">
     <meta name="keywords" content="webuni, education, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="_csrf" content="${_csrf.token}" />
+    <meta name="_csrf_header" content="${_csrf.headerName}" />
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Sen" rel="stylesheet">
@@ -21,6 +23,40 @@
 <script>
     function choosecategory(link) {
         window.location.href = link;
+    }
+
+    function addtoCart(courseId) {
+        $.ajax({
+            url: "/addToCart",
+            method: "POST",
+            data: {
+                courseId: courseId,
+            },
+            success: function(data) {
+                if (data == "fail") {
+                    alert("Course already in cart");
+                } else {
+                    // alert("Add to cart successfully");
+                }
+            },
+            error: function(data) {
+                alert("Add to cart fail");
+            }
+        });
+    }
+
+    function removeCourseCartCookie() {
+        $.ajax({
+            url: "/removeCart",
+            method: "GET",
+            success: function(data) {
+                //redirect to courses page
+                window.location.href = "/courses";
+            },
+            error: function(data) {
+                alert("remove course cart cookie fail");
+            }
+        });
     }
 </script>
 
@@ -77,12 +113,12 @@
             <div class="row course-items-area">
                 <!-- course -->
                 <div class="mix col-lg-3 col-md-4 col-sm-6" th:each="course : ${courses}">
-                    <div class="course-item" th:onclick="|window.location.href='@{/course/{name}(name=${course.CourseName})}'|" style="cursor: pointer;">
+                    <div class="course-item">
                         <div class="course-thumb set-bg" th:data-setbg="${course.ImgSrc}">
                             <!-- if price = 0.0 then price is free -->
                             <div style="position:absolute; top:0; left: 20px; margin-top: 10px;">
                                 <button class="btn btn-danger" th:text="${(course.price == 0.0) ? ('Free') : ('$' + course.price)}" style="border-radius: 20%;"></button>
-                                <button class="btn btn-outline-success">Add</button>
+                                <button class="btn btn-outline-success" th:onclick="'javascript:addtoCart(' + ${course.Id} + ')'">Add</button>
                             </div>
                             <span class="rating" style="position:absolute; top: 0; right: 20px; margin-top: 10px;">
                                 <!-- chuyển rating của course thành số sao tương ứng -->
@@ -97,7 +133,7 @@
                                 <i class="fa fa-star is-fade" th:if="${course.rating <= 4}"></i>
                                 </span>
                         </div>
-                        <div class="course-info">
+                        <div class="course-info" th:onclick="|window.location.href='@{/course/{name}(name=${course.CourseName})}'|" style="cursor: pointer;">
                             <div class="course-text">
                                 <h5 th:utext="${#strings.abbreviate(course.CourseName,30)}">Title</h5>
                                 <p th:utext="${#strings.abbreviate(course.Description,65)}">Description</p>
@@ -132,7 +168,7 @@
                     <div class="course-thumb set-bg" th:data-setbg="${course.ImgSrc}">
                         <div style="position:absolute; top:0; left: 20px; margin-top: 10px;">
                             <button class="btn btn-danger" th:text="${(course.price == 0.0) ? ('Free') : ('$' + course.price)}" style="border-radius: 20%;"></button>
-                            <button class="btn btn-outline-success">Add</button>
+                            <button class="btn btn-outline-success" th:onclick="'javascript:addtoCart(' + ${course.Id} + ')'">Add</button>
                         </div>
                         <span class="rating" style="position:absolute; top: 0; right: 20px; margin-top: 10px;">
                             <!-- chuyển rating của course thành số sao tương ứng -->
@@ -168,7 +204,7 @@
                     <div class="course-thumb set-bg" th:data-setbg="${course.ImgSrc}">
                         <div style="position:absolute; top:0; left: 20px; margin-top: 10px;">
                             <button class="btn btn-danger" th:text="${(course.price == 0.0) ? ('Free') : ('$' + course.price)}" style="border-radius: 20%;"></button>
-                            <button class="btn btn-outline-success">Add</button>
+                            <button class="btn btn-outline-success" th:onclick="'javascript:addtoCart(' + ${course.Id} + ')'">Add</button>
                         </div>
                         <span class="rating" style="position:absolute; top: 0; right: 20px; margin-top: 10px;">
                             <!-- chuyển rating của course thành số sao tương ứng -->
@@ -205,7 +241,6 @@
     </section>
     <!-- course section end -->
 
-
     <!-- banner section -->
     <section class="banner-section spad">
         <div class="container">
@@ -219,7 +254,6 @@
         </div>
     </section>
     <!-- banner section end -->
-
 
     <!-- footerOai.html -->
     <div th:replace="common/footerOai2 :: footerOai2"></div>

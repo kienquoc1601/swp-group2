@@ -29,8 +29,10 @@ public interface CourseRepository extends JpaRepository<Course, Integer> {
     @Query(value = "SELECT courseID FROM [CourseStudent] WHERE studentID = ?1", nativeQuery = true)
     List<Integer> findByStudentId(int studentId);
 
+    @Modifying
+    @Transactional
     @Query(value = "INSERT INTO [CourseStudent] (studentID, courseID) VALUES (?1, ?2)", nativeQuery = true)
-    void addCourseByStudentId(int studentId, int courseId);
+    int addCourseByStudentId(int studentId, int courseId);
 
     @Query(value = "SELECT TOP (10) * FROM [OnLearningDB].[dbo].[Category]", nativeQuery = true)
     List<Category> findTop10Category();
