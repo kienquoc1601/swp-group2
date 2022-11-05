@@ -11,8 +11,12 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
@@ -46,15 +50,29 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		http.sessionManagement()
 				.sessionCreationPolicy(SessionCreationPolicy.ALWAYS);
 		http.csrf().disable();
-		http.cors();
+		
 	}
 
-
+	@Bean
+	public UserDetailsService users() {
+		UserDetails user = User.builder()
+			.username("user")
+			.password("123")
+			.roles("USER")
+			.build();
+		UserDetails admin = User.builder()
+			.username("admin")
+			.password("123")
+			.roles("USER", "ADMIN")
+			.build();
+		return new InMemoryUserDetailsManager(user, admin);
+	}
 	
 	
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth.jdbcAuthentication().dataSource(dataSource);
+		auth.inMemoryAuthentication();
 		
 	}
 
