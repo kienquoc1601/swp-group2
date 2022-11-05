@@ -18,7 +18,7 @@
     <link rel="stylesheet" th:href="@{/home_course/css/font-awesome.min.css}" />
     <link rel="stylesheet" th:href="@{/home_course/css/owl.carousel.css}" />
     <link rel="stylesheet" th:href="@{/home_course/css/style.css}" />
-
+    <link rel="stylesheet" th:href="@{/ListStudent/style.css}">
 </head>
 
 <body>
@@ -29,24 +29,36 @@
 
     <!-- headerOai.html -->
     <div th:replace="common/headerOai3 :: headerOai3"></div>
-    <div class="row course-items-area">
-        <!-- course -->
-        <div class="mix col-lg-3 col-md-4 col-sm-6" th:each="course : ${courses}">
-            <div class="course-item"  style="cursor: pointer;">
-                <div class="course-thumb set-bg" th:data-setbg="${course.ImgSrc}">
-                   
-                </div>
-                <div class="course-info" th:onclick="|window.location.href='@{/course/{name}(name=${course.CourseName})}'|" style="cursor: pointer;">
-                    <div class="course-text">
-                        <h5 th:utext="${#strings.abbreviate(course.CourseName,30)}">Title</h5>
-                        <p th:utext="${#strings.abbreviate(course.Description,65)}">Description</p>
-                        <div class="students" th:text="${(course.numOfStudents == 0) ? ('New Course') : (course.numOfStudents + ' Students')}">Number Of Students</div>
-                    </div>
-                    <div class="course-author">
-                        <div class="ca-pic set-bg" th:data-setbg="${course.getCourseManager().getImgSrc()}"></div>
-                        <p th:utext="${course.getCourseManager().getName() +',  <span><strong>'+ course.getCourseManager().getOrgName() +'</strong></span>'}">CourseManager </p>
-                    </div>
-                </div>
+    <!-- Code here -->
+    <div class="main">
+        <div class="cards">
+            <div class="image">
+                <img src="" alt="Can't find image">
+            </div>
+
+            <div class="title">
+                <h1>Name of Student</h1>
+            </div>
+            <hr>
+            <div class="des">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum amet eaque iusto, illo fugiat
+                    voluptates, ad asperiores quidem quasi praesentium velit, rerum laborum provident temporibus neque
+                    voluptatibus culpa reprehenderit fuga.</p>
+            </div>
+        </div>
+        <div class="cards">
+            <div class="image">
+                <img src="" alt="Can't find image">
+            </div>
+
+            <div class="title">
+                <h1>Name of Student</h1>
+            </div>
+            <hr>
+            <div class="des">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum amet eaque iusto, illo fugiat
+                    voluptates, ad asperiores quidem quasi praesentium velit, rerum laborum provident temporibus neque
+                    voluptatibus culpa reprehenderit fuga.</p>
             </div>
         </div>
     </div>
@@ -56,7 +68,8 @@
             <div class="section-title mb-0 pb-2">
                 <h2>Join Our Community Now!</h2>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec malesuada lorem maximus mauris
-                    scelerisque, at rutrum nulla dictum. Ut ac ligula sapien. Suspendisse cursus faucibus finibus.</p>
+                    scelerisque, at rutrum nulla dictum. Ut ac ligula sapien. Suspendisse cursus faucibus finibus.
+                </p>
             </div>
             <div class="text-center pt-5">
                 <a href="#" class="site-btn">Register Now</a>
