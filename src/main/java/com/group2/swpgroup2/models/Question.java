@@ -16,16 +16,18 @@ import lombok.ToString;
 @Builder
 @ToString
 @Entity
-@Table(name = "Question")
+@Table(name = "question")
 public class Question {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "questionID")
     public Integer questionID;
-    @Column(name = "studentID")
-    public Integer studentID;
-    @Column(name = "courseID")
-    public Integer courseID;
+    @OneToOne
+    @JoinColumn(name = "studentID")
+    public Student student;
+    @OneToOne
+    @JoinColumn(name = "courseID")
+    public Course course;
     @Column(name = "isSolve")
     public Boolean isSolved;
     @Column(name = "q_name")
