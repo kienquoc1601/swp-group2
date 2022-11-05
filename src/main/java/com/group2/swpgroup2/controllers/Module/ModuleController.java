@@ -29,6 +29,8 @@ public class ModuleController {
         Module m = moduleRepo.findByID(Integer.parseInt(id));
         if(m.ModuleType.equalsIgnoreCase("text")){
             String s = m.getContent();
+            String n = m.getModuleName();
+            model.addAttribute("n", n);
             model.addAttribute("s", s);
             return "Module/ModuleContent";
         }else if(m.ModuleType.equalsIgnoreCase("video")){
