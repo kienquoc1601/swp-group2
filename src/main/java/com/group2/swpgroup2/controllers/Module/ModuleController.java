@@ -21,9 +21,10 @@ public class ModuleController {
 
     @GetMapping("/module")
     public String Module(Model model){
-        return "Module/Module";
+        return "Module/ModuleContent";
     }
 
+    
     @GetMapping("/module/cid={id}")
     public String Module(Model model , @PathVariable String id){
         Module m = moduleRepo.findByID(Integer.parseInt(id));
@@ -34,7 +35,9 @@ public class ModuleController {
             model.addAttribute("s", s);
             return "Module/ModuleContent";
         }else if(m.ModuleType.equalsIgnoreCase("video")){
+            String n = m.getModuleName();
             String s = m.getSrc();
+            model.addAttribute("n",n);
             model.addAttribute("s", s);
             return "Module/ModuleVideo";
         }
