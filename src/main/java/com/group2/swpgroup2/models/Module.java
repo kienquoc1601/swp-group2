@@ -40,4 +40,6 @@ public class Module {
     public String ModuleType;//1-text , 2-video , 3-quiz
     @Column(name = "src")
     public String src;
+    @Column(name = "contents")
+    public String content;
 }

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org" >
+    <head >
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>layout</title>
+
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Raleway:400,400i,500,500i,600,600i,700,700i,800,800i"
+            rel="stylesheet">
+
+        <!-- Stylesheets -->
+        <link rel="stylesheet" href="@{/common/css/bootstrap.min.css}"/>
+        <link rel="stylesheet" href="@{/common/css/font-awesome.min.css}" />
+        <link rel="stylesheet" href="@{/common/css/owl.carousel.css}" />
+        <link rel="stylesheet" href="@{/common/css/styleHAF.css}" />
+        
+    </head>
+    
+      
+    <body>
+      
+      <div th:replace = "common/header :: header-fragment" style="padding-bottom: 100px ;"></div>
+      <div style="padding-bottom:50px"></div>
+      
+      <iframe width="560" height="315" th:src="@{https://www.youtube.com/embed/I4PCQmBpV-w?controls=0}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
+      <div style="padding-bottom:50px"></div>
+      <div th:replace = "common/footer :: footer-fragment"></div>
+
+    </body>
+    
+  

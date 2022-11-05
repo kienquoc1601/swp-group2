@@ -96,14 +96,14 @@ public class CourseController {
             categoryObj = new Category();
             categoryObj.setCategoryID(0);
             categoryObj.setCategory_name("All");
-            categoryObj.setDescription("nothing");
+            categoryObj.setDiscription("nothing");
             categoryObj.setImage("nothing");
             categoryObj.setNumCourse(0);
             System.out.println("categoryObj: " + categoryObj.getCategory_name());
 
         } else {
             categoryObj = categoryRepo.findCategoryById(category);
-            System.out.println("categoryObj: " + categoryObj.getDescription());
+            System.out.println("categoryObj: " + categoryObj.getDiscription());
         }
         model.addAttribute("categoryObj", categoryObj);
         

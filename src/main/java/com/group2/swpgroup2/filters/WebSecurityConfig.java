@@ -21,6 +21,7 @@ import org.springframework.security.web.authentication.AuthenticationSuccessHand
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Autowired
 	DataSource dataSource;
+	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception{
 		http.authorizeRequests()
@@ -35,6 +36,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers("/course").hasRole("USER")
 				.antMatchers("/checkout").hasRole("USER")
 				.antMatchers("/addToCart/**").permitAll()
+				.antMatchers("https://www.youtube.com/**").permitAll()
 				.antMatchers("/", "/home").permitAll()
 				.antMatchers("/**/*.js", "/**/*.css").permitAll()
 				.and().formLogin(form -> form
@@ -44,6 +46,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		http.sessionManagement()
 				.sessionCreationPolicy(SessionCreationPolicy.ALWAYS);
 		http.csrf().disable();
+		http.cors();
 	}
 
 

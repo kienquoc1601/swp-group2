@@ -26,10 +26,16 @@ public class ModuleController {
 
     @GetMapping("/module/cid={id}")
     public String Module(Model model , @PathVariable String id){
-        //List<Integer> ids = Arrays.asList(Integer.parseInt(id));
-        List<Module> mList = moduleRepo.findByChapter(Integer.parseInt(id));
-        
-        model.addAttribute("mList", mList);
+        Module m = moduleRepo.findByID(Integer.parseInt(id));
+        if(m.ModuleType.equalsIgnoreCase("text")){
+            String s = m.getContent();
+            model.addAttribute("s", s);
+            return "Module/ModuleContent";
+        }else if(m.ModuleType.equalsIgnoreCase("video")){
+            String s = m.getSrc();
+            model.addAttribute("s", s);
+            return "Module/ModuleVideo";
+        }
         return "Module/ModuleVideo";
     }
 }
