@@ -1,0 +1,14 @@
+body{
+  font-family: 'Times New Roman', Times, serif;
+}
+.text-container{
+  max-width: 900px;
+  width: 100%;
+  margin: auto;
+  height: 50vh;
+}
+.title{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
