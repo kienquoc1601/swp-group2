@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forum</title>
+    <link th:href="@{/Header_Footer/css/bootstrap.min.css}" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link th:href="@{/Header_Footer/css/headers.css}" rel="stylesheet">
+    <!-- sea2.css -->
+    <link th:href="@{/Header_Footer/css/sea2.css}" rel="stylesheet">
+    <!--css-->
+    <link th:href="@{/Forum/style.css}" rel="stylesheet">
+    <!--awesome font-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <!-- headerOai.html -->
+    <div th:replace="common/headerOai2 :: headerOai2"></div>
+
+    <!-- Write your code here in middle of Page -->
+    <div class="container">
+        <div class="subforum">
+            <div class="subforum-title">
+                <h1>General Information</h1>
+            </div>
+            <div class="subforum-row">
+                <div class="subforum-icon subforum-column center">
+                    <i class="fa fa-book"></i>
+                </div>
+                <div class="subforum-description subforum-column">
+                    <h1><a href="">Description title</a></h1>
+                    <p>Description Content: Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi qui
+                        exercitationem quibusdam veniam quae corporis porro ipsa soluta nihil magni. Voluptates nulla
+                        iste dolores molestias saepe nemo perferendis exercitationem ratione!</p>
+                </div>
+                <div class="subforum-stats subforum-column center">
+                    <span>24 post | 15topics</span>
+                </div>
+                <div class="subforum-info subforum-column">
+                    <b><a href="">Last Post</a></b> By <a href="">Bruh Bruh</a>
+                    <br>
+                    On <Small>22 Dec 2021</Small>
+                </div>
+            </div>
+            <hr class="subforum-devider">
+            <div class="subforum-row">
+                <div class="subforum-icon subforum-column center">
+                    <i class="fa fa-book"></i>
+                </div>
+                <div class="subforum-description subforum-column">
+                    <h1><a href="">Description title</a></h1>
+                    <p>Description Content: Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi qui
+                        exercitationem quibusdam veniam quae corporis porro ipsa soluta nihil magni. Voluptates nulla
+                        iste dolores molestias saepe nemo perferendis exercitationem ratione!</p>
+                </div>
+                <div class="subforum-stats subforum-column center">
+                    <span>24 post | 15topics</span>
+                </div>
+                <div class="subforum-info subforum-column">
+                    <b><a href="">Last Post</a></b> By <a href="">Bruh Bruh</a>
+                    <br>
+                    On <Small>22 Dec 2021</Small>
+                </div>
+            </div>
+            <hr class="subforum-devider">
+            <div class="subforum-row">
+                <div class="subforum-icon subforum-column center">
+                    <i class="fa fa-book"></i>
+                </div>
+                <div class="subforum-description subforum-column">
+                    <h1><a href="">Description title</a></h1>
+                    <p>Description Content: Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi qui
+                        exercitationem quibusdam veniam quae corporis porro ipsa soluta nihil magni. Voluptates nulla
+                        iste dolores molestias saepe nemo perferendis exercitationem ratione!</p>
+                </div>
+                <div class="subforum-stats subforum-column center">
+                    <span>24 post | 15topics</span>
+                </div>
+                <div class="subforum-info subforum-column">
+                    <b><a href="">Last Post</a></b> By <a href="">Bruh Bruh</a>
+                    <br>
+                    On <Small>22 Dec 2021</Small>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- footerOai2.html -->
+    <div th:replace="common/footerOai2 :: footerOai2"></div>
+    <!--js-->
+    <script th:src="@{Forum/main.js}"></script>
+</body>
+<script th:src="@{Header_Footer/js/bootstrap.bundle.min.js}"></script>
+
+</html>
