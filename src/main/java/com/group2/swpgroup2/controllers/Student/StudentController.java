@@ -20,6 +20,6 @@ public class StudentController {
         List<Student> lq = sRepo.findAll();
         System.out.println(lq.size());
         model.addAttribute("lq", lq);
-        return "Forum/PostPage";
+        return "ListStudent/ListStudent";
     }
 }

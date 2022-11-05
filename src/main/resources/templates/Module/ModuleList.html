@@ -29,7 +29,7 @@
               <p style="text-align:center">Đây là lesson </p>
               <table th:each="m : ${mList}">
                 <tr>
-                  <a href="#" class="list-group-item list-group-item-action">
+                  <a th:href="@{/module/cid=__${m.moduleID}__}" class="list-group-item list-group-item-action">
                     <div class="d-flex w-100 justify-content-between">
                       <h5 class="mb-1" th:text = "${m.ModuleName}"></h5>
                     </div>
