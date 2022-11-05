@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>WebUni - Education Template</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="WebUni Education Template">
+    <meta name="keywords" content="webuni, education, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="_csrf" content="${_csrf.token}" />
+    <meta name="_csrf_header" content="${_csrf.headerName}" />
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Sen" rel="stylesheet">
+
+    <!-- Stylesheets -->
+    <link th:href="@{/Header_Footer/css/bootstrap.min.css}" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/home_course/css/font-awesome.min.css}" />
+    <link rel="stylesheet" th:href="@{/home_course/css/owl.carousel.css}" />
+    <link rel="stylesheet" th:href="@{/home_course/css/style.css}" />
+    <link rel="stylesheet" th:href="@{/ListStudent/style.css}">
+</head>
+
+<body>
+    <!-- Page Preloder -->
+    <!-- <div id="preloder">
+        <div class="loader"></div>
+    </div> -->
+
+    <!-- headerOai.html -->
+    <div th:replace="common/headerOai3 :: headerOai3"></div>
+    <!-- Code here -->
+    <div class="main">
+        <div class="cards">
+            <div class="image">
+                <img src="" alt="Can't find image">
+            </div>
+
+            <div class="title">
+                <h1>Name of Student</h1>
+            </div>
+            <hr>
+            <div class="des">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum amet eaque iusto, illo fugiat
+                    voluptates, ad asperiores quidem quasi praesentium velit, rerum laborum provident temporibus neque
+                    voluptatibus culpa reprehenderit fuga.</p>
+            </div>
+        </div>
+        <div class="cards">
+            <div class="image">
+                <img src="" alt="Can't find image">
+            </div>
+
+            <div class="title">
+                <h1>Name of Student</h1>
+            </div>
+            <hr>
+            <div class="des">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum amet eaque iusto, illo fugiat
+                    voluptates, ad asperiores quidem quasi praesentium velit, rerum laborum provident temporibus neque
+                    voluptatibus culpa reprehenderit fuga.</p>
+            </div>
+        </div>
+    </div>
+    <!-- banner section -->
+    <section class="banner-section spad">
+        <div class="container">
+            <div class="section-title mb-0 pb-2">
+                <h2>Join Our Community Now!</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec malesuada lorem maximus mauris
+                    scelerisque, at rutrum nulla dictum. Ut ac ligula sapien. Suspendisse cursus faucibus finibus.
+                </p>
+            </div>
+            <div class="text-center pt-5">
+                <a href="#" class="site-btn">Register Now</a>
+            </div>
+        </div>
+    </section>
+    <!-- banner section end -->
+    <!-- footerOai.html -->
+    <div th:replace="common/footerOai2 :: footerOai2"></div>
+</body>
+
+<!--====== Javascripts & Jquery ======-->
+<script th:src="@{../home_course/js/jquery-3.2.1.min.js}"></script>
+<!-- <script th:src="@{../home_course/js/bootstrap.min.js}"></script> -->
+<!-- <script th:src="@{../home_course/js/mixitup.min.js}"></script> -->
+<script th:src="@{../home_course/js/circle-progress.min.js}"></script>
+<script th:src="@{../home_course/js/owl.carousel.min.js}"></script>
+<script th:src="@{../home_course/js/main.js}"></script>
+<script th:src="@{../Header_Footer/js/bootstrap.bundle.min.js}"></script>
+
+</html>
