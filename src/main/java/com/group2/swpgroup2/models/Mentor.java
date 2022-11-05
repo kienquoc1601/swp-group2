@@ -43,4 +43,6 @@ public class Mentor {
     private boolean Gender;
     @Column(name = "dob")
     private Date dob;
+    @Column(name = "phone")
+    private String phone;
 }
