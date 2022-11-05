@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forum</title>
+    <link th:href="@{/Header_Footer/css/bootstrap.min.css}" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link th:href="@{/Header_Footer/css/headers.css}" rel="stylesheet">
+    <!-- sea2.css -->
+    <link th:href="@{/Header_Footer/css/sea2.css}" rel="stylesheet">
+    <!--css-->
+    <link th:href="@{/Forum/style.css}" rel="stylesheet">
+    <!--awesome font-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <!-- headerOai.html -->
+    <div th:replace="common/headerOai2 :: headerOai2"></div>
+
+    <!-- Write your code here in middle of Page -->
+    <div class="container">
+        <div class="post-table">
+            <div class="table-head">
+                <div class="status">Status</div>
+                <div class="subjects">Subjects</div>
+                <div class="replies">Replies/View</div>
+                <div class="last-reply">Last Reply</div>
+            </div>
+            <div class="table-row">
+                <div class="status"><i class="fa fa-fire"></i></div>
+                <div class="subjects">
+                    <a href="#">How can i pass SWP2022?</a>
+                    <br>
+                    <span>Started By <b><a href="#">User</a></b></span>
+                </div>
+                <div class="replies">2 replies <br>125views
+                </div>
+                <div class="last-reply">
+                    Oct24 2022
+                    <br>
+                    By <b><a href="">User</a></b>
+                </div>
+            </div>
+            <div class="table-row">
+                <div class="status"><i class="fa fa-fire"></i></div>
+                <div class="subjects">
+                    <a href="#">How can i pass SWP2022?</a>
+                    <br>
+                    <span>Started By <b><a href="#">User</a></b></span>
+                </div>
+                <div class="replies">2 replies <br>125views
+                </div>
+                <div class="last-reply">
+                    Oct24 2022
+                    <br>
+                    By <b><a href="">User</a></b>
+                </div>
+            </div>
+            <div class="table-row">
+                <div class="status"><i class="fa fa-fire"></i></div>
+                <div class="subjects">
+                    <a href="#">How can i pass SWP2022?</a>
+                    <br>
+                    <span>Started By <b><a href="#">User</a></b></span>
+                </div>
+                <div class="replies">2 replies <br>125views
+                </div>
+                <div class="last-reply">
+                    Oct24 2022
+                    <br>
+                    By <b><a href="">User</a></b>
+                </div>
+            </div>
+        </div>
+        <!--Pagination-->
+        <div class="pagination">
+            Pages: <a href="#">1</a><a href="#">2</a><a href="#">3</a>
+        </div>
+    </div>
+
+
+
+
+
+    <!-- footerOai2.html -->
+    <div th:replace="common/footerOai2 :: footerOai2"></div>
+    <!--js-->
+    <script th:src="@{Forum/main.js}"></script>
+</body>
+<script th:src="@{Header_Footer/js/bootstrap.bundle.min.js}"></script>
+
+</html>
