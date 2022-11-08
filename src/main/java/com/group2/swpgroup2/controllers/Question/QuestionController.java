@@ -1,4 +1,5 @@
 package com.group2.swpgroup2.controllers.Question;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -30,5 +31,6 @@ public class QuestionController {
         List<Question> lq = qRepo.findByCourse(Integer.parseInt(id));
         model.addAttribute("lq", lq);
         return "Forum/PostPage";
+
     }
 }
