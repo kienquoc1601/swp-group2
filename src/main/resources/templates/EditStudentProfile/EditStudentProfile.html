@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>ModuleContent</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="WebUni Education Template">
+    <meta name="keywords" content="webuni, education, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Favicon -->
+    <link th:href="@{../home_course/img/favicon.ico}" rel="shortcut icon" />
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Sen" rel="stylesheet">
+
+    <!-- Stylesheets -->
+    <link th:href="@{../Header_Footer/css/bootstrap.min.css}" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{../home_course/css/font-awesome.min.css}" />
+    <link rel="stylesheet" th:href="@{../home_course/css/owl.carousel.css}" />
+    <link rel="stylesheet" th:href="@{../home_course/css/style.css}" />
+
+    <!--css link-->
+    <link rel="stylesheet" th:href="@{/EditStudentProfile/style.css}">
+</head>
+
+<body>
+
+    <!-- headerOai.html -->
+    <div th:replace="common/headerOai3 :: headerOai3"></div>
+
+    <!-- single course section -->
+        <div class="box">
+            <img class="img" src="https://cdn.pixabay.com/photo/2015/06/22/08/40/child-817373__340.jpg" alt="">
+            <input type="file" name="" id="file" accept="image/*">
+            <label for="file">Edit Pic</label>
+            <input type="text" name="" id="" placeholder="Full name">
+            <input type="text" name="" id="" placeholder="Gender">
+            <input type="text" name="" id="" placeholder="Phone number">
+            <input type="text" name="" id="" placeholder="Address">
+            <input type="date" name="" id=""placeholder="Date of Birth">
+            <button style="float:left; margin:10px 0 0 18.2%;">Cancel</button>
+            <button style="float: right; margin: 10px 18.2% 0 0">Apply</button>
+        </div>
+    <!-- banner section end -->
+    <!-- footerOai.html -->
+    <div th:replace="common/footerOai2 :: footerOai2"></div>
+</body>
+
+<!--====== Javascripts & Jquery ======-->
+<script th:src="@{../home_course/js/jquery-3.2.1.min.js}"></script>
+<!-- <script th:src="@{../home_course/js/bootstrap.min.js}"></script> -->
+<!-- <script th:src="@{../home_course/js/mixitup.min.js}"></script> -->
+<script th:src="@{../home_course/js/circle-progress.min.js}"></script>
+<script th:src="@{../home_course/js/owl.carousel.min.js}"></script>
+<script th:src="@{../home_course/js/main.js}"></script>
+<script th:src="@{../Header_Footer/js/bootstrap.bundle.min.js}"></script>
+
+</html>
