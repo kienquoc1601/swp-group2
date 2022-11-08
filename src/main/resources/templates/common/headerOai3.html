@@ -108,9 +108,15 @@
                             <li><a class="dropdown-item " href="# ">Sign out</a></li>
                         </ul>
                     </div>
-                    <div class="text-end ">
-                        <a th:href=@{/login}><button type="button " class="btn btn-outline-light me-2 ">Login</button></a>
-                        <a th:href=@{/register}><button type="button " class="btn btn-warning ">Sign-up</button></div></a>
+                    
+                    <div sec:authorize="hasRole('ROLE_USER')">
+                        This content is only shown to authenticated users.
+                    </div>
+                    <div sec:authorize="!isAuthenticated()">
+                        <div class="text-end ">
+                            <a th:href=@{/login}><button type="button " class="btn btn-outline-light me-2 ">Login</button></a>
+                            <a th:href=@{/register}><button type="button " class="btn btn-warning ">Sign-up</button></div></a>
+                        </div>
                     </div>
                 </div>
             </div>

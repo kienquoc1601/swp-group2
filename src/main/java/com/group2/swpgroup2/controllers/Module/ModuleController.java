@@ -34,13 +34,13 @@ public class ModuleController {
             model.addAttribute("n", n);
             model.addAttribute("s", s);
             return "Module/ModuleContent";
-        }else if(m.ModuleType.equalsIgnoreCase("video")){
+        }else{
             String n = m.getModuleName();
             String s = m.getSrc();
             model.addAttribute("n",n);
             model.addAttribute("s", s);
             return "Module/ModuleVideo";
         }
-        return "Module/ModuleVideo";
+        
     }
 }
