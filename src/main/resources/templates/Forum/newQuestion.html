@@ -5,23 +5,32 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Forum</title>
     <link th:href="@{/Header_Footer/css/bootstrap.min.css}" rel="stylesheet">
     <!-- Custom styles for this template -->
     <link th:href="@{/Header_Footer/css/headers.css}" rel="stylesheet">
     <!-- sea2.css -->
     <link th:href="@{/Header_Footer/css/sea2.css}" rel="stylesheet">
+    <!--css-->
+    <link th:href="@{/Forum/style.css}" rel="stylesheet">
+    <!--awesome font-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 </head>
 
 <body>
     <!-- headerOai.html -->
     <div th:replace="common/headerOai3 :: headerOai3"></div>
-
+    <div class="container">
+        <form th:action="@{/qlist}" method="post">
+            <textarea name="qname" id=""placeholder ="Question Name"></textarea><br>
+            <textarea name="qtext" id=""placeholder ="Question Content"></textarea>
+            <input type="hidden" name="cid" th:value="${cid}">
+            <input type="submit" name="" id="" value="Submit">
+        </form>
+    </div>
     <!-- Write your code here in middle of Page -->
-    <h1>
-        Write your code here
-    </h1>
+    
 
     <!-- footerOai2.html -->
     <div th:replace="common/footerOai2 :: footerOai2"></div>

@@ -20,6 +20,7 @@ import com.group2.swpgroup2.models.Mentor;
 import com.group2.swpgroup2.models.Question;
 import com.group2.swpgroup2.models.Student;
 import com.group2.swpgroup2.repositories.AnswerRepository;
+import com.group2.swpgroup2.repositories.CourseRepository;
 import com.group2.swpgroup2.repositories.MentorRepository;
 import com.group2.swpgroup2.repositories.QuestionRepository;
 import com.group2.swpgroup2.repositories.StudentRepository;
@@ -36,14 +37,36 @@ public class QuestionController {
     StudentRepository sRepo;
     @Autowired
     MentorRepository mRepo;
+    @Autowired
+    CourseRepository cRepo;
+    
 
     @GetMapping("/qlist/id={id}")
     public String QList(Model model, @PathVariable String id){
         List<Question> lq = qRepo.findByCourse(Integer.parseInt(id));
         System.out.println(lq.size());
         model.addAttribute("lq", lq);
+        model.addAttribute("cid",id);
         return "Forum/PostPage";
     }
+    @GetMapping("/nq/id={id}")
+    public String nquest(Model model, @PathVariable String id){
+        model.addAttribute("cid",id);
+        return "Forum/newQuestion";
+    }
+    @RequestMapping("/qlist")
+    public String newq(
+        @RequestParam(value = "qname", required = false) String name,
+        @RequestParam(value = "qtext", required = false) String text,
+        @RequestParam(value = "cid", required = false) String cid,
+        Model model)
+        {
+            String current = SecurityContextHolder.getContext().getAuthentication().getName();
+            Student s = sRepo.findStudentByUsername(current);
+            Question q = Question.builder().course(cRepo.findByCourseID(Integer.parseInt(cid))).qName(name).qContent(text).student(s).build();
+            qRepo.save(q);
+            return "redirect:/qlist/id="+ cid;
+        }
     @GetMapping("/q/id={id}")
     public String Question(Model model, @PathVariable String id){
         Question q = qRepo.findByID(Integer.parseInt(id));
