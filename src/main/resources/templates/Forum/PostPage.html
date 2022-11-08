@@ -19,7 +19,7 @@
 
 <body>
     <!-- headerOai.html -->
-    <div th:replace="common/headerOai2 :: headerOai2"></div>
+    <div th:replace="common/headerOai3 :: headerOai3"></div>
 
     <!-- Write your code here in middle of Page -->
     <div class="container">
@@ -30,51 +30,24 @@
                 <div class="replies">Replies/View</div>
                 <div class="last-reply">Last Reply</div>
             </div>
-            <div class="table-row">
-                <div class="status"><i class="fa fa-fire"></i></div>
-                <div class="subjects">
-                    <a href="#">How can i pass SWP2022?</a>
-                    <br>
-                    <span>Started By <b><a href="#">User</a></b></span>
-                </div>
-                <div class="replies">2 replies <br>125views
-                </div>
-                <div class="last-reply">
-                    Oct24 2022
-                    <br>
-                    By <b><a href="">User</a></b>
-                </div>
-            </div>
-            <div class="table-row">
-                <div class="status"><i class="fa fa-fire"></i></div>
-                <div class="subjects">
-                    <a href="#">How can i pass SWP2022?</a>
-                    <br>
-                    <span>Started By <b><a href="#">User</a></b></span>
-                </div>
-                <div class="replies">2 replies <br>125views
-                </div>
-                <div class="last-reply">
-                    Oct24 2022
-                    <br>
-                    By <b><a href="">User</a></b>
+            <div class="post-table"  th:each="q : ${lq}">
+                <div class="table-row">
+                    <div class="status"><i class="fa fa-fire"></i></div>
+                    <div class="subjects">
+                        <a href="/q/id={id}" th:text = "${q.qName}">How can i pass SWP2022?</a>
+                        <br>
+                        <span>Started By <b><a href="#"th:text="${q.student.username}">User</a></b></span>
+                    </div>
+                    <div class="replies">2 replies <br>125views
+                    </div>
+                    <div class="last-reply" th.text = "${q.Date}">
+                        Oct24 2022
+                        <br>
+                        By <b><a href="">User</a></b>
+                    </div>
                 </div>
             </div>
-            <div class="table-row">
-                <div class="status"><i class="fa fa-fire"></i></div>
-                <div class="subjects">
-                    <a href="#">How can i pass SWP2022?</a>
-                    <br>
-                    <span>Started By <b><a href="#">User</a></b></span>
-                </div>
-                <div class="replies">2 replies <br>125views
-                </div>
-                <div class="last-reply">
-                    Oct24 2022
-                    <br>
-                    By <b><a href="">User</a></b>
-                </div>
-            </div>
+            
         </div>
         <!--Pagination-->
         <div class="pagination">

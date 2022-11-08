@@ -31,36 +31,18 @@
     <div th:replace="common/headerOai3 :: headerOai3"></div>
     <!-- Code here -->
     <div class="main">
-        <div class="cards">
-            <div class="image">
-                <img src="" alt="Can't find image">
-            </div>
 
-            <div class="title">
-                <h1>Name of Student</h1>
-            </div>
-            <hr>
-            <div class="des">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum amet eaque iusto, illo fugiat
-                    voluptates, ad asperiores quidem quasi praesentium velit, rerum laborum provident temporibus neque
-                    voluptatibus culpa reprehenderit fuga.</p>
-            </div>
-        </div>
-        <div class="cards">
-            <div class="image">
-                <img src="" alt="Can't find image">
-            </div>
+        <table th:each="s : ${lq}">
+            <tr>
+              <a th:href="/" class="list-group-item list-group-item-action">
+                <div class="d-flex w-100 justify-content-between">
+                  <h5 class="mb-1" th:text = "${s.Name}"></h5>
+                </div>
+                <small>Giới thiệu về Chapter</small>
+              </a>
+            </tr>
+          </table>
 
-            <div class="title">
-                <h1>Name of Student</h1>
-            </div>
-            <hr>
-            <div class="des">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum amet eaque iusto, illo fugiat
-                    voluptates, ad asperiores quidem quasi praesentium velit, rerum laborum provident temporibus neque
-                    voluptatibus culpa reprehenderit fuga.</p>
-            </div>
-        </div>
     </div>
     <!-- banner section -->
     <section class="banner-section spad">

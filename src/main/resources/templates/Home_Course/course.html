@@ -76,7 +76,7 @@
                             <div class="course-meta">
                                 <div class="cm-info">
                                     <h6>Students</h6>
-                                    <p th:utext="${'<strong>' + numberOfStudentEnroll + '</strong>' + ' Enrolled Student'}">Number of student enroll this course</p>
+                                    <a th:utext="${'<strong>' + numberOfStudentEnroll + '</strong>' + ' Enrolled Student'}" th:href="@{/}">Number of student enroll this course</a>
                                 </div>
                             </div>
                             <div class="course-meta">
@@ -102,6 +102,7 @@
 
                         <button class="btn btn-success btn-lg" th:onclick="'javascript:addtoCart(' + ${course.Id} + ')'">Buy this course</button>
                         <a th:href="@{/chapterlist/cid=__${course.Id}__}"><button class="btn btn-success btn-lg">Go to Course</button></a>
+                        <a th:href="@{/qlist/id=__${course.Id}__}"><button class="btn btn-success btn-lg">Ask a question</button></a>
 
                     </div>
                 </div>

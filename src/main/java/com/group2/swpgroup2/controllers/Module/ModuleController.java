@@ -31,7 +31,7 @@ public class ModuleController {
         if(m.ModuleType.equalsIgnoreCase("text")){
             String n = m.getModuleName();
             String s = m.getContent();
-            model.addAttribute("n",n);
+            model.addAttribute("n", n);
             model.addAttribute("s", s);
             return "Module/ModuleContent";
         }else if(m.ModuleType.equalsIgnoreCase("video")){
