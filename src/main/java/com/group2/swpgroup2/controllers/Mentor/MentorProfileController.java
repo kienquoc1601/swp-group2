@@ -25,10 +25,10 @@ public class MentorProfileController {
         return "MentorProfile/MentorProfile";
     }
 
-    @GetMapping("/mentorprofile/cid={id}")
+    @GetMapping("/mentor/id={id}")
     public String ModuleListByID(Model model , @PathVariable String id, HttpServletRequest request){
         Mentor m = mentorRepository.findByID(Integer.parseInt(id));
         model.addAttribute("m", m);
-        return "MentorProfile/MentorProfile";
+        return "Mentor/MentorProfile";
     }
 }

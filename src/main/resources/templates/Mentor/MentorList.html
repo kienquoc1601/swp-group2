@@ -19,10 +19,20 @@
     <div th:replace="common/headerOai3 :: headerOai3"></div>
 
     <!-- Write your code here in middle of Page -->
-    <h1>
-        Write your code here
-    </h1>
-
+    <div class="main">
+        <div class="container">
+            <table th:each="m : ${l}">
+                <tr>
+                <a th:href="@{/mentor/id=__${m.Id}__}" class="list-group-item list-group-item-action">
+                    <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1" th:text = "${m.Name}"></h5>
+                    </div>
+                    <small>Giới thiệu về Mentor</small>
+                </a>
+                </tr>
+            </table>
+        </div>
+    </div>
     <!-- footerOai2.html -->
     <div th:replace="common/footerOai2 :: footerOai2"></div>
     

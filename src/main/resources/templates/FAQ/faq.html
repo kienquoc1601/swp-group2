@@ -25,16 +25,16 @@
     <h1>
         <section>
             <div class="container">
-                <div class="accordion">
+                <div class="accordion" th:each="f:${fl}">
 
                     <div class="accordion-item" id="question1">
-                        <a class="accordion-link" href="#question1">
+                        <a class="accordion-link" href="#question1" th:text="${f.qtext}">
                             How often do u go to bed
                                 <ion-icon class="add" name="add"></ion-icon>
                                 <ion-icon class="remove" name="remove"></ion-icon>
                         </a>
-                        <div class="answer">
-                            <p>
+                        <div class="answer" th:text="${f.atext}">
+                            <p >
                                 Lorem ipsum dolor sit, amet consectetur adipisicing elit. Earum, laboriosam? Alias ipsam
                                 expedita odio voluptatum est cum dolorum repellat error fugiat quod veniam, deleniti
                                 eaque?
@@ -43,37 +43,7 @@
                         </div>
                     </div>
 
-                    <div class="accordion-item" id="question2">
-                        <a class="accordion-link" href="#question2">
-                            How often do u go to bed
-                                <ion-icon class="add" name="add"></ion-icon>
-                                <ion-icon class="remove" name="remove"></ion-icon>
-                        </a>
-                        <div class="answer">
-                            <p>
-                                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Earum, laboriosam? Alias ipsam
-                                expedita odio voluptatum est cum dolorum repellat error fugiat quod veniam, deleniti
-                                eaque?
-                                In deleniti temporibus voluptate beatae!
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="accordion-item" id="question3">
-                        <a class="accordion-link" href="#question3">
-                            How often do u go to bed
-                                <ion-icon class="add" name="add"></ion-icon>
-                                <ion-icon class="remove" name="remove"></ion-icon>
-                        </a>
-                        <div class="answer">
-                            <p>
-                                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Earum, laboriosam? Alias ipsam
-                                expedita odio voluptatum est cum dolorum repellat error fugiat quod veniam, deleniti
-                                eaque?
-                                In deleniti temporibus voluptate beatae!
-                            </p>
-                        </div>
-                    </div>
+                    
 
                 </div>
             </div>
