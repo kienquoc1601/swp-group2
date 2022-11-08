@@ -20,12 +20,13 @@ import lombok.ToString;
 public class Answer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "answerID")
+    @Column(name = "answerid")
     public Integer answerID;
-    @Column(name = "questionID")
+    @Column(name = "questionid")
     public Integer questionID;
-    @Column(name = "mentorID")
-    public Integer mentorID;
+    @OneToOne
+    @JoinColumn(name = "mentorid")
+    public Mentor mentor;
     @Column(name = "answer")
     public String answer;
     @Column(name = "date")

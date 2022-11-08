@@ -25,28 +25,59 @@
     <div class="container">
         <div class="topic-container">
             <div class="head">
-                <div class="author">Author</div>
-                <div class="content">Topic: post'title</div>
+                <div class="author" th:text="${s.username}">Author</div>
+                <div class="content"th:text="${q.qName}">Topic: post'title</div>
+                <h1 th:text="${q.questionID}"></h1>
             </div>
 
             <div class="body">
                 <div class="authors">
-                    <div class="username"><a href="#">Username</a></div>
+                    <div class="username" th:text="${s.username}"><a href="#">Username</a></div>
                     <div>Role</div>
-                    <img src="https://cdn.pixabay.com/photo/2015/06/22/08/40/child-817373__340.jpg" alt="">
-                    <div>Post: <u>45</u></div>
+                    <img th:src="${s.img_src}" alt="">
+                    
                 </div>
-                <div class="content">
-                    Just a random Content to see if this work
-                    <br>
-                    Hello Quoc, May Ngu
+                <div class="content" >
+                    <div><h1 th:text="${q.qContent}">
+                        
+                    </h1>
+                 </div>
                 </div>
             </div>
         </div>
         <!--Comment Input-->
-        <div class="comment-area " id="comment-area">
-            <textarea name="comment" id=""placeholder ="Comment Here....."></textarea>
-            <input type="submit" name="" id="" value="Submit">
+        <th:block sec:authorize="hasRole('ROLE_MENTOR')">
+            <form th:action="@{/q}" method="post">
+                <textarea name="comment" id=""placeholder ="Comment Here....."></textarea>
+                <input type="hidden" name="qid" th:value="${q.questionID}">
+                <input type="submit" name="" id="" value="Submit">
+            </form>
+        </th:block>
+        
+        </div>
+        <div th:each="a :${aList}">
+            <div class="container">
+                <div class="topic-container">
+                    <div class="head">
+                        <div class="author" th:text="${a.mentor.username}">Author</div>
+                        <div class="content"th:text="${a.Date}">Topic: post'title</div>
+                    </div>
+        
+                    <div class="body">
+                        <div class="authors">
+                            <div class="username" th:text="${a.mentor.username}"><a href="#">Username</a></div>
+                            <div>Role</div>
+                            <img th:src="${a.mentor.ImgSrc}" alt="">
+                            
+                        </div>
+                        <div class="content">
+                            <div><h1 th:text="${a.answer}">
+                                
+                            </h1>
+                        </div>
+                        </div>
+                    </div>
+                </div>
         </div>
     </div>
 

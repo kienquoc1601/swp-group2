@@ -34,9 +34,9 @@
                 <div class="table-row">
                     <div class="status"><i class="fa fa-fire"></i></div>
                     <div class="subjects">
-                        <a href="/q/id={id}" th:text = "${q.qName}">How can i pass SWP2022?</a>
+                        <a th:href="@{/q/id=__${q.questionID}__}" th:text = "${q.qName}">How can i pass SWP2022?</a>
                         <br>
-                        <span>Started By <b><a href="#"th:text="${q.student.username}">User</a></b></span>
+                        <span>Started By <b><a href="${q.questionID}"th:text="${q.student.username}">User</a></b></span>
                     </div>
                     <div class="replies">2 replies <br>125views
                     </div>
