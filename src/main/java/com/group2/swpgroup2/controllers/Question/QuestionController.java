@@ -79,7 +79,7 @@ public class QuestionController {
         model.addAttribute("s", s);
         model.addAttribute("aList", aList);
 
-        return "Forum/ForumDetail";
+        return "Forum/ForumDetail2";
 
     }
     @RequestMapping("/q")
