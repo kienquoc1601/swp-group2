@@ -63,7 +63,7 @@
                             <div class="course-meta">
                                 <div class="course-author">
                                     <div class="ca-pic set-bg" th:data-setbg="${course.getCourseManager().getImgSrc()}"></div>
-                                    <h6>Teacher</h6>
+                                    <a th:href="@{/mentorlist/id=__${course.Id}__}">Mentors</a>
                                     <p th:utext="${course.getCourseManager().getName() +',  <span><strong>'+ course.getCourseManager().getOrgName() +'</strong></span>'}">CourseManager </p>
                                 </div>
                             </div>
@@ -75,8 +75,8 @@
                             </div>
                             <div class="course-meta">
                                 <div class="cm-info">
-                                    <h6>Students</h6>
-                                    <a th:utext="${'<strong>' + numberOfStudentEnroll + '</strong>' + ' Enrolled Student'}" th:href="@{/}">Number of student enroll this course</a>
+                                    <a th:href="@{/slist/id=__${course.Id}__}">Students</a>
+                                    <p th:utext="${'<strong>' + numberOfStudentEnroll + '</strong>' + ' Enrolled Student'}" >Number of student enroll this course</p>
                                 </div>
                             </div>
                             <div class="course-meta">

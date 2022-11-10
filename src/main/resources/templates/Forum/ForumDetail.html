@@ -6,20 +6,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Forum</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Sen" rel="stylesheet">
+
+    <!-- Stylesheets -->
     <link th:href="@{/Header_Footer/css/bootstrap.min.css}" rel="stylesheet">
-    <!-- Custom styles for this template -->
-    <link th:href="@{/Header_Footer/css/headers.css}" rel="stylesheet">
-    <!-- sea2.css -->
-    <link th:href="@{/Header_Footer/css/sea2.css}" rel="stylesheet">
+
     <!--css-->
     <link th:href="@{/Forum/style.css}" rel="stylesheet">
-    <!--awesome font-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    
 </head>
 
 <body>
     <!-- headerOai.html -->
-    <div th:replace="common/headerOai2 :: headerOai2"></div>
+    <div th:replace="common/headerOai3 :: headerOai3"></div>
 
     <!-- Write your code here in middle of Page -->
     <div class="container">
@@ -38,10 +39,11 @@
                     
                 </div>
                 <div class="content" >
-                    <div><h1 th:text="${q.qContent}">
+                    <div>
+                        <p th:text="${q.qContent}">
                         
-                    </h1>
-                 </div>
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -89,5 +91,11 @@
     <script th:src="@{Forum/main.js}"></script>
 </body>
 <script th:src="@{Header_Footer/js/bootstrap.bundle.min.js}"></script>
-
+<!--====== Javascripts & Jquery ======-->
+<script th:src="@{home_course/js/jquery-3.2.1.min.js}"></script>
+<!-- <script th:src="@{home_course/js/bootstrap.min.js}"></script> -->
+<!-- <script th:src="@{home_course/js/mixitup.min.js}"></script> -->
+<!-- <script th:src="@{home_course/js/circle-progress.min.js}"></script> -->
+<!-- <script th:src="@{home_course/js/owl.carousel.min.js}"></script> -->
+<script th:src="@{home_course/js/main.js}"></script>
 </html>

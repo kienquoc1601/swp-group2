@@ -12,6 +12,9 @@ public interface MentorRepository extends JpaRepository<Mentor , Integer>{
     Mentor findByID(Integer mentorID);
     @Query(value = "SELECT * FROM [OnLearningDB].[dbo].[Mentor] Where username = ?1", nativeQuery = true)
     Mentor findByUname(String uname);
+    @Query(value = "SELECT * FROM [OnLearningDB].[dbo].[Mentor] as c join [OnLearningDB].[dbo].[CourseMentor]as cs on c.mentorID = cs.mentorID WHERE cs.courseID = ?1", nativeQuery = true)
+    List<Mentor> findByCourse(Integer mentorID);
+    
 
 
 }

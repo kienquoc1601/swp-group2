@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import com.group2.swpgroup2.models.Student;
 import com.group2.swpgroup2.repositories.StudentRepository;
 
+@Controller
 public class StudentController {
     @Autowired
     StudentRepository sRepo;
@@ -23,11 +24,24 @@ public class StudentController {
         model.addAttribute("lq", lq);
         return "ListStudent/ListStudent";
     }
-    @GetMapping("/sprofile")
-    public String sprofile(Model model){
+    @GetMapping("/slist/id={id}")
+    public String sList(Model model , @PathVariable String id){
+        List<Student> lq = sRepo.findByCourse(Integer.parseInt(id));
+        model.addAttribute("lq", lq);
+        return "ListStudent/ListStudent";
+    }
+    @GetMapping("/sprofile/id={id}")
+    public String sprofile(Model model , @PathVariable String id){
+        Student s = sRepo.findByID(Integer.parseInt(id));
+        model.addAttribute("s", s);
+        return "ListStudent/StudentProfile";
+    }
+    @GetMapping("/profile")
+    public String profile(Model model , @PathVariable String id){
         String current = SecurityContextHolder.getContext().getAuthentication().getName();
         Student s = sRepo.findStudentByUsername(current);
         model.addAttribute("s", s);
-        return "ListStudent/ListStudent";
+        return "ListStudent/StudentProfile";
     }
+    
 }
