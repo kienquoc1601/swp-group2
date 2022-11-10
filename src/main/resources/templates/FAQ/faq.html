@@ -13,47 +13,40 @@
     <!-- sea2.css -->
     <link th:href="@{/Header_Footer/css/sea2.css}" rel="stylesheet">
     <!--css-->
-    <link th:href="@{/FAQ/style.css}" rel="stylesheet">
+    <!-- <link th:href="@{/FAQ/style.css}" rel="stylesheet"> -->
 
 </head>
 
 <body>
     <!-- headerOai.html -->
-    <div th:replace="common/headerOai2 :: headerOai2"></div>
+    <div th:replace="common/headerOai3 :: headerOai3"></div>
 
     <!-- Write your code here in middle of Page -->
-    <h1>
-        <section>
-            <div class="container">
-                <div class="accordion" th:each="f:${fl}">
-
-                    <div class="accordion-item" id="question1">
-                        <a class="accordion-link" href="#question1" th:text="${f.qtext}">
-                            How often do u go to bed
-                                <ion-icon class="add" name="add"></ion-icon>
-                                <ion-icon class="remove" name="remove"></ion-icon>
-                        </a>
-                        <div class="answer" th:text="${f.atext}">
-                            <p >
-                                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Earum, laboriosam? Alias ipsam
-                                expedita odio voluptatum est cum dolorum repellat error fugiat quod veniam, deleniti
-                                eaque?
-                                In deleniti temporibus voluptate beatae!
-                            </p>
-                        </div>
+        <div class="accordion" id="accordionPanelsStayOpenExample">
+            <div class="accordion-item" th:each="f:${fl}">
+                <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+                    <button class="accordion-button" href="#question1" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true"
+                        aria-controls="panelsStayOpen-collapseOne" th:text="${f.qtext}">
+                        Accordion Item #1
+                    </button>
+                </h2>
+                <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show"
+                    aria-labelledby="panelsStayOpen-headingOne">
+                    <div class="accordion-body" th:text="${f.atext}">
+                        <strong>This is the first item's accordion body.</strong> It is shown by default, until the
+                        collapse plugin adds the appropriate classes that we use to style each element. These classes
+                        control the overall appearance, as well as the showing and hiding via CSS transitions. You can
+                        modify any of this with custom CSS or overriding our default variables. It's also worth noting
+                        that just about any HTML can go within the <code>.accordion-body</code>, though the transition
+                        does limit overflow.
                     </div>
-
-                    
-
                 </div>
             </div>
-        </section>
-    </h1>
-
-    <!-- footerOai2.html -->
-    <div th:replace="common/footerOai2 :: footerOai2"></div>
-    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+        <!-- footerOai2.html -->
+        <div th:replace="common/footerOai2 :: footerOai2"></div>
+        <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
 <script th:src="@{Header_Footer/js/bootstrap.bundle.min.js}"></script>
 
