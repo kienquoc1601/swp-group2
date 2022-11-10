@@ -1,5 +1,5 @@
 package com.group2.swpgroup2.controllers.Student;
-import java.util.Arrays;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,8 +36,8 @@ public class StudentController {
         model.addAttribute("s", s);
         return "ListStudent/StudentProfile";
     }
-    @GetMapping("/profile")
-    public String profile(Model model , @PathVariable String id){
+    @GetMapping("/sprofile")
+    public String profile(Model model ){
         String current = SecurityContextHolder.getContext().getAuthentication().getName();
         Student s = sRepo.findStudentByUsername(current);
         model.addAttribute("s", s);

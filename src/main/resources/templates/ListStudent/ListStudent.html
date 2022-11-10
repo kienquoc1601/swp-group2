@@ -23,15 +23,19 @@
     <!-- headerOai.html -->
     <div th:replace="common/headerOai3 :: headerOai3"></div>
     <!-- Code here -->
+    
     <div class="main">
         <div class="container">
+        <h1 style="align-items: center; display: flex; justify-content: center; border: solid 2px; border-radius: 5px; background-color: rgba(205, 209, 228, 1); color: rgb(0, 0, 0);">Students of this class</h1>
         <table th:each="s : ${lq}">
             <tr>
               <a th:href="@{/sprofile/id=__${s.studentID}__}" class="list-group-item list-group-item-action">
                 <div class="d-flex w-100 justify-content-between">
                   <h5 class="mb-1" th:text = "${s.username}"></h5>
+                  <img th:src="${s.img_src}" class="img-thumbnail" alt="..." style="width: 80px;height: 80px;">
+                  
                 </div>
-                <small>Giới thiệu về Chapter</small>
+                
               </a>
             </tr>
           </table>

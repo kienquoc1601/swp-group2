@@ -7,6 +7,7 @@ import java.util.Optional;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,9 +21,12 @@ public class MentorProfileController {
     @Autowired
     MentorRepository mentorRepository;
     
-    @GetMapping("/mentorprofile")
-    public String MentorList(){
-        return "MentorProfile/MentorProfile";
+    @GetMapping("/mprofile")
+    public String MentorList(Model model){
+        String current = SecurityContextHolder.getContext().getAuthentication().getName();
+        Mentor m = mentorRepository.findByUname(current);
+        model.addAttribute("m", m);
+        return "Mentor/MentorProfile";
     }
 
     @GetMapping("/mentor/id={id}")
