@@ -26,9 +26,15 @@ public class MentorProfileController {
     }
 
     @GetMapping("/mentor/id={id}")
-    public String ModuleListByID(Model model , @PathVariable String id, HttpServletRequest request){
+    public String MentorProfile(Model model , @PathVariable String id, HttpServletRequest request){
         Mentor m = mentorRepository.findByID(Integer.parseInt(id));
         model.addAttribute("m", m);
         return "Mentor/MentorProfile";
+    }
+    @GetMapping("/editmentor/id={id}")
+    public String MentorEdit(Model model , @PathVariable String id, HttpServletRequest request){
+        Mentor m = mentorRepository.findByID(Integer.parseInt(id));
+        model.addAttribute("m", m);
+        return "Mentor/EditMentorProfile";
     }
 }

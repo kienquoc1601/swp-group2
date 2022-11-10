@@ -38,4 +38,23 @@ public class MentorListController {
         model.addAttribute("l", l);
         return "Mentor/MentorList";
     }
+    @GetMapping("/admin/mentorlist/delete/{id}")
+    public String AdminMentorDelete(Model model, @PathVariable("id") int id) {
+        // delete course by id
+        mRepo.deleteById(id);
+        // return message successfully
+        model.addAttribute("message", "Delete successfully");
+        // redirect to admin course page
+        return "redirect:/admin/mentorlist";
+    }
+    @PostMapping("/admin/mentorlist/update")
+    public String AdminMentorUpdate(@ModelAttribute("Mentor") Mentor mentor) {
+        //update course and redirect to admin course page if successfully, else return error message
+        if(mRepo.updateMentor(mentor.getName(),mentor.getFullName(), mentor.getImgSrc(), mentor.isGender(), 
+        mentor.getDob(), mentor.getPhone()) == 1) {
+            return "redirect:/admin/mentorlist";
+        } else {
+            return "error";
+        }
+    }
 }

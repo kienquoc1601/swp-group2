@@ -30,15 +30,23 @@
 
     <!-- single course section -->
         <div class="box">
-            <img class="img" src="https://cdn.pixabay.com/photo/2015/06/22/08/40/child-817373__340.jpg" alt="">
-            <input type="file" name="" id="file" accept="image/*">
-            <label for="file">Edit Pic</label>
-            <input type="text" name="" id="" placeholder="Full name">
-            <input type="text" name="" id="" placeholder="Gender">
-            <input type="text" name="" id="" placeholder="Phone number">
-            <input type="date" name="" id=""placeholder="Date of Birth">
-            <button style="float:left; margin:10px 0 0 18.2%;">Cancel</button>
-            <button style="float: right; margin: 10px 18.2% 0 0">Apply</button>
+            <form>
+                <img class="img" src="https://cdn.pixabay.com/photo/2015/06/22/08/40/child-817373__340.jpg" alt="">
+                <input type="file" name="" id="file" accept="image/*">
+                <label for="file">Edit Pic</label>
+                <input type="text" name="" id="" th:text=${m.Name}>
+                <input type="text" name="" id="" th:text=${m.FullName}>
+                <input type="text" name="" id="" th:text=${m.ImgSrc}>
+                <select id="Gender" class="form-control" name="Gender">
+                    <option text="Male"
+                            value="True" selected="selected"></option>
+                    <option text="Female"
+                            value="False"></option>
+                </select>
+                <input type="text" name="" id="" th:text=${m.phone}>
+                <input type="date" name="" id="" th:text=${m.dob}>
+                <button style="float: right; margin: 10px 18.2% 0 0">Apply</button>
+            </form>
         </div>
     <!-- banner section end -->
     <!-- footerOai.html -->

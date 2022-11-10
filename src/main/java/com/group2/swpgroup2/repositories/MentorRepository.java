@@ -22,7 +22,10 @@ public interface MentorRepository extends JpaRepository<Mentor , Integer>{
     @Transactional
     @Query(value = "INSERT INTO Mentor (username , name , fullname , img_src , gender, dob , phone ) VALUES (?1, ?2, ?3, ?4, ?5, ?6 , ?7)", nativeQuery = true)
 	int addMentor(String username,String name, String Fullname, String ImgSrc, Boolean Gender, Date dob, String phone);
-    
+    @Modifying
+    @Transactional
+    @Query(value = "UPDATE Mentor SET name = ?1, fullname = ?2, img_src = ?3, gender = ?4, dob = ?5, phone = ?6", nativeQuery = true)
+    int updateMentor(String name, String Fullname, String ImgSrc, Boolean Gender, Date dob, String phone);
     
 
 

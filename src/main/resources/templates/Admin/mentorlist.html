@@ -170,10 +170,10 @@
                                                         <td th:style="'width: 10%;'" th:utext="${m.dob}"></td>
                                                         <td th:style="'width: 10%;'" th:utext="${m.phone}"></td>
                                                         <td th:style="'width: 4%;'">
-                                                            <a class="btn btn-primary btn-circle btn-sm">
+                                                            <a th:href="@{/admin/mentorlist/update/{id}(id=${m.Id})}"class="btn btn-primary btn-circle btn-sm">
                                                                 <i class="fas fa-edit"></i>
                                                             </a>
-                                                            <a th:href="@{/admin/blogs}" class="btn btn-danger btn-circle btn-sm">
+                                                            <a th:href="@{/admin/mentorlist/delete/{id}(id=${m.Id})}" class="btn btn-danger btn-circle btn-sm">
                                                                 <i class="fas fa-trash "></i>
                                                             </a>
                                                         </td>
