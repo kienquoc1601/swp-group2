@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Admin OnLearner</title>
+
+</head>
+
+<body id="page-top">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <div th:replace="Admin/main :: sidebarAdmin"></div>
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+                <div th:replace="Admin/main :: navAdmin"></div>
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+
+                    <!-- Page Heading -->
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+                    </div>
+
+                    <!-- Content Row -->
+                    <div class="row">
+                        Viết content ở đây nè :D
+                        <div class="row">
+                            <!-- show all Blogs -->
+                            <div class="col-xl-12 col-lg-12">
+                                <div class="card shadow mb-4">
+                                    <!-- Card Header - Dropdown -->
+                                    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                        <h6 class="m-0 font-weight-bold text-primary">All Blogs</h6>
+                                    </div>
+                                    <!-- Card Body -->
+                                    <div class="card-body">
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered" id="dataTableOai" width="100%" cellspacing="0" th:style="'table-layout: fixed;'">
+                                                <thead>
+                                                    <tr>
+                                                        <th th:style="'width: 4%;'">Id</th>
+                                                        <th th:style="'display:none;'">Author</th>
+                                                        <th th:style="'width: 16%;'">Author</th>
+                                                        <th th:style="'display:none;'">Title</th>
+                                                        <th th:style="'display:none;'">Description</th>
+                                                        <th th:style="'width: 76%;'">Content</th>
+                                                        <th th:style="'display:none;'">Category</th>
+                                                        <th th:style="'display:none;'">Rating</th>
+                                                        <th th:style="'display:none;'">Status</th>
+                                                        <th th:style="'display:none;'">Created Date</th>
+                                                        <th th:style="'width: 4%;'">Actions</th>
+                                                    </tr>
+                                                </thead>
+                                                <tfoot>
+                                                    <tr>
+                                                        <th th:style="'width: 4%;'">Id</th>
+                                                        <th th:style="'display:none;'">Author</th>
+                                                        <th th:style="'width: 16%;'">Author</th>
+                                                        <th th:style="'display:none;'">Title</th>
+                                                        <th th:style="'display:none;'">Description</th>
+                                                        <th th:style="'width: 76%;'">Content</th>
+                                                        <th th:style="'display:none;'">Category</th>
+                                                        <th th:style="'display:none;'">Rating</th>
+                                                        <th th:style="'display:none;'">Status</th>
+                                                        <th th:style="'display:none;'">Created Date</th>
+                                                        <th th:style="'width: 4%;'">Actions</th>
+                                                    </tr>
+                                                </tfoot>
+                                                <tbody>
+                                                    <tr th:each="blog : ${blogs}">
+                                                        <td th:style="'width: 4%;'" th:utext="${blog.blog_id}"></td>
+                                                        <td th:style="'display:none;'" th:utext="${blog.poster_uname}"></td>
+                                                        <td th:style="'width: 16%;'">
+                                                            <img th:src="@{${blog.blog_image}}" th:alt="${blog.title}" th:style="'width: 100%; height: 100%;'">
+                                                        </td>
+                                                        <td th:style="'display:none;'" th:utext="${blog.title}"></td>
+                                                        <td th:style="'display:none;'" th:utext="${blog.blog_description}"></td>
+                                                        <!-- add read more link if length >=2000 (Not working with content have css component ????)-->
+                                                        <td th:style="'width: 76%;'" th:utext="${blog.blog_content.length() >= 2000 ? blog.blog_content.substring(0, 2000) + '...' : blog.blog_content}"></td>
+                                                        <td th:style="'display:none;'" th:utext="${blog.category}"></td>
+                                                        <td th:style="'display:none;'" th:utext="${blog.rating}"></td>
+                                                        <td th:style="'display:none;'" th:utext="${blog.status}"></td>
+                                                        <td th:style="'display:none;'" th:utext="${blog.date}"></td>
+                                                        <td th:style="'width: 4%;'">
+                                                            <a class="btn btn-primary btn-circle btn-sm">
+                                                                <i class="fas fa-edit"></i>
+                                                            </a>
+                                                            <a th:href="@{/admin/blog/delete/{id}(id=${blog.blog_id})}" class="btn btn-danger btn-circle btn-sm">
+                                                                <i class="fas fa-trash "></i>
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- end of content row -->
+                            </div>
+                            <!-- /.container-fluid -->
+    
+                        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    </div>
+                    <!-- end of content row -->
+                </div>
+                <!-- /.container-fluid -->
+
+            </div>
+            <!-- End of Main Content -->
+        </div>
+        <!-- End of Content Wrapper -->
+    </div>
+    <!-- End of Page Wrapper -->
+
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+</body>
+
+</html>

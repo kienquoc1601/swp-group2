@@ -15,11 +15,11 @@ import com.group2.swpgroup2.repositories.MentorRepository;
 public class MentorListController {
     @Autowired
     MentorRepository mRepo;
-    @GetMapping("/mentorlist")
+    @GetMapping("/admin/mentorlist")
     public String MentorList(Model model){
         List<Mentor> l = mRepo.findAll();
         model.addAttribute("l", l);
-        return "Mentor/MentorList";
+        return "Mentor/mentorlist";
     }
     @GetMapping("/mentorlist/id={id}")
     public String ModuleList(Model model , @PathVariable String id){

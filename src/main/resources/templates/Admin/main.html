@@ -87,38 +87,19 @@
                 </li>
 
                 <!-- Nav Item - Utilities Collapse Menu -->
-                <li class="nav-item">
-                    <a class="nav-link collapsed" href="/mentorlist" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
-                        <i class="fas fa-fw fa-wrench"></i>
-                        <span>Mentor</span>
-                    </a>
-                    <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-                        <div class="bg-white py-2 collapse-inner rounded">
-                            <h6 class="collapse-header">Custom Mentor:</h6>
-                            <a class="collapse-item" href="#">Mentor List</a>
-                            <!-- <a class="collapse-item" href="utilities-border.html">Borders</a>
-                            <a class="collapse-item" href="utilities-animation.html">Animations</a>
-                            <a class="collapse-item" href="utilities-other.html">Other</a> -->
-                        </div>
-                    </div>
+                
+                <li class="nav-item " th:classappend="${#strings.equals(currentUrl,'/admin/mentorlist')} ?  active: ''">
+                    <a class="nav-link" th:href="@{/admin/mentorlist}">
+                        <i class="fas fa-fw fa-book"></i>
+                        <span>Mentor List</span></a>
+                </li>
+                <li class="nav-item " th:classappend="${#strings.equals(currentUrl,'/admin/mentorlist')} ?  active: ''">
+                    <a class="nav-link" th:href="@{/mentorlist}">
+                        <i class="fas fa-fw fa-book"></i>
+                        <span>Student List</span></a>
                 </li>
 
 
-                <li class="nav-item">
-                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseStudent" aria-expanded="true" aria-controls="collapseStudent">
-                        <i class="fas fa-fw fa-user"></i>
-                        <span>Student</span>
-                    </a>
-                    <div id="collapseStudent" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-                        <div class="bg-white py-2 collapse-inner rounded">
-                            <h6 class="collapse-header">Custom Student:</h6>
-                            <a class="collapse-item" href="#">Student List</a>
-                            <!-- <a class="collapse-item" href="utilities-border.html">Borders</a>
-                            <a class="collapse-item" href="utilities-animation.html">Animations</a>
-                            <a class="collapse-item" href="utilities-other.html">Other</a> -->
-                        </div>
-                    </div>
-                </li>
 
                 <!-- Divider -->
                 <hr class="sidebar-divider">
