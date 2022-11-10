@@ -23,19 +23,20 @@
         <div class="container">
             <table th:each="m : ${l}">
                 <tr>
-                <a th:href="@{/mentor/id=__${m.Id}__}" class="list-group-item list-group-item-action">
-                    <div class="d-flex w-100 justify-content-between">
-                    <h5 class="mb-1" th:text = "${m.Name}"></h5>
-                    </div>
-                    <small>Giới thiệu về Mentor</small>
-                </a>
+                    <a th:href="@{/mentor/id=__${m.Id}__}" class="list-group-item list-group-item-action">
+                        <img th:src="${m.ImgSrc}" alt="Khong the hien thi" class="rounded-circle">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h5 class="mb-1" th:text="${m.Name}"></h5>
+                        </div>
+                        <small>Giới thiệu về Mentor</small>
+                    </a>
                 </tr>
             </table>
         </div>
     </div>
     <!-- footerOai2.html -->
     <div th:replace="common/footerOai2 :: footerOai2"></div>
-    
+
 </body>
 
 <script th:src="@{Header_Footer/js/bootstrap.bundle.min.js}"></script>

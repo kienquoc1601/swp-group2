@@ -10,7 +10,7 @@ html {
     font-size: 'Roboto', san-serif;
 }
 
-section {
+.ssection {
     width: auto;
     height: fit-content;
     display: flex;
@@ -60,14 +60,7 @@ section {
     position: relative;
 }
 
-.answer::before {
-    content: "";
-    position: absolute;
-    width: .6rem;
-    height: 100%;
-    background-color: #8fc460;
 
-}
 
 .answer p {
     font-size: 1.4rem;
