@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ</title>
+    <!-- Ion Icons-->
+    <link th:href="@{/Header_Footer/css/bootstrap.min.css}" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link th:href="@{/Header_Footer/css/headers.css}" rel="stylesheet">
+    <!-- sea2.css -->
+    <link th:href="@{/Header_Footer/css/sea2.css}" rel="stylesheet">
+    <!--css-->
+    <link th:href="@{/FAQ/style.css}" rel="stylesheet">
+
+</head>
+
+<body>
+    <!-- headerOai.html -->
+    <div th:replace="common/headerOai3 :: headerOai3"></div>
+
+    <!-- Write your code here in middle of Page -->
+    <h1>
+            <div class="container">
+                <div class="accordion" th:each="f:${fl}">
+                    <div class="accordion-item" id="question1">
+                        <a class="accordion-link" href="#question1" th:text="${f.qtext}">
+                            How often do u go to bed
+                            <ion-icon class="add" name="add"></ion-icon>
+                            <ion-icon class="remove" name="remove"></ion-icon>
+                        </a>
+                        <div class="answer" th:text="${f.atext}">
+                            <p>
+                                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Earum, laboriosam? Alias ipsam
+                                expedita odio voluptatum est cum dolorum repellat error fugiat quod veniam, deleniti
+                                eaque?
+                                In deleniti temporibus voluptate beatae!
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </h1>
+
+    <!-- footerOai2.html -->
+    <div th:replace="common/footerOai2 :: footerOai2"></div>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+<script th:src="@{Header_Footer/js/bootstrap.bundle.min.js}"></script>
+
+</html>
