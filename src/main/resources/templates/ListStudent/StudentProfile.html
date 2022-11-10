@@ -38,7 +38,7 @@
                     <div class="col-sm-4 bg-info rounded-left">
                         <div class="card-block text-center text-gray">
                             <img src="..." class="img-thumbnail" alt="...">
-                            <h2 class="font-weight-bold mt-4">
+                            <h2 class="font-weight-bold mt-4" th:text = "${s.username}">
                                 Cao Son
                             </h2>
                             <p>Web Designer</p>
@@ -51,10 +51,10 @@
                         </h3>
                         <div class="row">
                             <div class="col-sm-6">
-                                <p class="font-weight-bold" style="color:black">
+                                <p class="font-weight-bold" style="color:black" >
                                     Full Name
                                 </p>
-                                <h5 class="text-muted">
+                                <h5 class="text-muted" th:text = "${s.fullname}">
                                     NguyenCaoSon
                                 </h5>
                             </div>
@@ -62,7 +62,7 @@
                                 <p class="font-weight-bold" style="color:black">
                                     Date of Birth
                                 </p>
-                                <h5 class="text-muted">
+                                <h5 class="text-muted" th:text = "${s.dob}">
                                     20/4/2001
                                 </h5>
                             </div>
@@ -80,7 +80,7 @@
                                 <p class="font-weight-bold" style="color:black">
                                     Gender
                                 </p>
-                                <h5 class="text-muted">
+                                <h5 class="text-muted"th:text = "${s.gender}">
                                     Male
                                 </h5>
                             </div>
