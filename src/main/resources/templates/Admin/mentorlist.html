@@ -46,8 +46,8 @@
                                     <!-- Card Header - Dropdown -->
                                     <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                                         <h6 class="m-0 font-weight-bold text-primary">
-                                            All Courses
-                                            <button class="addcourse btn btn btn-primary">Add Course</button>
+                                            All Mentor
+                                            <button class="addcourse btn btn btn-primary">Add Mentor</button>
                                             <script>
                                                 $(document).ready(function() {
                                                     $(".addcourse").click(function() {
@@ -61,7 +61,7 @@
                                             <div class="modal fade" id="addCourseModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
                                                     <div class="modal-content">
-                                                        <form th:action="@{/admin/course/add}" method="post" th:object="${CourseCategoryManager}">
+                                                        <form th:action="@{/admin/mentorlist/add}" method="post" th:object="${Mentor}">
                                                             <div class="modal-header">
                                                                 <h5 class="modal-title" id="exampleModalLabel">Modal title
                                                                 </h5>
@@ -73,45 +73,48 @@
                                                                 <div class="container-fluid">
                                                                     <div class="row">
                                                                         <div class="col-12 form-group">
-                                                                            <label for="courseName">Name</label>
-                                                                            <input type="text" class="form-control" name="courseName" id="courseName" placeholder="Enter name">
+                                                                            <label for="username">Username</label>
+                                                                            <input type="text" class="form-control" name="username" id="username" placeholder="Enter name">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-12 form-group">
+                                                                            <label for="name">Name</label>
+                                                                            <input type="text" class="form-control" name="name" id="name" placeholder="Enter name">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-12 form-group">
+                                                                            <label for="Fullname">Fullname</label>
+                                                                            <input type="text" class="form-control" name="Fullname" id="Fullname" placeholder="Enter name">
                                                                         </div>
                                                                     </div>
                                                                     <div class="row">
                                                                         <div class="form-group col-md-4">
-                                                                            <label for="categoryId">Category</label>
-                                                                            <select id="categoryId" class="form-control" name="categoryId">
+                                                                            <label for="Gender">Gender</label>
+                                                                            <select id="Gender" class="form-control" name="Gender">
                                                                                 <option selected disabled>Choose...</option>
-                                                                                <option th:each="cate : ${categories}"
-                                                                                    th:text="${cate.category_name}"
-                                                                                    th:value="${cate.categoryID}"></option>
+                                                                                <option text="Male"
+                                                                                        value="True"></option>
+                                                                                <option text="Female"
+                                                                                        value="False"></option>
                                                                             </select>
                                                                         </div>
                                                                         <div class="form-group col-md-4">
-                                                                            <label for="courseManagerId">Manager</label>
-                                                                            <select id="courseManagerId" class="form-control" name="courseManagerId">
-                                                                                <option selected disabled> Choose Manager
-                                                                                </option>
-                                                                                <option th:each="manager : ${managers}"
-                                                                                    th:text="${manager.Name}"
-                                                                                    th:value="${manager.Id}"></option>
-                                                                            </select>
-                                                                        </div>
-                                                                        <div class="form-group col-md-4">
-                                                                            <label for="coursePrice">Price</label>
-                                                                            <input type="text" class="form-control" name="coursePrice" id="coursePrice" placeholder="Enter price">
+                                                                            <label for="ImgSrc">Image</label>
+                                                                            <input type="text" class="form-control" name="ImgSrc" id="ImgSrc" placeholder="Enter ImgSrc">
                                                                         </div>
                                                                     </div>
                                                                     <div class="row">
                                                                         <div class="col-12 form-group">
-                                                                            <label for="courseDescription">Description</label>
-                                                                            <textarea class="form-control" name="courseDescription" id="courseDescription" placeholder="Enter description"></textarea>
+                                                                            <label for="dob">DOB</label>
+                                                                            <input type="date" name="dob" id="dob" ></input>
                                                                         </div>
                                                                     </div>
                                                                     <div class="row">
                                                                         <div class="col-12 form-group">
-                                                                            <label for="courseImage">Image</label>
-                                                                            <input type="text" class="form-control" name="courseImage" id="courseImage" placeholder="Enter image">
+                                                                            <label for="phone">Phone</label>
+                                                                            <input type="text" class="form-control" name="phone" id="phone" placeholder="Enter phone">
                                                                         </div>
                                                                     </div>
                                                                 </div>
