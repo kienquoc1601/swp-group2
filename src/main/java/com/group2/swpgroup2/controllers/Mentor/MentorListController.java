@@ -17,9 +17,9 @@ public class MentorListController {
     MentorRepository mRepo;
     @GetMapping("/admin/mentorlist")
     public String MentorList(Model model){
-        List<Mentor> l = mRepo.findAll();
-        model.addAttribute("l", l);
-        return "Mentor/mentorlist";
+        List<Mentor> mentors = mRepo.findAll();
+        model.addAttribute("mentors", mentors);
+        return "Admin/mentorlist";
     }
     @GetMapping("/mentorlist/id={id}")
     public String ModuleList(Model model , @PathVariable String id){

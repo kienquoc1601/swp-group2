@@ -45,6 +45,89 @@
                                 <div class="card shadow mb-4">
                                     <!-- Card Header - Dropdown -->
                                     <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                        <h6 class="m-0 font-weight-bold text-primary">
+                                            All Courses
+                                            <button class="addcourse btn btn btn-primary">Add Course</button>
+                                            <script>
+                                                $(document).ready(function() {
+                                                    $(".addcourse").click(function() {
+                                                        var $modal = $('#addCourseModal');
+                                                        $modal.modal('show');
+    
+                                                    });
+                                                });
+                                            </script>
+                                            <!-- Modal -->
+                                            <div class="modal fade" id="addCourseModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+                                                    <div class="modal-content">
+                                                        <form th:action="@{/admin/course/add}" method="post" th:object="${CourseCategoryManager}">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="exampleModalLabel">Modal title
+                                                                </h5>
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <div class="container-fluid">
+                                                                    <div class="row">
+                                                                        <div class="col-12 form-group">
+                                                                            <label for="courseName">Name</label>
+                                                                            <input type="text" class="form-control" name="courseName" id="courseName" placeholder="Enter name">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="form-group col-md-4">
+                                                                            <label for="categoryId">Category</label>
+                                                                            <select id="categoryId" class="form-control" name="categoryId">
+                                                                                <option selected disabled>Choose...</option>
+                                                                                <option th:each="cate : ${categories}"
+                                                                                    th:text="${cate.category_name}"
+                                                                                    th:value="${cate.categoryID}"></option>
+                                                                            </select>
+                                                                        </div>
+                                                                        <div class="form-group col-md-4">
+                                                                            <label for="courseManagerId">Manager</label>
+                                                                            <select id="courseManagerId" class="form-control" name="courseManagerId">
+                                                                                <option selected disabled> Choose Manager
+                                                                                </option>
+                                                                                <option th:each="manager : ${managers}"
+                                                                                    th:text="${manager.Name}"
+                                                                                    th:value="${manager.Id}"></option>
+                                                                            </select>
+                                                                        </div>
+                                                                        <div class="form-group col-md-4">
+                                                                            <label for="coursePrice">Price</label>
+                                                                            <input type="text" class="form-control" name="coursePrice" id="coursePrice" placeholder="Enter price">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-12 form-group">
+                                                                            <label for="courseDescription">Description</label>
+                                                                            <textarea class="form-control" name="courseDescription" id="courseDescription" placeholder="Enter description"></textarea>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-12 form-group">
+                                                                            <label for="courseImage">Image</label>
+                                                                            <input type="text" class="form-control" name="courseImage" id="courseImage" placeholder="Enter image">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                                <button type="submit" class="btn btn-primary">Save
+                                                                    changes</button>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </h6>
+                                    </div>
+                                    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                                         <h6 class="m-0 font-weight-bold text-primary">All Blogs</h6>
                                     </div>
                                     <!-- Card Body -->
@@ -54,53 +137,40 @@
                                                 <thead>
                                                     <tr>
                                                         <th th:style="'width: 4%;'">Id</th>
-                                                        <th th:style="'display:none;'">Author</th>
-                                                        <th th:style="'width: 16%;'">Author</th>
-                                                        <th th:style="'display:none;'">Title</th>
-                                                        <th th:style="'display:none;'">Description</th>
-                                                        <th th:style="'width: 76%;'">Content</th>
-                                                        <th th:style="'display:none;'">Category</th>
-                                                        <th th:style="'display:none;'">Rating</th>
-                                                        <th th:style="'display:none;'">Status</th>
-                                                        <th th:style="'display:none;'">Created Date</th>
+                                                        <th th:style="'width: 10%;'">Img</th>
+                                                        <th th:style="'width: 10%;'">Username</th>
+                                                        <th th:style="'width: 10%;'">Gender</th>
+                                                        <th th:style="'width: 10%;'">dob</th>
+                                                        <th th:style="'width: 10%;'">Phone</th>
                                                         <th th:style="'width: 4%;'">Actions</th>
                                                     </tr>
                                                 </thead>
                                                 <tfoot>
                                                     <tr>
                                                         <th th:style="'width: 4%;'">Id</th>
-                                                        <th th:style="'display:none;'">Author</th>
-                                                        <th th:style="'width: 16%;'">Author</th>
-                                                        <th th:style="'display:none;'">Title</th>
-                                                        <th th:style="'display:none;'">Description</th>
-                                                        <th th:style="'width: 76%;'">Content</th>
-                                                        <th th:style="'display:none;'">Category</th>
-                                                        <th th:style="'display:none;'">Rating</th>
-                                                        <th th:style="'display:none;'">Status</th>
-                                                        <th th:style="'display:none;'">Created Date</th>
+                                                        <th th:style="'width: 10%;'">Img</th>
+                                                        <th th:style="'width: 10%;'">Username</th>
+                                                        <th th:style="'width: 10%;'">Gender</th>
+                                                        <th th:style="'width: 10%;'">dob</th>
+                                                        <th th:style="'width: 10%;'">Phone</th>
                                                         <th th:style="'width: 4%;'">Actions</th>
                                                     </tr>
                                                 </tfoot>
                                                 <tbody>
-                                                    <tr th:each="blog : ${blogs}">
-                                                        <td th:style="'width: 4%;'" th:utext="${blog.blog_id}"></td>
-                                                        <td th:style="'display:none;'" th:utext="${blog.poster_uname}"></td>
+                                                    <tr th:each="m : ${mentors}">
+                                                        <td th:style="'width: 4%;'" th:utext="${m.Id}"></td>
                                                         <td th:style="'width: 16%;'">
-                                                            <img th:src="@{${blog.blog_image}}" th:alt="${blog.title}" th:style="'width: 100%; height: 100%;'">
+                                                            <img th:src="@{${m.ImgSrc}}" th:alt="${m.username}" th:style="'width: 100%; height: 100%;'">
                                                         </td>
-                                                        <td th:style="'display:none;'" th:utext="${blog.title}"></td>
-                                                        <td th:style="'display:none;'" th:utext="${blog.blog_description}"></td>
-                                                        <!-- add read more link if length >=2000 (Not working with content have css component ????)-->
-                                                        <td th:style="'width: 76%;'" th:utext="${blog.blog_content.length() >= 2000 ? blog.blog_content.substring(0, 2000) + '...' : blog.blog_content}"></td>
-                                                        <td th:style="'display:none;'" th:utext="${blog.category}"></td>
-                                                        <td th:style="'display:none;'" th:utext="${blog.rating}"></td>
-                                                        <td th:style="'display:none;'" th:utext="${blog.status}"></td>
-                                                        <td th:style="'display:none;'" th:utext="${blog.date}"></td>
+                                                        <td th:style="'width: 10%;'" th:utext="${m.username}"></td>
+                                                        <td th:style="'width: 10%;'" th:utext="${m.Gender}"></td>
+                                                        <td th:style="'width: 10%;'" th:utext="${m.dob}"></td>
+                                                        <td th:style="'width: 10%;'" th:utext="${m.phone}"></td>
                                                         <td th:style="'width: 4%;'">
                                                             <a class="btn btn-primary btn-circle btn-sm">
                                                                 <i class="fas fa-edit"></i>
                                                             </a>
-                                                            <a th:href="@{/admin/blog/delete/{id}(id=${blog.blog_id})}" class="btn btn-danger btn-circle btn-sm">
+                                                            <a th:href="@{/admin/blogs}" class="btn btn-danger btn-circle btn-sm">
                                                                 <i class="fas fa-trash "></i>
                                                             </a>
                                                         </td>
