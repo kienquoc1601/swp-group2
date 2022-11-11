@@ -21,10 +21,11 @@
     <!-- Write your code here in middle of Page -->
     <div class="main">
         <div class="container">
+            <h1 style="align-items: center; display: flex; justify-content: center; border: solid 2px; border-radius: 5px; background-color: rgba(205, 209, 228, 1); color: rgb(0, 0, 0);">Mentors of this class</h1>
             <table th:each="m : ${l}">
                 <tr>
                     <a th:href="@{/mentor/id=__${m.Id}__}" class="list-group-item list-group-item-action">
-                        <img th:src="${m.ImgSrc}" alt="Khong the hien thi" class="rounded-circle">
+                        <img th:src="${m.ImgSrc}" alt="Khong the hien thi" class="rounded-circle" style="width: 80px;height: 80px;">
                         <div class="d-flex w-100 justify-content-between">
                             <h5 class="mb-1" th:text="${m.Name}"></h5>
                         </div>
